@@ -3,6 +3,7 @@
 import glob
 import json
 import os
+import sys
 
 # third-party imports
 import cantools
@@ -30,7 +31,7 @@ class TelemetrySystemGenerator:
         Args:
             dbc_file:   DBC database file
         """
-        self._dbc = cantools.database.load_file(DBC_FILE)
+        self._dbc = cantools.database.load_file(dbc_file)
 
     def generate(self):
         """Generates all files
@@ -223,7 +224,16 @@ class TelemetrySystemGenerator:
 
 if __name__ == '__main__':
 
-    DBC_FILE = glob.glob(f'./dbc/*.dbc')[0]
+    # TODO: make this into an actual CLI, e.g. with argparse
+    if len(sys.argv) < 2:
+        print('Error: please specify a DBC file')
+        sys.exit(1)
 
-    tsgen = TelemetrySystemGenerator(DBC_FILE)
+    dbc_file = sys.argv[1]
+
+    if not os.path.isfile(dbc_file):
+        print('Error: invalid DBC file')
+        sys.exit(1)
+
+    tsgen = TelemetrySystemGenerator(dbc_file)
     tsgen.generate()
