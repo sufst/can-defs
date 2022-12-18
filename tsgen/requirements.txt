@@ -1,0 +1,2 @@
+python>=3.10
+cantools==37.2.0
