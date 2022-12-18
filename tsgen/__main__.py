@@ -112,7 +112,7 @@ class TelemetrySystemGenerator:
                 /* 
                  * function prototypes
                  */
-                const can_handler_t* can_handler_get();
+                const can_handler_t* can_handler_get(size_t index);
                 inline uint32_t can_handler_table_size();
 
                 #endif
