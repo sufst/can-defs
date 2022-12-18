@@ -1,13 +1,14 @@
 
 # python imports
-import glob
 import json
 import os
 import sys
+import textwrap
 
 # third-party imports
 import cantools
 from cantools.subparsers.generate_c_source import generate as do_generate_c_code
+
 
 class TelemetrySystemGenerator:
     """Telemetry configuration and code generator
@@ -22,7 +23,8 @@ class TelemetrySystemGenerator:
     OUTPUT_FOLDER = './out'
     SENSORS_FILE_NAME = 'sensors.json'
     SCHEMA_FILE_NAME = 'schema.json'
-    C_DATABASE_NAME = 'candb'
+    C_DATABASE_NAME = 'can_database'
+    CAN_HANDLER_SOURCE_NAME = 'can_handlers'
     JSON_INDENT = 2
 
     def __init__(self, dbc_file: str):
@@ -41,6 +43,7 @@ class TelemetrySystemGenerator:
         self._telemetry_schema = None
 
         self.generate_intermediate_server()
+        self.generate_on_car_telemetry()
 
     def generate_c_code(self):
         """Runs the C code generation of the cantools module
@@ -68,6 +71,146 @@ class TelemetrySystemGenerator:
 
         return file_paths
 
+    def generate_on_car_telemetry(self):
+        """Generates CAN message handler database for on-car telemetry
+        """
+        assert(self._sensor_schema is not None)
+        assert(self._telemetry_schema is not None)
+
+        STRUCT_KEYWORD = 'struct'
+
+        struct_names: list[str] = []
+
+        # find all the names of the structs representing unpacked messages and 
+        # create a dictionary of struct names and corresponding unpacking funcs
+        with open(self._c_header) as file:
+            
+            for line in file:
+
+                if STRUCT_KEYWORD in line[0:len(STRUCT_KEYWORD)]:
+
+                    # actual struct name after 'struct' keyword
+                    struct_name = line.split(' ')[1]
+                    struct_names.append(struct_name)
+
+        # create the table of CAN message IDs, struct names and look-up functions
+        h_code = \
+            '''
+                #ifndef CAN_HANDLERS_H
+                #define CAN_HANDLERS_H
+
+                #include <stdint.h>
+
+                /**
+                 * @brief   Entry in CAN handler table
+                 */
+                typedef struct {
+                    uint32_t identifier;
+                    void (*unpack_func)(uint8_t*, const uint8_t*, size_t);
+                } can_handler_t;
+
+                /* 
+                 * function prototypes
+                 */
+                const can_handler_t* can_handler_get();
+                inline uint32_t can_handler_table_size();
+
+                #endif
+            '''
+
+        c_code = \
+            ''' 
+                #include "can_handlers.h"
+                #include "__CAN_DATABASE__.h"
+
+                /**
+                 * @brief   Function template for handler implementation
+                 *
+                 * @details Because the actual unpacking functions have concrete struct types,
+                            they all have different function signatures and cannot be stored 
+                            in the CAN handler table. This macro generates a wrapper function 
+                            which casts the pointer to the bytes to unpack into to the actual
+                            type and calls the unpacking function.
+                 */
+                #define IMPL_HANDLER(T, f) \\
+                    static void T##_handler(uint8_t* dst, const uint8_t* src, size_t length) \\
+                    { \\
+                        struct T* output = (struct T*) dst; \\
+                        f(dst, src, length); \\
+                    } \\
+                __HANDLER_WRAPPERS__
+
+                /**
+                 * @brief   Table of CAN message IDs and associated unpacking functions
+                 */
+                static const can_handler_t can_handler_table[] = {__TABLE_ITEMS__
+                };
+
+                /**
+                 * @brief       Returns the CAN handler at the specified index in the table, or 
+                 *              NULL if out of bounds
+                 * 
+                 * @param[in]   index   Index in table
+                 */
+                const can_handler_t* can_handler_get(size_t index)
+                {
+                    const can_handler_t* handler = NULL;
+
+                    if (index < can_handler_table_size())
+                    {
+                        handler = &can_handler_table[index];
+                    }
+
+                    return handler;
+                }
+
+                /**
+                 * @brief   Returns the number of CAN handlers in the table
+                 */
+                inline uint32_t can_handler_table_size()
+                {
+                    return sizeof(can_handler_table) / sizeof(can_handler_table[0]);
+                }
+            '''
+
+        h_code = textwrap.dedent(h_code)
+        c_code = textwrap.dedent(c_code)
+
+        table_items = ''
+        handler_wrappers = ''
+
+        for struct_name in struct_names:
+
+            struct_basename: str = struct_name[:-2] # without _t
+
+            # _t at end of name replaced with _unpack
+            unpack_func = f'{struct_basename}_unpack'
+
+            # handler wrapper
+            handler_wrapper = f'IMPL_HANDLER({struct_name}, {unpack_func})'
+            handler_name = f'{struct_name}_handler'
+
+            # macro for CAN identifier in uppercase with _FRAME_ID at end
+            identifier_macro = f'{struct_basename.upper()}_FRAME_ID'
+
+            # add to code
+            table_item = f'{{{identifier_macro}, {handler_name}}},'
+            table_items = f'{table_items}\n    {table_item}'
+
+            handler_wrappers = f'{handler_wrappers}\n{handler_wrapper}'
+
+        c_code = c_code.replace('__TABLE_ITEMS__', table_items)
+        c_code = c_code.replace('__HANDLER_WRAPPERS__', handler_wrappers)
+        c_code = c_code.replace('__CAN_DATABASE__.h', f'{self.C_DATABASE_NAME}.h')
+
+        # save the code to file
+        def save_code(file_name, code):
+            with open(os.path.join(self.OUTPUT_FOLDER, file_name), 'w') as file:
+                file.write(code)
+
+        save_code(f'{self.CAN_HANDLER_SOURCE_NAME}.h', h_code)
+        save_code(f'{self.CAN_HANDLER_SOURCE_NAME}.c', c_code)
+        
     def generate_intermediate_server(self):
         """Generates schemas for the intermediate server and saves them in the
         output folder
