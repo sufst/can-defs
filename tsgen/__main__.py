@@ -351,18 +351,25 @@ class TelemetrySystemGenerator:
         """
 
         # TODO: signals with choices
-        # TODO: cast to bool if signal is int and values can only be 0 and 1
 
-        def cast_int():
-            return f'int(x * {signal.scale} + {signal.offset})'
+        isfloat = signal.is_float or any(isinstance(x, float) for x in [signal.minimum, signal.maximum]) # isfloat doesn't really seem to be accurate
+        isbool = not isfloat and (signal.minimum == 0 and signal.maximum == 1)
+        isint = not isfloat and not isbool
 
-        def cast_float():
-            return f'float(x * {signal.scale} + {signal.offset})'
+        em = '0'
+        try:
+            if isfloat or isint:
+                scale = (signal.maximum - signal.minimum) / 2
+                offset = signal.minimum + scale
+                cast = 'int' if isint else 'float'
+                offset_sign = '+' if offset >= 0 else '-'
+                em = f'{cast}({scale} * modules.math.sin(modules.math.radians(x * 10)) {offset_sign} {abs(offset)})'
+            elif isbool:
+                em = 'bool((x % 50) > 25)' # square wave
+        except TypeError:
+            print('Warning: could not create emulator for signal', repr(signal.name))
 
-        if signal.is_float:
-            return cast_float()
-        else:
-            return cast_int()
+        return em
 
 
 if __name__ == '__main__':
