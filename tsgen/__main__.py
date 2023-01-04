@@ -112,8 +112,8 @@ class TelemetrySystemGenerator:
                 /* 
                  * function prototypes
                  */
-                const can_handler_t* can_handler_get(size_t index);
-                inline uint32_t can_handler_table_size();
+                const can_handler_t* can_handler_get(uint32_t index);
+                uint32_t can_handler_table_size();
 
                 #endif
             '''
@@ -152,7 +152,7 @@ class TelemetrySystemGenerator:
                  * 
                  * @param[in]   index   Index in table
                  */
-                const can_handler_t* can_handler_get(size_t index)
+                const can_handler_t* can_handler_get(uint32_t index)
                 {
                     const can_handler_t* handler = NULL;
 
@@ -167,7 +167,7 @@ class TelemetrySystemGenerator:
                 /**
                  * @brief   Returns the number of CAN handlers in the table
                  */
-                inline uint32_t can_handler_table_size()
+                uint32_t can_handler_table_size()
                 {
                     return sizeof(can_handler_table) / sizeof(can_handler_table[0]);
                 }
