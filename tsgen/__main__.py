@@ -100,6 +100,7 @@ class TelemetrySystemGenerator:
                 #define CAN_HANDLERS_H
 
                 #include <stdint.h>
+                #include <stddef.h>
 
                 /**
                  * @brief   Entry in CAN handler table
@@ -107,6 +108,7 @@ class TelemetrySystemGenerator:
                 typedef struct {
                     uint32_t identifier;
                     void (*unpack_func)(uint8_t*, const uint8_t*, size_t);
+                    void (*pack_func)(uint8_t*, const uint8_t*, size_t);
                 } can_handler_t;
 
                 /* 
@@ -132,12 +134,16 @@ class TelemetrySystemGenerator:
                             which casts the pointer to the bytes to unpack into to the actual
                             type and calls the unpacking function.
                  */
-                #define IMPL_HANDLER(T, f) \\
-                    static void T##_handler(uint8_t* dst, const uint8_t* src, size_t length) \\
+                #define IMPL_HANDLER(T, p, u) \\
+                    static void T##_handler_pack(uint8_t* dst, const uint8_t* src, size_t length) \\
                     { \\
-                        struct T* output = (struct T*) dst; \\
-                        f(dst, src, length); \\
+                        p(dst, src, length); \\
                     } \\
+                    static void T##_handler_unpack(uint8_t* dst, const uint8_t* src, size_t length) \\
+                    { \\
+                        u(dst, src, length); \\
+                    } \\
+
                 __HANDLER_WRAPPERS__
 
                 /**
@@ -185,16 +191,18 @@ class TelemetrySystemGenerator:
 
             # _t at end of name replaced with _unpack
             unpack_func = f'{struct_basename}_unpack'
+            pack_func = f'{struct_basename}_pack'
 
             # handler wrapper
-            handler_wrapper = f'IMPL_HANDLER({struct_name}, {unpack_func})'
-            handler_name = f'{struct_name}_handler'
+            handler_wrapper = f'IMPL_HANDLER({struct_name}, {pack_func}, {unpack_func})'
+            handler_pack_name = f'{struct_name}_handler_pack'
+            handler_unpack_name = f'{struct_name}_handler_unpack'
 
             # macro for CAN identifier in uppercase with _FRAME_ID at end
             identifier_macro = f'{struct_basename.upper()}_FRAME_ID'
 
             # add to code
-            table_item = f'{{{identifier_macro}, {handler_name}}},'
+            table_item = f'{{{identifier_macro}, {handler_pack_name}, {handler_unpack_name}}},'
             table_items = f'{table_items}\n    {table_item}'
 
             handler_wrappers = f'{handler_wrappers}\n{handler_wrapper}'
