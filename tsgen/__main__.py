@@ -2,6 +2,7 @@
 # python imports
 import json
 import os
+import re
 import sys
 import textwrap
 
@@ -282,7 +283,6 @@ class TelemetrySystemGenerator:
         Returns:
             JSON schema
         """
-
         def format_units(unit):
             # clean up the units
             # example: "torque:N.m" -> "Nm"
@@ -327,7 +327,14 @@ class TelemetrySystemGenerator:
             "bool": "?"
         }
 
-        struct_field_name = signal.name.lower()
+        def camel_to_snake_case(value):
+            value = re.sub(r'(.)([A-Z][a-z]+)', r'\1_\2', value)
+            value = re.sub(r'(_+)', '_', value)
+            value = re.sub(r'([a-z0-9])([A-Z])', r'\1_\2', value).lower()
+            value = re.sub(r'[^a-zA-Z0-9]', '_', value)
+            return value
+
+        struct_field_name = camel_to_snake_case(signal.name)
 
         # TODO: it's a bit wasteful to open and search the file every time
         #       better to go through the file at the beginning and do it all then
@@ -337,6 +344,7 @@ class TelemetrySystemGenerator:
                     dtype = line.strip().split(' ')[0]
                     return types[dtype]
 
+        print(f'Warning: could not determine cType for {signal.name}')
         return None
 
     @staticmethod
