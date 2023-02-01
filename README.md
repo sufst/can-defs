@@ -28,8 +28,17 @@ git submodule update
 
 For more information on submodules, see the [Git submodule documentation](https://git-scm.com/book/en/v2/Git-Tools-Submodules).
 
-## Telemetry System GENerator (TSGEN) 
+## DBC Files
 
+[DBC](https://www.csselectronics.com/pages/can-dbc-file-database-intro) ("Data 
+Base CAN") is an industry standard file format for defining the content of 
+messages on a CAN bus. STAG 9 has two CAN buses:
+
+1. CAN-C ("critical systems") bus.
+2. CAN-S ("sensor/non-critical systems") bus.
+
+
+## Telemetry System GENerator (TSGEN) 
 
 ### About
 TSGEN is a Python module which generates various parts of the telemetry system
