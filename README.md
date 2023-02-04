@@ -44,6 +44,8 @@ There are many tools for working with DBC files. We suggest the use of
 [Kvaser Database Editor 3](https://www.kvaser.com/download/) which can be
 downloaded for free.
 
+Note also that DBC files can often be imported by CAN datalogger configuration softwares. We can use this for our MoTeC L120 datalogger to automatically configure the parsing and logging of CAN data.
+
 ## Telemetry System GENerator (TSGEN) 
 
 ### About
