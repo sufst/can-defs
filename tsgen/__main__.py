@@ -101,6 +101,7 @@ class TelemetrySystemGenerator:
                 #define CAN_HANDLERS_H
 
                 #include <stdint.h>
+                #include <stddef.h>
 
                 /**
                  * @brief   Entry in CAN handler table
