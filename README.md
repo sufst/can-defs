@@ -57,6 +57,8 @@ based on the DBC for the car. This includes:
   which will be used in the on-car telemetry system.
 - Parts of the embedded code for on-car telemetry.
 
+The output of this generator is the `/out` folder, the contents of which can be used by other repositories by including this repository as a submodule.
+
 ### Setup
 
 Install the dependencies in `tsgen/requirements.txt` to your chosen Python
@@ -69,3 +71,13 @@ From the command line:
 ```sh
 python -m tsgen <PATH TO DBC FILE>
 ```
+
+### Releases
+After a new set of configurations are generated, the corresponding commit to `main` should be tagged with a new version number:
+
+```sh
+git tag v1.1.2
+git push --tags
+```
+
+Other repos using the generated outputs should be updated to the latest release **at the same time** to ensure they are using the same definitions.
