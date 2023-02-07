@@ -1,0 +1,32 @@
+From GUI:
+------------------
+
+OPEN
+
+SET_START
+  - Fragment count (2B)
+SET_DATA
+  - Fragment number (2B)
+  - Fragment data (6B)
+SET_END
+  - CRC32 (4B)
+
+GET
+SAVE
+
+CLOSE
+
+From VCU:
+------------------
+
+SUCC
+ERR
+
+GET_START
+  - Fragment count (2B)
+GET_DATA
+  - Fragment number (2B)
+  - Fragment data (6B)
+GET_END
+
+CLOSE
