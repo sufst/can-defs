@@ -220,7 +220,7 @@ class TelemetrySystemGenerator:
         self._sensor_schema = {}
         pdus = {}
 
-        for id, message in enumerate(self._dbc.messages):
+        for id, message in enumerate(self.sort_dbc_messages(self._dbc.messages)):
 
             pdus[message.name] = self.create_pdu(message, id)
 
@@ -240,6 +240,13 @@ class TelemetrySystemGenerator:
 
         save_output(self.SENSORS_FILE_NAME, self._sensor_schema)
         save_output(self.SCHEMA_FILE_NAME, self._telemetry_schema)
+
+    def sort_dbc_messages(self, 
+                          messages: list[cantools.database.can.Message]):
+        """Returns a the messages in a DBC, sorted by CAN ID with lowest CAN IDs
+        first
+        """
+        return sorted(messages, key=lambda x: x.frame_id)
 
     def create_pdu(self, 
                    message: cantools.database.can.Message, 
