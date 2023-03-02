@@ -11,6 +11,7 @@ from dataclasses import dataclass
 import cantools
 from cantools.subparsers.generate_c_source import generate as do_generate_c_code
 
+
 @dataclass
 class DBCAttributes:
     """Custom DBC 
@@ -51,9 +52,10 @@ class TelemetrySystemGenerator:
         self._c_header, self._c_source = self.generate_c_code()
         self._sensor_schema = None
         self._telemetry_schema = None
+        self._oct_attributes = None
 
         self.generate_intermediate_server()
-        self.generate_on_car_telemetry()
+        self.generate_on_car_telemetry() # depends on intermediate server
 
     def generate_c_code(self):
         """Runs the C code generation of the cantools module
@@ -86,9 +88,9 @@ class TelemetrySystemGenerator:
         """
         assert(self._sensor_schema is not None)
         assert(self._telemetry_schema is not None)
+        assert(self._oct_attributes is not None)
 
         STRUCT_KEYWORD = 'struct'
-
         struct_names: list[str] = []
 
         # find all the names of the structs representing unpacked messages and 
@@ -104,11 +106,13 @@ class TelemetrySystemGenerator:
                     struct_names.append(struct_name)
 
         # create the table of CAN message IDs, struct names and look-up functions
+        # double underscores indicate things that will be replaced in the template code
         h_code = \
             '''
                 #ifndef CAN_HANDLERS_H
                 #define CAN_HANDLERS_H
 
+                #include <stdbool.h>
                 #include <stdint.h>
                 #include <stddef.h>
 
@@ -119,6 +123,7 @@ class TelemetrySystemGenerator:
                  */
                 typedef struct {
                     uint32_t identifier;
+                    uint32_t pdu_id;
                     void (*unpack_func)(uint8_t*, const uint8_t*, size_t);
                 } can_handler_t;
 
@@ -187,10 +192,18 @@ class TelemetrySystemGenerator:
         for struct_name in struct_names:
 
             struct_basename: str = struct_name[:-2] # without _t
-            num_handlers += 1
 
             # _t at end of name replaced with _unpack
             unpack_func = f'{struct_basename}_unpack'
+
+            # get the message attributes extracted during schema creation
+            struct_short_name: str = struct_basename[len(self.C_DATABASE_NAME)+1:]
+            attr: DBCAttributes = self._oct_attributes[struct_short_name]
+
+            if not attr.enabled: 
+                continue
+
+            pdu_id = attr.pdu_id
 
             # handler wrapper
             handler_wrapper = f'IMPL_HANDLER({struct_name}, {unpack_func})'
@@ -200,9 +213,10 @@ class TelemetrySystemGenerator:
             identifier_macro = f'{struct_basename.upper()}_FRAME_ID'
 
             # add to code
-            table_item = f'{{{identifier_macro}, {handler_name}}},'
-            table_items = f'{table_items}\n    {table_item}'
+            num_handlers += 1
 
+            table_item = f'{{{identifier_macro}, {pdu_id}, {handler_name}}},'
+            table_items = f'{table_items}\n    {table_item}'
             handler_wrappers = f'{handler_wrappers}\n{handler_wrapper}'
 
         c_code = c_code.replace('__TABLE_ITEMS__', table_items)
@@ -223,11 +237,14 @@ class TelemetrySystemGenerator:
         output folder
         """
         self._sensor_schema = {}
+        self._oct_attributes = {}
         pdus = {}
 
         for message in self._dbc.messages:
             
             attr = self.get_dbc_attributes(message)
+            c_struct_name = self.camel_to_snake_case(message.name)
+            self._oct_attributes[c_struct_name] = attr
 
             if attr.enabled:
 
@@ -354,14 +371,7 @@ class TelemetrySystemGenerator:
             "bool": "?"
         }
 
-        def camel_to_snake_case(value):
-            value = re.sub(r'(.)([A-Z][a-z]+)', r'\1_\2', value)
-            value = re.sub(r'(_+)', '_', value)
-            value = re.sub(r'([a-z0-9])([A-Z])', r'\1_\2', value).lower()
-            value = re.sub(r'[^a-zA-Z0-9]', '_', value)
-            return value
-
-        struct_field_name = camel_to_snake_case(signal.name)
+        struct_field_name = self.camel_to_snake_case(signal.name)
 
         # TODO: it's a bit wasteful to open and search the file every time
         #       better to go through the file at the beginning and do it all then
@@ -405,6 +415,14 @@ class TelemetrySystemGenerator:
             print('Warning: could not create emulator for signal', repr(signal.name))
 
         return em
+    
+    @staticmethod
+    def camel_to_snake_case(value) -> str:
+        value = re.sub(r'(.)([A-Z][a-z]+)', r'\1_\2', value)
+        value = re.sub(r'(_+)', '_', value)
+        value = re.sub(r'([a-z0-9])([A-Z])', r'\1_\2', value).lower()
+        value = re.sub(r'[^a-zA-Z0-9]', '_', value)
+        return value
 
 
 if __name__ == '__main__':
