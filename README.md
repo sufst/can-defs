@@ -41,11 +41,11 @@ STAG 9 has two CAN buses:
 2. CAN-S ("sensor/non-critical systems") bus.
 
 There are many tools for working with DBC files. We suggest the use of
-[Kvaser Database Editor 3](https://www.kvaser.com/download/) which can be
-downloaded for free (Windows only).
-
-Note also that DBC files can often be imported by CAN datalogger configuration 
-softwares. We can use this for our MoTeC L120 datalogger to automatically 
+[Vector CANdb++](https://www.vector.com/int/en/products/products-a-z/software/candb/)
+which can be downloaded for free as part of the demo version of 
+[Vector CANAnalyzer](https://www.vector.com/int/en/know-how/can/?gclid=CjwKCAiAr4GgBhBFEiwAgwORrSS5noGQYSs2JXWZldSavdWmvrEMF7twi48yqAelNUjuDMdQizQXYxoCqrMQAvD_BwE) 
+(Windows only). Note also that DBC files can often be imported by CAN datalogger configuration 
+software. We can use this for our MoTeC L120 datalogger to automatically 
 configure the parsing and logging of CAN data.
 
 ## Telemetry System GENerator (TSGEN) 
