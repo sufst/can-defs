@@ -44,7 +44,9 @@ There are many tools for working with DBC files. We suggest the use of
 [Kvaser Database Editor 3](https://www.kvaser.com/download/) which can be
 downloaded for free.
 
-Note also that DBC files can often be imported by CAN datalogger configuration softwares. We can use this for our MoTeC L120 datalogger to automatically configure the parsing and logging of CAN data.
+Note also that DBC files can often be imported by CAN datalogger configuration 
+softwares. We can use this for our MoTeC L120 datalogger to automatically 
+configure the parsing and logging of CAN data.
 
 ## Telemetry System GENerator (TSGEN) 
 
@@ -56,6 +58,9 @@ based on the DBC for the car. This includes:
 - C source code for unpacking CAN messages using the [`cantools` module](https://pypi.org/project/cantools/),
   which will be used in the on-car telemetry system.
 - Parts of the embedded code for on-car telemetry.
+
+> Do not edit the `/out` folder directly. If changes are needed, the generator
+  code must be modified.
 
 ### Setup
 
