@@ -5,10 +5,19 @@ import os
 import re
 import sys
 import textwrap
+from dataclasses import dataclass
 
 # third-party imports
 import cantools
 from cantools.subparsers.generate_c_source import generate as do_generate_c_code
+
+@dataclass
+class DBCAttributes:
+    """Custom DBC 
+    These are added to the DBC using Vector CANdb++
+    """
+    enabled: bool
+    pdu_id: int
 
 
 class TelemetrySystemGenerator:
@@ -220,13 +229,17 @@ class TelemetrySystemGenerator:
         self._sensor_schema = {}
         pdus = {}
 
-        for id, message in enumerate(self._dbc.messages):
+        for message in self._dbc.messages:
+            
+            attr = self.get_dbc_attributes(message)
 
-            pdus[message.name] = self.create_pdu(message, id)
+            if attr.enabled:
 
-            for signal in message.signals:
-                schema = self.create_sensor_schema(signal, message.name)
-                self._sensor_schema |= schema
+                pdus[message.name] = self.create_pdu(message, attr.pdu_id)
+
+                for signal in message.signals:
+                    schema = self.create_sensor_schema(signal, message.name)
+                    self._sensor_schema |= schema
 
         self._telemetry_schema = {
             "startByte": 1,
@@ -240,6 +253,23 @@ class TelemetrySystemGenerator:
 
         save_output(self.SENSORS_FILE_NAME, self._sensor_schema)
         save_output(self.SCHEMA_FILE_NAME, self._telemetry_schema)
+
+    @staticmethod
+    def get_dbc_attributes(message: cantools.database.can.Message) -> DBCAttributes:
+        """Extracts custom attributes which we have defined in the DBC file
+        """
+        attr = message.dbc.attributes
+
+        try:
+            return DBCAttributes(
+                enabled=(attr['OCT_ENABLE'].value == 1),
+                pdu_id=int(attr['OCT_PDU_ID'].value)
+            )
+        except KeyError:
+            print(f'Warning: Attributes missing for message {message.name}')
+        
+        # message disabled because required attributes are missing
+        return DBCAttributes(False, None)
 
     def create_pdu(self, 
                    message: cantools.database.can.Message, 
@@ -255,7 +285,7 @@ class TelemetrySystemGenerator:
 
         Args:
             message:        CAN message information
-            id:             Unique ID number for PDU
+            id:             Unique PDU identifier
 
         Returns:
             PDU schema dictionary
