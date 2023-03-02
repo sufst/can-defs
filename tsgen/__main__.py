@@ -168,7 +168,7 @@ class TelemetrySystemGenerator:
                 {
                     const can_handler_t* handler = NULL;
 
-                    if (index < can_handler_table_size())
+                    if (index < CAN_HANDLERS_TABLE_SIZE)
                     {
                         handler = &can_handler_table[index];
                     }
