@@ -112,6 +112,8 @@ class TelemetrySystemGenerator:
                 #include <stdint.h>
                 #include <stddef.h>
 
+                #define CAN_HANDLERS_TABLE_SIZE __TABLE_SIZE__
+
                 /**
                  * @brief   Entry in CAN handler table
                  */
@@ -124,7 +126,6 @@ class TelemetrySystemGenerator:
                  * function prototypes
                  */
                 const can_handler_t* can_handler_get(uint32_t index);
-                uint32_t can_handler_table_size();
 
                 #endif
             '''
@@ -174,14 +175,6 @@ class TelemetrySystemGenerator:
 
                     return handler;
                 }
-
-                /**
-                 * @brief   Returns the number of CAN handlers in the table
-                 */
-                uint32_t can_handler_table_size()
-                {
-                    return sizeof(can_handler_table) / sizeof(can_handler_table[0]);
-                }
             '''
 
         h_code = textwrap.dedent(h_code)
@@ -189,10 +182,12 @@ class TelemetrySystemGenerator:
 
         table_items = ''
         handler_wrappers = ''
+        num_handlers = 0
 
         for struct_name in struct_names:
 
             struct_basename: str = struct_name[:-2] # without _t
+            num_handlers += 1
 
             # _t at end of name replaced with _unpack
             unpack_func = f'{struct_basename}_unpack'
@@ -213,6 +208,7 @@ class TelemetrySystemGenerator:
         c_code = c_code.replace('__TABLE_ITEMS__', table_items)
         c_code = c_code.replace('__HANDLER_WRAPPERS__', handler_wrappers)
         c_code = c_code.replace('__CAN_DATABASE__.h', f'{self.C_DATABASE_NAME}.h')
+        h_code = h_code.replace('__TABLE_SIZE__', str(num_handlers))
 
         # save the code to file
         def save_code(file_name, code):
