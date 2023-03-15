@@ -6,7 +6,7 @@
 #include <stdint.h>
 #include <stddef.h>
 
-#define CAN_HANDLERS_TABLE_SIZE 4
+#define CAN_HANDLERS_TABLE_SIZE 6
 
 /**
  * @brief   Entry in CAN handler table
