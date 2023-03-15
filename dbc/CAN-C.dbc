@@ -36,6 +36,15 @@ BS_:
 BU_: INV U2C VCU BMS
 
 
+BO_ 257 VCU_Internal_States: 4 VCU
+ SG_ VCU_Rolling_Counter : 16|16@1+ (1,0) [0|65535] "" Vector__XXX
+ SG_ VCU_Shutdown : 1|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ VCU_Ready_To_Drive : 0|1@1+ (1,0) [0|1] "" Vector__XXX
+
+BO_ 256 VCU_Driver_Inputs: 4 VCU
+ SG_ VCU_BPS : 16|16@1+ (0.1,0) [0|100] "" Vector__XXX
+ SG_ VCU_APPS : 0|16@1+ (0.1,0) [0|100] "%" Vector__XXX
+
 BO_ 173 PM100_Modulation_And_Flux_Info: 8 INV
  SG_ PM100_Iq_Command : 48|16@1- (0.1,0) [-3276.8|3276.7] "A" Vector__XXX
  SG_ PM100_Id_Command : 32|16@1- (0.1,0) [-3276.8|3276.7] "A" Vector__XXX
@@ -319,22 +328,26 @@ BA_DEF_  "BusType" STRING ;
 BA_DEF_DEF_  "OCT_PDU_ID" 0;
 BA_DEF_DEF_  "OCT_ENABLE" "False";
 BA_DEF_DEF_  "BusType" "CAN";
+BA_ "OCT_PDU_ID" BO_ 257 6;
+BA_ "OCT_ENABLE" BO_ 257 1;
+BA_ "OCT_ENABLE" BO_ 256 1;
+BA_ "OCT_PDU_ID" BO_ 256 5;
 BA_ "OCT_ENABLE" BO_ 173 0;
 BA_ "OCT_ENABLE" BO_ 172 0;
 BA_ "OCT_ENABLE" BO_ 194 0;
 BA_ "OCT_ENABLE" BO_ 193 0;
 BA_ "OCT_ENABLE" BO_ 192 0;
-BA_ "OCT_PDU_ID" BO_ 171 4;
 BA_ "OCT_ENABLE" BO_ 171 1;
-BA_ "OCT_PDU_ID" BO_ 170 3;
+BA_ "OCT_PDU_ID" BO_ 171 4;
 BA_ "OCT_ENABLE" BO_ 170 1;
+BA_ "OCT_PDU_ID" BO_ 170 3;
 BA_ "OCT_ENABLE" BO_ 169 0;
 BA_ "OCT_ENABLE" BO_ 168 0;
 BA_ "OCT_ENABLE" BO_ 167 0;
-BA_ "OCT_PDU_ID" BO_ 166 2;
 BA_ "OCT_ENABLE" BO_ 166 1;
-BA_ "OCT_PDU_ID" BO_ 165 1;
+BA_ "OCT_PDU_ID" BO_ 166 2;
 BA_ "OCT_ENABLE" BO_ 165 1;
+BA_ "OCT_PDU_ID" BO_ 165 1;
 BA_ "OCT_ENABLE" BO_ 164 0;
 BA_ "OCT_ENABLE" BO_ 163 0;
 BA_ "OCT_ENABLE" BO_ 162 0;
