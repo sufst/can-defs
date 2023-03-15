@@ -18,6 +18,8 @@
         f(dst, src, length); \
     } \
 
+IMPL_HANDLER(can_database_vcu_internal_states_t, can_database_vcu_internal_states_unpack)
+IMPL_HANDLER(can_database_vcu_driver_inputs_t, can_database_vcu_driver_inputs_unpack)
 IMPL_HANDLER(can_database_pm100_fault_codes_t, can_database_pm100_fault_codes_unpack)
 IMPL_HANDLER(can_database_pm100_internal_states_t, can_database_pm100_internal_states_unpack)
 IMPL_HANDLER(can_database_pm100_current_info_t, can_database_pm100_current_info_unpack)
@@ -27,6 +29,8 @@ IMPL_HANDLER(can_database_pm100_motor_position_info_t, can_database_pm100_motor_
  * @brief   Table of CAN message IDs and associated unpacking functions
  */
 static const can_handler_t can_handler_table[] = {
+    {CAN_DATABASE_VCU_INTERNAL_STATES_FRAME_ID, 6, can_database_vcu_internal_states_t_handler},
+    {CAN_DATABASE_VCU_DRIVER_INPUTS_FRAME_ID, 5, can_database_vcu_driver_inputs_t_handler},
     {CAN_DATABASE_PM100_FAULT_CODES_FRAME_ID, 4, can_database_pm100_fault_codes_t_handler},
     {CAN_DATABASE_PM100_INTERNAL_STATES_FRAME_ID, 3, can_database_pm100_internal_states_t_handler},
     {CAN_DATABASE_PM100_CURRENT_INFO_FRAME_ID, 2, can_database_pm100_current_info_t_handler},
