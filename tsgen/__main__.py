@@ -35,21 +35,26 @@ class TelemetrySystemGenerator:
     SENSORS_FILE_NAME = 'sensors.json'
     SCHEMA_FILE_NAME = 'schema.json'
     C_DATABASE_NAME = 'can_database'
+    CAN_S_APP = '_can_s'
+    CAN_C_APP = '_can_c'
     CAN_HANDLER_SOURCE_NAME = 'can_handlers'
     JSON_INDENT = 2
 
-    def __init__(self, dbc_file: str):
+    def __init__(self, can_c_file: str, can_s_file: str):
         """Initialises telemetry configuration generator
 
         Args:
-            dbc_file:   DBC database file
+            can_c_file:   DBC database CAN-S file
+            can_s_file:   DBC database CAN-C file
         """
-        self._dbc = cantools.database.load_file(dbc_file)
+        self._can_c = cantools.database.load_file(can_c_file)
+        self._can_s = cantools.database.load_file(can_s_file)
 
     def generate(self):
         """Generates all files
         """
-        self._c_header, self._c_source = self.generate_c_code()
+        self._c_header_can_c, self._c_source_can_c = self.generate_c_code(self.CAN_C_APP)
+        self._c_header_can_s, self._c_source_can_s = self.generate_c_code(self.CAN_S_APP)
         self._sensor_schema = None
         self._telemetry_schema = None
         self._oct_attributes = None
@@ -57,7 +62,7 @@ class TelemetrySystemGenerator:
         self.generate_intermediate_server()
         self.generate_on_car_telemetry() # depends on intermediate server
 
-    def generate_c_code(self):
+    def generate_c_code(self, bus: str):
         """Runs the C code generation of the cantools module
 
         Args:
@@ -66,11 +71,11 @@ class TelemetrySystemGenerator:
         Return:
             Tuple containing paths to C header and source files
         """
-        HEADER_FILE = f'{self.C_DATABASE_NAME}.h'
-        SOURCE_FILE = f'{self.C_DATABASE_NAME}.c'
+        HEADER_FILE = f'{self.C_DATABASE_NAME + bus}.h'
+        SOURCE_FILE = f'{self.C_DATABASE_NAME + bus}.c'
 
-        header, source, _, _ = do_generate_c_code(self._dbc,
-                                                  self.C_DATABASE_NAME, 
+        header, source, _, _ = do_generate_c_code(self.__getattribute__(bus),
+                                                  self.C_DATABASE_NAME + bus, 
                                                   HEADER_FILE, 
                                                   SOURCE_FILE, 
                                                   SOURCE_FILE)
@@ -95,7 +100,17 @@ class TelemetrySystemGenerator:
 
         # find all the names of the structs representing unpacked messages and 
         # create a dictionary of struct names and corresponding unpacking funcs
-        with open(self._c_header) as file:
+        with open(self._c_header_can_c) as file:
+            
+            for line in file:
+
+                if STRUCT_KEYWORD in line[0:len(STRUCT_KEYWORD)]:
+
+                    # actual struct name after 'struct' keyword
+                    struct_name = line.split(' ')[1]
+                    struct_names.append(struct_name)
+
+        with open(self._c_header_can_s) as file:
             
             for line in file:
 
@@ -138,7 +153,8 @@ class TelemetrySystemGenerator:
         c_code = \
             ''' 
                 #include "can_handlers.h"
-                #include "__CAN_DATABASE__.h"
+                #include "__CAN_DATABASE___can_s.h"
+                #include "__CAN_DATABASE___can_c.h"
 
                 /**
                  * @brief   Function template for handler implementation
@@ -197,7 +213,7 @@ class TelemetrySystemGenerator:
             unpack_func = f'{struct_basename}_unpack'
 
             # get the message attributes extracted during schema creation
-            struct_short_name: str = struct_basename[len(self.C_DATABASE_NAME)+1:]
+            struct_short_name: str = struct_basename[len(self.C_DATABASE_NAME + self.CAN_C_APP) + 1:]
             attr: DBCAttributes = self._oct_attributes[struct_short_name]
 
             if not attr.enabled: 
@@ -221,7 +237,7 @@ class TelemetrySystemGenerator:
 
         c_code = c_code.replace('__TABLE_ITEMS__', table_items)
         c_code = c_code.replace('__HANDLER_WRAPPERS__', handler_wrappers)
-        c_code = c_code.replace('__CAN_DATABASE__.h', f'{self.C_DATABASE_NAME}.h')
+        c_code = c_code.replace('__CAN_DATABASE__', self.C_DATABASE_NAME)
         h_code = h_code.replace('__TABLE_SIZE__', str(num_handlers))
 
         # save the code to file
@@ -240,8 +256,7 @@ class TelemetrySystemGenerator:
         self._oct_attributes = {}
         pdus = {}
 
-        for message in self._dbc.messages:
-            
+        for message in self._can_c.messages + self._can_s.messages:
             attr = self.get_dbc_attributes(message)
             c_struct_name = self.camel_to_snake_case(message.name)
             self._oct_attributes[c_struct_name] = attr
@@ -375,12 +390,17 @@ class TelemetrySystemGenerator:
 
         # TODO: it's a bit wasteful to open and search the file every time
         #       better to go through the file at the beginning and do it all then
-        with open(self._c_header, 'r') as f:
+        with open(self._c_header_can_c, 'r') as f:
+            for line in f:
+                if struct_field_name in line:
+                    dtype = line.strip().split(' ')[0]
+                    return types[dtype]                
+        #Look in can_s if can_c doesnt contain valid signal
+        with open(self._c_header_can_s, 'r') as f:
             for line in f:
                 if struct_field_name in line:
                     dtype = line.strip().split(' ')[0]
                     return types[dtype]
-
         print(f'Warning: could not determine cType for {signal.name}')
         return None
 
@@ -428,15 +448,20 @@ class TelemetrySystemGenerator:
 if __name__ == '__main__':
 
     # TODO: make this into an actual CLI, e.g. with argparse
-    if len(sys.argv) < 2:
-        print('Error: please specify a DBC file')
+    if len(sys.argv) < 3:
+        print('Error: please specify two DBC files: can_c and can_s')
         sys.exit(1)
 
-    dbc_file = sys.argv[1]
+    can_c_file = sys.argv[1]
+    can_s_file = sys.argv[2]
 
-    if not os.path.isfile(dbc_file):
-        print('Error: invalid DBC file')
+    if not os.path.isfile(can_c_file):
+        print('Error: invalid CAN-C file')
         sys.exit(1)
 
-    tsgen = TelemetrySystemGenerator(dbc_file)
+    if not os.path.isfile(can_s_file):
+        print('Error: invalid CAN-S file')
+        sys.exit(1)
+
+    tsgen = TelemetrySystemGenerator(can_c_file, can_s_file)
     tsgen.generate()
