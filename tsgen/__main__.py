@@ -95,7 +95,8 @@ class TelemetrySystemGenerator:
         assert(self._oct_attributes is not None)
 
         STRUCT_KEYWORD = 'struct'
-        struct_names: list[str] = []
+        struct_names_can_c: list[str] = []
+        struct_names_can_s: list[str] = []
 
         # find all the names of the structs representing unpacked messages and 
         # create a dictionary of struct names and corresponding unpacking funcs
@@ -107,7 +108,7 @@ class TelemetrySystemGenerator:
 
                     # actual struct name after 'struct' keyword
                     struct_name = line.split(' ')[1]
-                    struct_names.append(struct_name)
+                    struct_names_can_c.append(struct_name)
 
         with open(self._c_header_can_s) as file:
             
@@ -117,7 +118,7 @@ class TelemetrySystemGenerator:
 
                     # actual struct name after 'struct' keyword
                     struct_name = line.split(' ')[1]
-                    struct_names.append(struct_name)
+                    struct_names_can_s.append(struct_name)
 
         # create the table of CAN message IDs, struct names and look-up functions
         # double underscores indicate things that will be replaced in the template code
@@ -130,7 +131,11 @@ class TelemetrySystemGenerator:
                 #include <stdint.h>
                 #include <stddef.h>
 
-                #define CAN_HANDLERS_TABLE_SIZE __TABLE_SIZE__
+                #define CAN_C_HANDLERS_TABLE_SIZE __TABLE_SIZE_CAN_C__
+                #define CAN_S_HANDLERS_TABLE_SIZE __TABLE_SIZE_CAN_S__
+
+                #define CAN_C_HANDLER_TABLE_INSTANCE 0
+                #define CAN_S_HANDLER_TABLE_INSTANCE 1
 
                 /**
                  * @brief   Entry in CAN handler table
@@ -144,7 +149,7 @@ class TelemetrySystemGenerator:
                 /* 
                  * function prototypes
                  */
-                const can_handler_t* can_handler_get(uint32_t index);
+                const can_handler_t* can_handler_get(uint32_t index, uint8_t instance);
 
                 #endif
             '''
@@ -170,29 +175,47 @@ class TelemetrySystemGenerator:
                         struct T* output = (struct T*) dst; \\
                         f(dst, src, length); \\
                     } \\
-                __HANDLER_WRAPPERS__
+                __HANDLER_WRAPPERS_CAN_C__
+                __HANDLER_WRAPPERS_CAN_S__
 
                 /**
                  * @brief   Table of CAN message IDs and associated unpacking functions
                  */
-                static const can_handler_t can_handler_table[] = {__TABLE_ITEMS__
+                static const can_handler_t can_c_handler_table[] = {__TABLE_ITEMS_CAN_C__
+                };
+
+                /**
+                 * @brief   Table of CAN message IDs and associated unpacking functions
+                 */
+                static const can_handler_t can_s_handler_table[] = {__TABLE_ITEMS_CAN_S__
                 };
 
                 /**
                  * @brief       Returns the CAN handler at the specified index in the table, or 
-                 *              NULL if out of bounds
+                 *              NULL if out of bounds or wrong instance number
                  * 
-                 * @param[in]   index   Index in table
+                 * @param[in]   index       Index in table
+                 * @param[in]   instance    Selection of can handler table 
+                 *                          CAN_C_HANDLER_TABLE_INSTANCE or CAN_S_HANDLER_TABLE_INSTANCE
                  */
-                const can_handler_t* can_handler_get(uint32_t index)
+                const can_handler_t* can_handler_get(uint32_t index, uint8_t instance)
                 {
                     const can_handler_t* handler = NULL;
 
-                    if (index < CAN_HANDLERS_TABLE_SIZE)
+                    if (instance == CAN_C_HANDLER_TABLE_INSTANCE)
                     {
-                        handler = &can_handler_table[index];
+                        if (index < CAN_C_HANDLERS_TABLE_SIZE)
+                        {
+                            handler = &can_c_handler_table[index];
+                        }                    
                     }
-
+                    else if(instance == CAN_S_HANDLER_TABLE_INSTANCE)
+                    {
+                        if (index < CAN_S_HANDLERS_TABLE_SIZE)
+                        {
+                            handler = &can_s_handler_table[index];
+                        }                      
+                    }
                     return handler;
                 }
             '''
@@ -204,7 +227,7 @@ class TelemetrySystemGenerator:
         handler_wrappers = ''
         num_handlers = 0
 
-        for struct_name in struct_names:
+        for struct_name in struct_names_can_c:
 
             struct_basename: str = struct_name[:-2] # without _t
 
@@ -212,7 +235,7 @@ class TelemetrySystemGenerator:
             unpack_func = f'{struct_basename}_unpack'
 
             # get the message attributes extracted during schema creation
-            struct_short_name: str = struct_basename[len(self.CAN_C_APP) + 1:] #As long as len(CAN_C_APP) == (CAN_S_APP) this works fine.
+            struct_short_name: str = struct_basename[len(self.CAN_C_APP) + 1:]
             attr: DBCAttributes = self._oct_attributes[struct_short_name]
 
             if not attr.enabled: 
@@ -234,9 +257,47 @@ class TelemetrySystemGenerator:
             table_items = f'{table_items}\n    {table_item}'
             handler_wrappers = f'{handler_wrappers}\n{handler_wrapper}'
 
-        c_code = c_code.replace('__TABLE_ITEMS__', table_items)
-        c_code = c_code.replace('__HANDLER_WRAPPERS__', handler_wrappers)
-        h_code = h_code.replace('__TABLE_SIZE__', str(num_handlers))
+        c_code = c_code.replace('__TABLE_ITEMS_CAN_C__', table_items)
+        c_code = c_code.replace('__HANDLER_WRAPPERS_CAN_C__', handler_wrappers)
+        h_code = h_code.replace('__TABLE_SIZE_CAN_C__', str(num_handlers))
+
+        table_items = ''
+        handler_wrappers = ''
+        num_handlers = 0
+
+        for struct_name in struct_names_can_s:
+
+            struct_basename: str = struct_name[:-2] # without _t
+
+            # _t at end of name replaced with _unpack
+            unpack_func = f'{struct_basename}_unpack'
+
+            # get the message attributes extracted during schema creation
+            struct_short_name: str = struct_basename[len(self.CAN_S_APP) + 1:]
+            attr: DBCAttributes = self._oct_attributes[struct_short_name]
+
+            if not attr.enabled: 
+                continue
+
+            pdu_id = attr.pdu_id
+
+            # handler wrapper
+            handler_wrapper = f'IMPL_HANDLER({struct_name}, {unpack_func})'
+            handler_name = f'{struct_name}_handler'
+
+            # macro for CAN identifier in uppercase with _FRAME_ID at end
+            identifier_macro = f'{struct_basename.upper()}_FRAME_ID'
+
+            # add to code
+            num_handlers += 1
+
+            table_item = f'{{{identifier_macro}, {pdu_id}, {handler_name}}},'
+            table_items = f'{table_items}\n    {table_item}'
+            handler_wrappers = f'{handler_wrappers}\n{handler_wrapper}'
+
+        c_code = c_code.replace('__TABLE_ITEMS_CAN_S__', table_items)
+        c_code = c_code.replace('__HANDLER_WRAPPERS_CAN_S__', handler_wrappers)
+        h_code = h_code.replace('__TABLE_SIZE_CAN_S__', str(num_handlers))
 
         # save the code to file
         def save_code(file_name, code):
