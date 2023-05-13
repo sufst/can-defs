@@ -34,9 +34,8 @@ class TelemetrySystemGenerator:
     OUTPUT_FOLDER = './out'
     SENSORS_FILE_NAME = 'sensors.json'
     SCHEMA_FILE_NAME = 'schema.json'
-    C_DATABASE_NAME = 'can_database'
-    CAN_S_APP = '_can_s'
-    CAN_C_APP = '_can_c'
+    CAN_S_APP = 'can_s'
+    CAN_C_APP = 'can_c'
     CAN_HANDLER_SOURCE_NAME = 'can_handlers'
     JSON_INDENT = 2
 
@@ -47,8 +46,8 @@ class TelemetrySystemGenerator:
             can_c_file:   DBC database CAN-S file
             can_s_file:   DBC database CAN-C file
         """
-        self._can_c = cantools.database.load_file(can_c_file)
-        self._can_s = cantools.database.load_file(can_s_file)
+        self.can_c = cantools.database.load_file(can_c_file)
+        self.can_s = cantools.database.load_file(can_s_file)
 
     def generate(self):
         """Generates all files
@@ -71,11 +70,11 @@ class TelemetrySystemGenerator:
         Return:
             Tuple containing paths to C header and source files
         """
-        HEADER_FILE = f'{self.C_DATABASE_NAME + bus}.h'
-        SOURCE_FILE = f'{self.C_DATABASE_NAME + bus}.c'
+        HEADER_FILE = f'{bus}.h'
+        SOURCE_FILE = f'{bus}.c'
 
         header, source, _, _ = do_generate_c_code(self.__getattribute__(bus),
-                                                  self.C_DATABASE_NAME + bus, 
+                                                  bus, 
                                                   HEADER_FILE, 
                                                   SOURCE_FILE, 
                                                   SOURCE_FILE)
@@ -153,8 +152,8 @@ class TelemetrySystemGenerator:
         c_code = \
             ''' 
                 #include "can_handlers.h"
-                #include "__CAN_DATABASE___can_s.h"
-                #include "__CAN_DATABASE___can_c.h"
+                #include "can_s.h"
+                #include "can_c.h"
 
                 /**
                  * @brief   Function template for handler implementation
@@ -213,7 +212,7 @@ class TelemetrySystemGenerator:
             unpack_func = f'{struct_basename}_unpack'
 
             # get the message attributes extracted during schema creation
-            struct_short_name: str = struct_basename[len(self.C_DATABASE_NAME + self.CAN_C_APP) + 1:]
+            struct_short_name: str = struct_basename[len(self.CAN_C_APP) + 1:] #As long as len(CAN_C_APP) == (CAN_S_APP) this works fine.
             attr: DBCAttributes = self._oct_attributes[struct_short_name]
 
             if not attr.enabled: 
@@ -237,7 +236,6 @@ class TelemetrySystemGenerator:
 
         c_code = c_code.replace('__TABLE_ITEMS__', table_items)
         c_code = c_code.replace('__HANDLER_WRAPPERS__', handler_wrappers)
-        c_code = c_code.replace('__CAN_DATABASE__', self.C_DATABASE_NAME)
         h_code = h_code.replace('__TABLE_SIZE__', str(num_handlers))
 
         # save the code to file
@@ -256,7 +254,7 @@ class TelemetrySystemGenerator:
         self._oct_attributes = {}
         pdus = {}
 
-        for message in self._can_c.messages + self._can_s.messages:
+        for message in self.can_c.messages + self.can_s.messages:
             attr = self.get_dbc_attributes(message)
             c_struct_name = self.camel_to_snake_case(message.name)
             self._oct_attributes[c_struct_name] = attr
