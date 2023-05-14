@@ -134,8 +134,10 @@ class TelemetrySystemGenerator:
                 #define CAN_C_HANDLERS_TABLE_SIZE __TABLE_SIZE_CAN_C__
                 #define CAN_S_HANDLERS_TABLE_SIZE __TABLE_SIZE_CAN_S__
 
-                #define CAN_C_HANDLER_TABLE_INSTANCE 0
-                #define CAN_S_HANDLER_TABLE_INSTANCE 1
+                typedef enum {
+                    CAN_C_HANDLER_TABLE_INSTANCE,
+                    CAN_S_HANDLER_TABLE_INSTANCE
+                } instance_t;
 
                 /**
                  * @brief   Entry in CAN handler table
@@ -149,7 +151,7 @@ class TelemetrySystemGenerator:
                 /* 
                  * function prototypes
                  */
-                const can_handler_t* can_handler_get(uint32_t index, uint8_t instance);
+                const can_handler_t* can_handler_get(uint32_t index, instance_t instance);
 
                 #endif
             '''
@@ -198,7 +200,7 @@ class TelemetrySystemGenerator:
                  * @param[in]   instance    Selection of can handler table 
                  *                          CAN_C_HANDLER_TABLE_INSTANCE or CAN_S_HANDLER_TABLE_INSTANCE
                  */
-                const can_handler_t* can_handler_get(uint32_t index, uint8_t instance)
+                const can_handler_t* can_handler_get(uint32_t index, instance_t instance)
                 {
                     const can_handler_t* handler = NULL;
 
