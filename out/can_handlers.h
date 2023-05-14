@@ -6,11 +6,7 @@
 #include <stdint.h>
 #include <stddef.h>
 
-#define CAN_C_HANDLERS_TABLE_SIZE 6
-#define CAN_S_HANDLERS_TABLE_SIZE 2
-
-#define CAN_C_HANDLER_TABLE_INSTANCE 0
-#define CAN_S_HANDLER_TABLE_INSTANCE 1
+#define CAN_HANDLERS_TABLE_SIZE 6
 
 /**
  * @brief   Entry in CAN handler table
@@ -24,6 +20,6 @@ typedef struct {
 /* 
  * function prototypes
  */
-const can_handler_t* can_handler_get(uint32_t index, uint8_t instance);
+const can_handler_t* can_handler_get(uint32_t index);
 
 #endif

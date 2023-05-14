@@ -378,55 +378,5 @@
     "max": 3276.7,
     "on_dash": false,
     "emulation": "float(3276.75 * modules.math.sin(modules.math.radians(x * 10)) - 0.0500000000001819)"
-  },
-  "OCT_GPS_TimeUCT": {
-    "name": "OCT GPS TimeUCT",
-    "units": "Code",
-    "enable": true,
-    "group": "OCT_GPS_Stats",
-    "min": 0,
-    "max": 24000000,
-    "on_dash": false,
-    "emulation": "int(12000000.0 * modules.math.sin(modules.math.radians(x * 10)) + 12000000.0)"
-  },
-  "OCT_GPS_NumSats": {
-    "name": "OCT GPS NumSats",
-    "units": "Code",
-    "enable": true,
-    "group": "OCT_GPS_Stats",
-    "min": 0,
-    "max": 99,
-    "on_dash": false,
-    "emulation": "int(49.5 * modules.math.sin(modules.math.radians(x * 10)) + 49.5)"
-  },
-  "OCT_GPS_HDOP": {
-    "name": "OCT GPS HDOP",
-    "units": "Code",
-    "enable": true,
-    "group": "OCT_GPS_Stats",
-    "min": 0,
-    "max": 256,
-    "on_dash": false,
-    "emulation": "int(128.0 * modules.math.sin(modules.math.radians(x * 10)) + 128.0)"
-  },
-  "OCT_GPS_Longitude": {
-    "name": "OCT GPS Longitude",
-    "units": "Code",
-    "enable": true,
-    "group": "OCT_GPS_LatLong",
-    "min": 0,
-    "max": 1809999999,
-    "on_dash": false,
-    "emulation": "int(904999999.5 * modules.math.sin(modules.math.radians(x * 10)) + 904999999.5)"
-  },
-  "OCT_GPS_Latitude": {
-    "name": "OCT GPS Latitude",
-    "units": "Code",
-    "enable": true,
-    "group": "OCT_GPS_LatLong",
-    "min": 0,
-    "max": 909999999,
-    "on_dash": false,
-    "emulation": "int(454999999.5 * modules.math.sin(modules.math.radians(x * 10)) + 454999999.5)"
   }
 }
