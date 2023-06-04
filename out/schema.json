@@ -242,6 +242,56 @@
           "cType": "h"
         }
       ]
+    },
+    "OCT_GPS_Stats": {
+      "id": 8,
+      "header": [
+        {
+          "name": "valid_bitfield",
+          "cType": "H"
+        },
+        {
+          "name": "epoch",
+          "cType": "d"
+        }
+      ],
+      "body": [
+        {
+          "name": "OCT_GPS_TimeUCT",
+          "cType": "I"
+        },
+        {
+          "name": "OCT_GPS_NumSats",
+          "cType": "B"
+        },
+        {
+          "name": "OCT_GPS_HDOP",
+          "cType": "B"
+        }
+      ]
+    },
+    "OCT_GPS_LatLong": {
+      "id": 7,
+      "header": [
+        {
+          "name": "valid_bitfield",
+          "cType": "H"
+        },
+        {
+          "name": "epoch",
+          "cType": "d"
+        }
+      ],
+      "body": [
+        {
+          "name": "OCT_GPS_Longitude",
+          "cType": "i"
+        },
+        {
+          "name": "OCT_GPS_Latitude",
+          "cType": "i"
+        }
+      ]
     }
   }
 }

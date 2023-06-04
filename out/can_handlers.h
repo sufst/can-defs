@@ -6,7 +6,13 @@
 #include <stdint.h>
 #include <stddef.h>
 
-#define CAN_HANDLERS_TABLE_SIZE 6
+#define CAN_C_HANDLERS_TABLE_SIZE 6
+#define CAN_S_HANDLERS_TABLE_SIZE 2
+
+typedef enum {
+    CAN_C_HANDLER_TABLE_INSTANCE,
+    CAN_S_HANDLER_TABLE_INSTANCE
+} instance_t;
 
 /**
  * @brief   Entry in CAN handler table
@@ -20,6 +26,6 @@ typedef struct {
 /* 
  * function prototypes
  */
-const can_handler_t* can_handler_get(uint32_t index);
+const can_handler_t* can_handler_get(uint32_t index, instance_t instance);
 
 #endif
