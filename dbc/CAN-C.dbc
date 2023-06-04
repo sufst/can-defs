@@ -36,12 +36,24 @@ BS_:
 BU_: INV U2C VCU BMS
 
 
-BO_ 257 VCU_Internal_States: 4 VCU
- SG_ VCU_Rolling_Counter : 16|16@1+ (1,0) [0|65535] "" Vector__XXX
- SG_ VCU_Shutdown : 1|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ VCU_Ready_To_Drive : 0|1@1+ (1,0) [0|1] "" Vector__XXX
+BO_ 258 VCU_Error: 6 VCU
+ SG_ VCU_CANBC_Error : 40|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ VCU_RTCAN2_Error : 32|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ VCU_RTCAN1_Error : 24|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ VCU_PM100_Error : 16|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ VCU_SCS_Error : 8|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ VCU_CTRL_Error : 0|8@1+ (1,0) [0|255] "" Vector__XXX
 
-BO_ 256 VCU_Driver_Inputs: 4 VCU
+BO_ 257 VCU_State: 4 VCU
+ SG_ VCU_Rolling_Counter : 0|16@1+ (1,0) [0|65535] "" Vector__XXX
+ SG_ VCU_DRS_Allowed : 26|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ VCU_DRS_Active : 25|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ VCU_R2D : 24|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ VCU_CTRL_State : 16|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 256 VCU_Sensors: 8 VCU
+ SG_ VCU_Torque_Request : 48|16@1+ (0.1,0) [0|6553.5] "Nm" Vector__XXX
+ SG_ VCU_SAGL : 32|16@1+ (0.1,0) [0|100] "deg" Vector__XXX
  SG_ VCU_BPS : 16|16@1+ (0.1,0) [0|100] "" Vector__XXX
  SG_ VCU_APPS : 0|16@1+ (0.1,0) [0|100] "%" Vector__XXX
 
@@ -328,26 +340,28 @@ BA_DEF_  "BusType" STRING ;
 BA_DEF_DEF_  "OCT_PDU_ID" 0;
 BA_DEF_DEF_  "OCT_ENABLE" "False";
 BA_DEF_DEF_  "BusType" "CAN";
-BA_ "OCT_PDU_ID" BO_ 257 6;
+BA_ "OCT_ENABLE" BO_ 258 1;
+BA_ "OCT_PDU_ID" BO_ 258 7;
 BA_ "OCT_ENABLE" BO_ 257 1;
-BA_ "OCT_ENABLE" BO_ 256 1;
+BA_ "OCT_PDU_ID" BO_ 257 6;
 BA_ "OCT_PDU_ID" BO_ 256 5;
+BA_ "OCT_ENABLE" BO_ 256 1;
 BA_ "OCT_ENABLE" BO_ 173 0;
 BA_ "OCT_ENABLE" BO_ 172 0;
 BA_ "OCT_ENABLE" BO_ 194 0;
 BA_ "OCT_ENABLE" BO_ 193 0;
 BA_ "OCT_ENABLE" BO_ 192 0;
-BA_ "OCT_ENABLE" BO_ 171 1;
 BA_ "OCT_PDU_ID" BO_ 171 4;
-BA_ "OCT_ENABLE" BO_ 170 1;
+BA_ "OCT_ENABLE" BO_ 171 1;
 BA_ "OCT_PDU_ID" BO_ 170 3;
+BA_ "OCT_ENABLE" BO_ 170 1;
 BA_ "OCT_ENABLE" BO_ 169 0;
 BA_ "OCT_ENABLE" BO_ 168 0;
 BA_ "OCT_ENABLE" BO_ 167 0;
-BA_ "OCT_ENABLE" BO_ 166 1;
 BA_ "OCT_PDU_ID" BO_ 166 2;
-BA_ "OCT_ENABLE" BO_ 165 1;
+BA_ "OCT_ENABLE" BO_ 166 1;
 BA_ "OCT_PDU_ID" BO_ 165 1;
+BA_ "OCT_ENABLE" BO_ 165 1;
 BA_ "OCT_ENABLE" BO_ 164 0;
 BA_ "OCT_ENABLE" BO_ 163 0;
 BA_ "OCT_ENABLE" BO_ 162 0;
