@@ -1,39 +1,119 @@
 {
-  "VCU_Ready_To_Drive": {
-    "name": "VCU Ready To Drive",
+  "VCU_CTRL_Error": {
+    "name": "VCU CTRL Error",
     "units": "Code",
     "enable": true,
-    "group": "VCU_Internal_States",
+    "group": "VCU_Error",
     "min": 0,
-    "max": 1,
+    "max": 255,
     "on_dash": false,
-    "emulation": "bool((x % 50) > 25)"
+    "emulation": "int(127.5 * modules.math.sin(modules.math.radians(x * 10)) + 127.5)"
   },
-  "VCU_Shutdown": {
-    "name": "VCU Shutdown",
+  "VCU_SCS_Error": {
+    "name": "VCU SCS Error",
     "units": "Code",
     "enable": true,
-    "group": "VCU_Internal_States",
+    "group": "VCU_Error",
     "min": 0,
-    "max": 1,
+    "max": 255,
     "on_dash": false,
-    "emulation": "bool((x % 50) > 25)"
+    "emulation": "int(127.5 * modules.math.sin(modules.math.radians(x * 10)) + 127.5)"
+  },
+  "VCU_PM100_Error": {
+    "name": "VCU PM100 Error",
+    "units": "Code",
+    "enable": true,
+    "group": "VCU_Error",
+    "min": 0,
+    "max": 255,
+    "on_dash": false,
+    "emulation": "int(127.5 * modules.math.sin(modules.math.radians(x * 10)) + 127.5)"
+  },
+  "VCU_RTCAN1_Error": {
+    "name": "VCU RTCAN1 Error",
+    "units": "Code",
+    "enable": true,
+    "group": "VCU_Error",
+    "min": 0,
+    "max": 255,
+    "on_dash": false,
+    "emulation": "int(127.5 * modules.math.sin(modules.math.radians(x * 10)) + 127.5)"
+  },
+  "VCU_RTCAN2_Error": {
+    "name": "VCU RTCAN2 Error",
+    "units": "Code",
+    "enable": true,
+    "group": "VCU_Error",
+    "min": 0,
+    "max": 255,
+    "on_dash": false,
+    "emulation": "int(127.5 * modules.math.sin(modules.math.radians(x * 10)) + 127.5)"
+  },
+  "VCU_CANBC_Error": {
+    "name": "VCU CANBC Error",
+    "units": "Code",
+    "enable": true,
+    "group": "VCU_Error",
+    "min": 0,
+    "max": 255,
+    "on_dash": false,
+    "emulation": "int(127.5 * modules.math.sin(modules.math.radians(x * 10)) + 127.5)"
   },
   "VCU_Rolling_Counter": {
     "name": "VCU Rolling Counter",
     "units": "Code",
     "enable": true,
-    "group": "VCU_Internal_States",
+    "group": "VCU_State",
     "min": 0,
     "max": 65535,
     "on_dash": false,
     "emulation": "int(32767.5 * modules.math.sin(modules.math.radians(x * 10)) + 32767.5)"
   },
+  "VCU_CTRL_State": {
+    "name": "VCU CTRL State",
+    "units": "Code",
+    "enable": true,
+    "group": "VCU_State",
+    "min": 0,
+    "max": 255,
+    "on_dash": false,
+    "emulation": "int(127.5 * modules.math.sin(modules.math.radians(x * 10)) + 127.5)"
+  },
+  "VCU_R2D": {
+    "name": "VCU R2D",
+    "units": "Code",
+    "enable": true,
+    "group": "VCU_State",
+    "min": 0,
+    "max": 1,
+    "on_dash": false,
+    "emulation": "bool((x % 50) > 25)"
+  },
+  "VCU_DRS_Active": {
+    "name": "VCU DRS Active",
+    "units": "Code",
+    "enable": true,
+    "group": "VCU_State",
+    "min": 0,
+    "max": 1,
+    "on_dash": false,
+    "emulation": "bool((x % 50) > 25)"
+  },
+  "VCU_DRS_Allowed": {
+    "name": "VCU DRS Allowed",
+    "units": "Code",
+    "enable": true,
+    "group": "VCU_State",
+    "min": 0,
+    "max": 1,
+    "on_dash": false,
+    "emulation": "bool((x % 50) > 25)"
+  },
   "VCU_APPS": {
     "name": "VCU APPS",
     "units": "%",
     "enable": true,
-    "group": "VCU_Driver_Inputs",
+    "group": "VCU_Sensors",
     "min": 0,
     "max": 100,
     "on_dash": false,
@@ -43,11 +123,31 @@
     "name": "VCU BPS",
     "units": "Code",
     "enable": true,
-    "group": "VCU_Driver_Inputs",
+    "group": "VCU_Sensors",
     "min": 0,
     "max": 100,
     "on_dash": false,
     "emulation": "int(50.0 * modules.math.sin(modules.math.radians(x * 10)) + 50.0)"
+  },
+  "VCU_SAGL": {
+    "name": "VCU SAGL",
+    "units": "deg",
+    "enable": true,
+    "group": "VCU_Sensors",
+    "min": 0,
+    "max": 100,
+    "on_dash": false,
+    "emulation": "int(50.0 * modules.math.sin(modules.math.radians(x * 10)) + 50.0)"
+  },
+  "VCU_Torque_Request": {
+    "name": "VCU Torque Request",
+    "units": "Nm",
+    "enable": true,
+    "group": "VCU_Sensors",
+    "min": 0,
+    "max": 6553.5,
+    "on_dash": false,
+    "emulation": "float(3276.75 * modules.math.sin(modules.math.radians(x * 10)) + 3276.75)"
   },
   "PM100_Post_Fault_Lo": {
     "name": "PM100 Post Fault Lo",

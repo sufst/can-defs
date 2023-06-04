@@ -1,7 +1,46 @@
 {
   "startByte": 1,
   "pdu": {
-    "VCU_Internal_States": {
+    "VCU_Error": {
+      "id": 7,
+      "header": [
+        {
+          "name": "valid_bitfield",
+          "cType": "H"
+        },
+        {
+          "name": "epoch",
+          "cType": "d"
+        }
+      ],
+      "body": [
+        {
+          "name": "VCU_CTRL_Error",
+          "cType": "B"
+        },
+        {
+          "name": "VCU_SCS_Error",
+          "cType": "B"
+        },
+        {
+          "name": "VCU_PM100_Error",
+          "cType": "B"
+        },
+        {
+          "name": "VCU_RTCAN1_Error",
+          "cType": "B"
+        },
+        {
+          "name": "VCU_RTCAN2_Error",
+          "cType": "B"
+        },
+        {
+          "name": "VCU_CANBC_Error",
+          "cType": "B"
+        }
+      ]
+    },
+    "VCU_State": {
       "id": 6,
       "header": [
         {
@@ -15,20 +54,28 @@
       ],
       "body": [
         {
-          "name": "VCU_Ready_To_Drive",
-          "cType": "B"
-        },
-        {
-          "name": "VCU_Shutdown",
-          "cType": "B"
-        },
-        {
           "name": "VCU_Rolling_Counter",
           "cType": "H"
+        },
+        {
+          "name": "VCU_CTRL_State",
+          "cType": "B"
+        },
+        {
+          "name": "VCU_R2D",
+          "cType": "B"
+        },
+        {
+          "name": "VCU_DRS_Active",
+          "cType": "B"
+        },
+        {
+          "name": "VCU_DRS_Allowed",
+          "cType": "B"
         }
       ]
     },
-    "VCU_Driver_Inputs": {
+    "VCU_Sensors": {
       "id": 5,
       "header": [
         {
@@ -47,6 +94,14 @@
         },
         {
           "name": "VCU_BPS",
+          "cType": "H"
+        },
+        {
+          "name": "VCU_SAGL",
+          "cType": "H"
+        },
+        {
+          "name": "VCU_Torque_Request",
           "cType": "H"
         }
       ]
