@@ -33,7 +33,7 @@ NS_ :
 
 BS_:
 
-BU_:
+BU_: VCU VCU_CONFEDITOR
 
 
 BO_ 129 OCT_GPS_Stats: 8 Vector__XXX
@@ -45,10 +45,21 @@ BO_ 128 OCT_GPS_LatLong: 8 Vector__XXX
  SG_ OCT_GPS_Longitude : 0|32@1- (0.0001,0) [0|1809999999] "" Vector__XXX
  SG_ OCT_GPS_Latitude : 32|31@1- (0.0001,0) [0|909999999] "" Vector__XXX
 
+BO_ 64 VCU_Ping: 8 VCU_CONFEDITOR
+
+BO_ 65 VCU_Ping_Ack: 8 VCU
+ SG_ VER_MAJOR : 0|8@1+ (1,0) [0|0] ""  VCU_CONFEDITOR
+ SG_ VER_MINOR : 8|8@1+ (1,0) [0|0] ""  VCU_CONFEDITOR
+ SG_ VER_PATCH : 16|8@1+ (1,0) [0|0] ""  VCU_CONFEDITOR
 
 
+
+CM_ BU_ VCU "SUFST vehicle control unit";
+CM_ BU_ VCU_CONFEDITOR "SUFST VCU configuration editor software";
 CM_ BO_ 129 "Horizontal Dilution of Precision (HDOP), number of connected satellites, and UCT Time from satellites.";
 CM_ BO_ 128 "Latitude and Longitude values in fixed point decimal format.";
+CM_ BO_ 64 "Ping the VCU";
+CM_ BO_ 65 "Response from VCU to a ping request";
 BA_DEF_  "BusType" STRING ;
 BA_DEF_ BO_  "OCT_PDU_ID" INT 0 0;
 BA_DEF_ BO_  "OCT_ENABLE" ENUM  "False","True";
