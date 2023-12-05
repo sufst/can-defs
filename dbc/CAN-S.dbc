@@ -52,6 +52,8 @@ BO_ 65 VCU_Ping_Ack: 8 VCU
  SG_ VER_MINOR : 8|8@1+ (1,0) [0|0] ""  VCU_CONFEDITOR
  SG_ VER_PATCH : 16|8@1+ (1,0) [0|0] ""  VCU_CONFEDITOR
 
+BO_ 66 VCU_TS_On: 8 VCU
+
 
 
 CM_ BU_ VCU "SUFST vehicle control unit";
@@ -60,6 +62,7 @@ CM_ BO_ 129 "Horizontal Dilution of Precision (HDOP), number of connected satell
 CM_ BO_ 128 "Latitude and Longitude values in fixed point decimal format.";
 CM_ BO_ 64 "Ping the VCU";
 CM_ BO_ 65 "Response from VCU to a ping request";
+CM_ BO_ 66 "Enable the TS with the PDU.";
 BA_DEF_  "BusType" STRING ;
 BA_DEF_ BO_  "OCT_PDU_ID" INT 0 0;
 BA_DEF_ BO_  "OCT_ENABLE" ENUM  "False","True";
