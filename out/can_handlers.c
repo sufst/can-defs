@@ -19,9 +19,6 @@
         f(dst, src, length); \
     } \
 
-IMPL_HANDLER(can_c_vcu_error_t, can_c_vcu_error_unpack)
-IMPL_HANDLER(can_c_vcu_state_t, can_c_vcu_state_unpack)
-IMPL_HANDLER(can_c_vcu_sensors_t, can_c_vcu_sensors_unpack)
 IMPL_HANDLER(can_c_pm100_fault_codes_t, can_c_pm100_fault_codes_unpack)
 IMPL_HANDLER(can_c_pm100_internal_states_t, can_c_pm100_internal_states_unpack)
 IMPL_HANDLER(can_c_pm100_current_info_t, can_c_pm100_current_info_unpack)
@@ -34,9 +31,6 @@ IMPL_HANDLER(can_s_oct_gps_lat_long_t, can_s_oct_gps_lat_long_unpack)
  * @brief   Table of CAN message IDs and associated unpacking functions
  */
 static const can_handler_t can_c_handler_table[] = {
-    {CAN_C_VCU_ERROR_FRAME_ID, 7, can_c_vcu_error_t_handler},
-    {CAN_C_VCU_STATE_FRAME_ID, 6, can_c_vcu_state_t_handler},
-    {CAN_C_VCU_SENSORS_FRAME_ID, 5, can_c_vcu_sensors_t_handler},
     {CAN_C_PM100_FAULT_CODES_FRAME_ID, 4, can_c_pm100_fault_codes_t_handler},
     {CAN_C_PM100_INTERNAL_STATES_FRAME_ID, 3, can_c_pm100_internal_states_t_handler},
     {CAN_C_PM100_CURRENT_INFO_FRAME_ID, 2, can_c_pm100_current_info_t_handler},

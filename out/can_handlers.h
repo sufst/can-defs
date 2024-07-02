@@ -6,7 +6,7 @@
 #include <stdint.h>
 #include <stddef.h>
 
-#define CAN_C_HANDLERS_TABLE_SIZE 7
+#define CAN_C_HANDLERS_TABLE_SIZE 4
 #define CAN_S_HANDLERS_TABLE_SIZE 2
 
 typedef enum {

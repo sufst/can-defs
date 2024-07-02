@@ -54,6 +54,33 @@ BO_ 65 VCU_Ping_Ack: 8 VCU
 
 BO_ 66 VCU_TS_On: 8 VCU
 
+BO_ 260 VCU_PDM: 8 Vector__XXX
+ SG_ INVERTER : 0|8@1+ (1,0) [0|1] "On/Off" Vector__XXX
+ SG_ BRAKELIGHT : 8|8@1+ (1,0) [0|1] "On/Off" Vector__XXX
+ SG_ PUMP : 16|8@1+ (1,0) [0|1] "On/Off" Vector__XXX
+ SG_ FAN : 24|8@1+ (1,0) [0|1] "On/Off" Vector__XXX
+
+BO_ 256 VCU_Sensors: 8 Vector__XXX
+ SG_ VCU_Torque_Request : 48|16@1+ (0.1,0) [0|6553.5] "Nm" Vector__XXX
+ SG_ VCU_SAGL : 32|16@1+ (0.1,0) [0|100] "deg" Vector__XXX
+ SG_ VCU_BPS : 16|16@1+ (0.1,0) [0|100] "" Vector__XXX
+ SG_ VCU_APPS : 0|16@1+ (0.1,0) [0|100] "%" Vector__XXX
+
+BO_ 257 VCU_State: 4 Vector__XXX
+ SG_ VCU_Rolling_Counter : 0|16@1+ (1,0) [0|65535] "" Vector__XXX
+ SG_ VCU_DRS_Allowed : 26|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ VCU_DRS_Active : 25|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ VCU_R2D : 24|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ VCU_CTRL_State : 16|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 258 VCU_Error: 6 Vector__XXX
+ SG_ VCU_CANBC_Error : 40|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ VCU_RTCAN2_Error : 32|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ VCU_RTCAN1_Error : 24|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ VCU_PM100_Error : 16|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ VCU_SCS_Error : 8|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ VCU_CTRL_Error : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+
 
 
 CM_ BU_ VCU "SUFST vehicle control unit";
@@ -63,6 +90,7 @@ CM_ BO_ 128 "Latitude and Longitude values in fixed point decimal format.";
 CM_ BO_ 64 "Ping the VCU";
 CM_ BO_ 65 "Response from VCU to a ping request";
 CM_ BO_ 66 "Enable the TS with the PDU.";
+CM_ BO_ 260 "Periodic messages from VCU to PDM";
 BA_DEF_  "BusType" STRING ;
 BA_DEF_ BO_  "OCT_PDU_ID" INT 0 0;
 BA_DEF_ BO_  "OCT_ENABLE" ENUM  "False","True";
