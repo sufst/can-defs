@@ -120,7 +120,233 @@ BO_ 128 OCT_GPS_LatLong: 8 Vector__XXX
  SG_ OCT_GPS_Longitude : 0|32@1- (0.0001,0) [0|1809999999] "" Vector__XXX
  SG_ OCT_GPS_Latitude : 32|31@1- (0.0001,0) [0|909999999] "" Vector__XXX
 
+<<<<<<< Updated upstream
 BO_ 64 VCU_Ping: 8 VCU_CONFEDITOR
+=======
+BO_ 1536 CAN_NODE_0: 8 Vector__XXX
+ SG_ CAN_NODE_THERM_2 m2 : 16|8@1- (1,0) [-128|127] "°C" Vector__XXX
+ SG_ CAN_NODE_THERM_1 m2 : 8|8@1- (1,0) [-128|127] "°C" Vector__XXX
+ SG_ CAN_NODE_PD_9 m1 : 40|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
+ SG_ CAN_NODE_PD_8 m1 : 28|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
+ SG_ CAN_NODE_PD_7 m1 : 16|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
+ SG_ CAN_NODE_PD_6 m1 : 4|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
+ SG_ CAN_NODE_PD_5 m0 : 52|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
+ SG_ CAN_NODE_PD_4 m0 : 40|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
+ SG_ CAN_NODE_PD_3 m0 : 28|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
+ SG_ CAN_NODE_PD_2 m0 : 16|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
+ SG_ CAN_NODE_PD_10 m1 : 52|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
+ SG_ CAN_NODE_PD_1 m0 : 4|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
+ SG_ CAN_NODE_multiplexor M : 0|4@1+ (1,0) [0|15] "" Vector__XXX
+
+BO_ 1285 PDM_In_Voltage: 8 Vector__XXX
+ SG_ PDM_Serial_Number_L m4 : 56|8@1+ (1,0) [0|255] "V" Vector__XXX
+ SG_ PDM_Serial_Number_H m4 : 48|8@1+ (1,0) [0|255] "V" Vector__XXX
+ SG_ PDM_Firmware_Version_Minor m4 : 16|8@1+ (1,0) [0|255] "V" Vector__XXX
+ SG_ PDM_Firmware_Version_Major m4 : 8|8@1+ (1,0) [0|255] "V" Vector__XXX
+ SG_ PDM_Firmware_Version_Letter m4 : 24|8@1+ (1,0) [0|255] "V" Vector__XXX
+ SG_ PDM_Input_9_Voltage m1 : 16|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Input_8_Voltage m1 : 8|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Input_7_Voltage m0 : 56|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Input_6_Voltage m0 : 48|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Input_5_Voltage m0 : 40|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Input_4_Voltage m0 : 32|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Input_3_Voltage m0 : 24|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Input_2_Voltage m0 : 16|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Input_23_Voltage m3 : 16|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Input_22_Voltage m3 : 8|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Input_21_Voltage m2 : 56|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Input_20_Voltage m2 : 48|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Input_19_Voltage m2 : 40|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Input_18_Voltage m2 : 32|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Input_17_Voltage m2 : 24|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Input_16_Voltage m2 : 16|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Input_15_Voltage m2 : 8|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Input_14_Voltage m1 : 56|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Input_13_Voltage m1 : 48|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Input_12_Voltage m1 : 40|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Input_11_Voltage m1 : 32|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Input_10_Voltage m1 : 24|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Input_1_Voltage m0 : 8|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_In_Voltage_Compound_ID M : 0|8@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 1284 PDM_Out_Status: 8 Vector__XXX
+ SG_ PDM_Output_9_Status m1 : 0|6@1+ (1,0) [0|63] "Off/On" Vector__XXX
+ SG_ PDM_Output_8_Status m0 : 56|8@1+ (1,0) [0|255] "Off/On" Vector__XXX
+ SG_ PDM_Output_7_Status m0 : 48|8@1+ (1,0) [0|255] "Off/On" Vector__XXX
+ SG_ PDM_Output_6_Status m0 : 40|8@1+ (1,0) [0|255] "Off/On" Vector__XXX
+ SG_ PDM_Output_5_Status m0 : 32|8@1+ (1,0) [0|255] "Off/On" Vector__XXX
+ SG_ PDM_Output_4_Status m0 : 24|8@1+ (1,0) [0|255] "Off/On" Vector__XXX
+ SG_ PDM_Output_3_Status m0 : 16|8@1+ (1,0) [0|255] "Off/On" Vector__XXX
+ SG_ PDM_Output_32_Status m3 : 56|8@1+ (1,0) [0|255] "Off/On" Vector__XXX
+ SG_ PDM_Output_31_Status m3 : 48|8@1+ (1,0) [0|255] "Off/On" Vector__XXX
+ SG_ PDM_Output_30_Status m3 : 40|8@1+ (1,0) [0|255] "Off/On" Vector__XXX
+ SG_ PDM_Output_2_Status m0 : 8|8@1+ (1,0) [0|255] "Off/On" Vector__XXX
+ SG_ PDM_Output_29_Status m3 : 32|8@1+ (1,0) [0|255] "Off/On" Vector__XXX
+ SG_ PDM_Output_28_Status m3 : 24|8@1+ (1,0) [0|255] "Off/On" Vector__XXX
+ SG_ PDM_Output_27_Status m3 : 16|8@1+ (1,0) [0|255] "Off/On" Vector__XXX
+ SG_ PDM_Output_26_Status m3 : 8|8@1+ (1,0) [0|255] "Off/On" Vector__XXX
+ SG_ PDM_Output_25_Status m3 : 0|6@1+ (1,0) [0|63] "Off/On" Vector__XXX
+ SG_ PDM_Output_24_Status m2 : 56|8@1+ (1,0) [0|255] "Off/On" Vector__XXX
+ SG_ PDM_Output_23_Status m2 : 48|8@1+ (1,0) [0|255] "Off/On" Vector__XXX
+ SG_ PDM_Output_22_Status m2 : 40|8@1+ (1,0) [0|255] "Off/On" Vector__XXX
+ SG_ PDM_Output_21_Status m2 : 32|8@1+ (1,0) [0|255] "Off/On" Vector__XXX
+ SG_ PDM_Output_20_Status m2 : 24|8@1+ (1,0) [0|255] "Off/On" Vector__XXX
+ SG_ PDM_Output_19_Status m2 : 16|8@1+ (1,0) [0|255] "Off/On" Vector__XXX
+ SG_ PDM_Output_18_Status m2 : 8|8@1+ (1,0) [0|255] "Off/On" Vector__XXX
+ SG_ PDM_Output_17_Status m2 : 0|6@1+ (1,0) [0|63] "Off/On" Vector__XXX
+ SG_ PDM_Output_16_Status m1 : 56|8@1+ (1,0) [0|255] "Off/On" Vector__XXX
+ SG_ PDM_Output_15_Status m1 : 48|8@1+ (1,0) [0|255] "Off/On" Vector__XXX
+ SG_ PDM_Output_14_Status m1 : 40|8@1+ (1,0) [0|255] "Off/On" Vector__XXX
+ SG_ PDM_Output_13_Status m1 : 32|8@1+ (1,0) [0|255] "Off/On" Vector__XXX
+ SG_ PDM_Output_12_Status m1 : 24|8@1+ (1,0) [0|255] "Off/On" Vector__XXX
+ SG_ PDM_Output_11_Status m1 : 16|8@1+ (1,0) [0|255] "Off/On" Vector__XXX
+ SG_ PDM_Output_10_Status m1 : 8|8@1+ (1,0) [0|255] "Off/On" Vector__XXX
+ SG_ PDM_Output_1_Status m0 : 0|6@1+ (1,0) [0|63] "Off/On" Vector__XXX
+ SG_ PDM_Out_Status_Compound_ID M : 6|2@1- (1,0) [0|0] "Off/On" Vector__XXX
+
+BO_ 1283 PDM_Out_Voltage: 8 Vector__XXX
+ SG_ PDM_Output_9_Voltage m1 : 16|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Output_8_Voltage m1 : 8|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Output_7_Voltage m0 : 56|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Output_6_Voltage m0 : 48|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Output_5_Voltage m0 : 40|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Output_4_Voltage m0 : 32|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Output_3_Voltage m0 : 24|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Output_32_Voltage m4 : 32|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Output_31_Voltage m4 : 24|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Output_30_Voltage m4 : 16|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Output_2_Voltage m0 : 16|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Output_29_Voltage m4 : 8|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Output_28_Voltage m3 : 56|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Output_27_Voltage m3 : 48|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Output_26_Voltage m3 : 40|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Output_25_Voltage m3 : 32|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Output_24_Voltage m3 : 24|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Output_23_Voltage m3 : 16|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Output_22_Voltage m3 : 8|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Output_21_Voltage m2 : 56|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Output_20_Voltage m2 : 48|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Output_1_Voltage m0 : 8|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Output_19_Voltage m2 : 40|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Output_18_Voltage m2 : 32|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Output_17_Voltage m2 : 24|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Output_16_Voltage m2 : 16|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Output_15_Voltage m2 : 8|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Output_14_Voltage m1 : 56|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Output_13_Voltage m1 : 48|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Output_12_Voltage m1 : 40|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Output_11_Voltage m1 : 32|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Output_10_Voltage m1 : 24|8@1+ (0.2,0) [0|51] "V" Vector__XXX
+ SG_ PDM_Out_Voltage_Compound_ID M : 0|8@1- (1,0) [0|0] "V" Vector__XXX
+
+BO_ 1282 PDM_Out_Load: 8 Vector__XXX
+ SG_ PDM_Output_9_Load m1 : 16|8@1+ (1,0) [0|255] "%" Vector__XXX
+ SG_ PDM_Output_8_Load m1 : 8|8@1+ (1,0) [0|255] "%" Vector__XXX
+ SG_ PDM_Output_7_Load m0 : 56|8@1+ (1,0) [0|255] "%" Vector__XXX
+ SG_ PDM_Output_6_Load m0 : 48|8@1+ (1,0) [0|255] "%" Vector__XXX
+ SG_ PDM_Output_5_Load m0 : 40|8@1+ (1,0) [0|255] "%" Vector__XXX
+ SG_ PDM_Output_4_Load m0 : 32|8@1+ (1,0) [0|255] "%" Vector__XXX
+ SG_ PDM_Output_3_Load m0 : 24|8@1+ (1,0) [0|255] "%" Vector__XXX
+ SG_ PDM_Output_32_Load m4 : 32|8@1+ (1,0) [0|255] "%" Vector__XXX
+ SG_ PDM_Output_31_Load m4 : 24|8@1+ (1,0) [0|255] "%" Vector__XXX
+ SG_ PDM_Output_30_Load m4 : 16|8@1+ (1,0) [0|255] "%" Vector__XXX
+ SG_ PDM_Output_2_Load m0 : 16|8@1+ (1,0) [0|255] "%" Vector__XXX
+ SG_ PDM_Output_29_Load m4 : 8|8@1+ (1,0) [0|255] "%" Vector__XXX
+ SG_ PDM_Output_28_Load m3 : 56|8@1+ (1,0) [0|255] "%" Vector__XXX
+ SG_ PDM_Output_27_Load m3 : 48|8@1+ (1,0) [0|255] "%" Vector__XXX
+ SG_ PDM_Output_26_Load m3 : 40|8@1+ (1,0) [0|255] "%" Vector__XXX
+ SG_ PDM_Output_25_Load m3 : 32|8@1+ (1,0) [0|255] "%" Vector__XXX
+ SG_ PDM_Output_24_Load m3 : 24|8@1+ (1,0) [0|255] "%" Vector__XXX
+ SG_ PDM_Output_23_Load m3 : 16|8@1+ (1,0) [0|255] "%" Vector__XXX
+ SG_ PDM_Output_22_Load m3 : 8|8@1+ (1,0) [0|255] "%" Vector__XXX
+ SG_ PDM_Output_21_Load m2 : 56|8@1+ (1,0) [0|255] "%" Vector__XXX
+ SG_ PDM_Output_20_Load m2 : 48|8@1+ (1,0) [0|255] "%" Vector__XXX
+ SG_ PDM_Output_19_Load m2 : 40|8@1+ (1,0) [0|255] "%" Vector__XXX
+ SG_ PDM_Output_18_Load m2 : 32|8@1+ (1,0) [0|255] "%" Vector__XXX
+ SG_ PDM_Output_17_Load m2 : 24|8@1+ (1,0) [0|255] "%" Vector__XXX
+ SG_ PDM_Output_16_Load m2 : 16|8@1+ (1,0) [0|255] "%" Vector__XXX
+ SG_ PDM_Output_15_Load m2 : 8|8@1+ (1,0) [0|255] "%" Vector__XXX
+ SG_ PDM_Output_14_Load m1 : 56|8@1+ (1,0) [0|255] "%" Vector__XXX
+ SG_ PDM_Output_13_Load m1 : 48|8@1+ (1,0) [0|255] "%" Vector__XXX
+ SG_ PDM_Output_12_Load m1 : 40|8@1+ (1,0) [0|255] "%" Vector__XXX
+ SG_ PDM_Output_11_Load m1 : 32|8@1+ (1,0) [0|255] "%" Vector__XXX
+ SG_ PDM_Output_10_Load m1 : 24|8@1+ (1,0) [0|255] "%" Vector__XXX
+ SG_ PDM_Output_1_Load m0 : 8|8@1+ (1,0) [0|255] "%" Vector__XXX
+ SG_ PDM_Out_Load_Compound_ID M : 0|8@1- (1,0) [0|240] "" Vector__XXX
+
+BO_ 1281 PDM_Out_Current: 8 Vector__XXX
+ SG_ PDM_Output_8_Current m1 : 8|8@1+ (0.5,0) [0|127.5] "A" Vector__XXX
+ SG_ PDM_Output_7_Current m0 : 56|8@1+ (0.5,0) [0|127.5] "A" Vector__XXX
+ SG_ PDM_Output_6_Current m0 : 48|8@1+ (0.5,0) [0|127.5] "A" Vector__XXX
+ SG_ PDM_Output_5_Current m0 : 40|8@1+ (0.5,0) [0|127.5] "A" Vector__XXX
+ SG_ PDM_Output_4_Current m0 : 32|8@1+ (0.5,0) [0|127.5] "A" Vector__XXX
+ SG_ PDM_Output_3_Current m0 : 24|8@1+ (0.5,0) [0|127.5] "A" Vector__XXX
+ SG_ PDM_Output_2_Current m0 : 16|8@1+ (0.5,0) [0|127.5] "A" Vector__XXX
+ SG_ PDM_Output_1_Current m0 : 8|8@1+ (0.5,0) [0|127.5] "A" Vector__XXX
+ SG_ PDM_Out_Current_Compound_ID M : 4|4@1- (1,0) [0|240] "A" Vector__XXX
+ SG_ PDM_Output_9_Current m1 : 16|8@1+ (0.2,0) [0|51] "A" Vector__XXX
+ SG_ PDM_Output_32_Current m4 : 32|8@1+ (0.2,0) [0|51] "A" Vector__XXX
+ SG_ PDM_Output_31_Current m4 : 24|8@1+ (0.2,0) [0|51] "A" Vector__XXX
+ SG_ PDM_Output_30_Current m4 : 16|8@1+ (0.2,0) [0|51] "A" Vector__XXX
+ SG_ PDM_Output_29_Current m4 : 8|8@1+ (0.2,0) [0|51] "A" Vector__XXX
+ SG_ PDM_Output_28_Current m3 : 56|8@1+ (0.2,0) [0|51] "A" Vector__XXX
+ SG_ PDM_Output_27_Current m3 : 48|8@1+ (0.2,0) [0|51] "A" Vector__XXX
+ SG_ PDM_Output_26_Current m3 : 40|8@1+ (0.2,0) [0|51] "A" Vector__XXX
+ SG_ PDM_Output_25_Current m3 : 32|8@1+ (0.2,0) [0|51] "A" Vector__XXX
+ SG_ PDM_Output_24_Current m3 : 24|8@1+ (0.2,0) [0|51] "A" Vector__XXX
+ SG_ PDM_Output_23_Current m3 : 16|8@1+ (0.2,0) [0|51] "A" Vector__XXX
+ SG_ PDM_Output_22_Current m3 : 8|8@1+ (0.2,0) [0|51] "A" Vector__XXX
+ SG_ PDM_Output_21_Current m2 : 56|8@1+ (0.2,0) [0|51] "A" Vector__XXX
+ SG_ PDM_Output_20_Current m2 : 48|8@1+ (0.2,0) [0|51] "A" Vector__XXX
+ SG_ PDM_Output_19_Current m2 : 40|8@1+ (0.2,0) [0|51] "A" Vector__XXX
+ SG_ PDM_Output_18_Current m2 : 32|8@1+ (0.2,0) [0|51] "A" Vector__XXX
+ SG_ PDM_Output_17_Current m2 : 24|8@1+ (0.2,0) [0|51] "A" Vector__XXX
+ SG_ PDM_Output_16_Current m2 : 16|8@1+ (0.2,0) [0|51] "A" Vector__XXX
+ SG_ PDM_Output_15_Current m2 : 8|8@1+ (0.2,0) [0|51] "A" Vector__XXX
+ SG_ PDM_Output_14_Current m1 : 56|8@1+ (0.2,0) [0|51] "A" Vector__XXX
+ SG_ PDM_Output_13_Current m1 : 48|8@1+ (0.2,0) [0|51] "A" Vector__XXX
+ SG_ PDM_Output_12_Current m1 : 40|8@1+ (0.2,0) [0|51] "A" Vector__XXX
+ SG_ PDM_Output_11_Current m1 : 32|8@1+ (0.2,0) [0|51] "A" Vector__XXX
+ SG_ PDM_Output_10_Current m1 : 24|8@1+ (0.2,0) [0|51] "A" Vector__XXX
+
+BO_ 1280 PDM_State: 8 Vector__XXX
+ SG_ PDM_Output_Fault_9_16 m4 : 48|8@1- (1,0) [0|0] "Off/On" Vector__XXX
+ SG_ PDM_Output_Fault_25_32 m4 : 32|8@1- (1,0) [0|0] "Off/On" Vector__XXX
+ SG_ PDM_Output_Fault_1_8 m4 : 56|8@1- (1,0) [0|0] "Off/On" Vector__XXX
+ SG_ PDM_Output_Fault_17_24 m4 : 40|8@1- (1,0) [0|0] "Off/On" Vector__XXX
+ SG_ PDM_Total_Current m3 : 32|8@1+ (1,0) [0|255] "A" Vector__XXX
+ SG_ PDM_Reset_Source m3 : 48|8@1- (1,0) [0|0] "Off/On" Vector__XXX
+ SG_ PDM_Global_Error_Flag m3 : 24|8@1- (1,0) [0|0] "Off/On" Vector__XXX
+ SG_ PDM_9V5_Internal m3 : 40|8@1+ (0.0615,0) [0|15.6825] "V" Vector__XXX
+ SG_ PDM_Battery_Voltage m3 : 16|8@1+ (0.1216,0) [0|31.008] "V" Vector__XXX
+ SG_ PDM_Internal_Temp m3 : 8|8@1+ (2,0) [0|125] "C" Vector__XXX
+ SG_ PDM_State_Compound_ID M : 4|4@1- (1,0) [0|240] "Off/On" Vector__XXX
+ SG_ PDM_Input_23_State m2 : 48|1@1- (1,0) [0|0] "Off/On" Vector__XXX
+ SG_ PDM_Input_22_State m2 : 40|1@1- (1,0) [0|0] "Off/On" Vector__XXX
+ SG_ PDM_Input_21_State m2 : 32|1@1- (1,0) [0|0] "Off/On" Vector__XXX
+ SG_ PDM_Input_20_State m2 : 24|1@1- (1,0) [0|0] "Off/On" Vector__XXX
+ SG_ PDM_Input_19_State m2 : 16|1@1- (1,0) [0|0] "Off/On" Vector__XXX
+ SG_ PDM_Input_18_State m2 : 8|1@1- (1,0) [0|0] "Off/On" Vector__XXX
+ SG_ PDM_Input_17_State m2 : 0|1@1- (1,0) [0|0] "Off/On" Vector__XXX
+ SG_ PDM_Input_16_State m1 : 56|1@1- (1,0) [0|0] "Off/On" Vector__XXX
+ SG_ PDM_Input_15_State m1 : 48|1@1- (1,0) [0|0] "Off/On" Vector__XXX
+ SG_ PDM_Input_14_State m1 : 40|1@1- (1,0) [0|0] "Off/On" Vector__XXX
+ SG_ PDM_Input_13_State m1 : 32|1@1- (1,0) [0|0] "Off/On" Vector__XXX
+ SG_ PDM_Input_12_State m1 : 24|1@1- (1,0) [0|0] "Off/On" Vector__XXX
+ SG_ PDM_Input_11_State m1 : 16|1@1- (1,0) [0|0] "Off/On" Vector__XXX
+ SG_ PDM_Input_10_State m1 : 8|1@1- (1,0) [0|0] "Off/On" Vector__XXX
+ SG_ PDM_Input_9_State m1 : 0|1@1- (1,0) [0|0] "Off/On" Vector__XXX
+ SG_ PDM_Input_8_State m0 : 56|1@1- (1,7) [0|1] "Off/On" Vector__XXX
+ SG_ PDM_Input_7_State m0 : 48|1@1- (1,6) [0|1] "Off/On" Vector__XXX
+ SG_ PDM_Input_6_State m0 : 40|1@1- (1,5) [0|1] "Off/On" Vector__XXX
+ SG_ PDM_Input_5_State m0 : 32|1@1- (1,4) [0|1] "Off/On" Vector__XXX
+ SG_ PDM_Input_4_State m0 : 24|1@1- (1,3) [0|1] "Off/On" Vector__XXX
+ SG_ PDM_Input_3_State m0 : 16|1@1- (1,12) [0|1] "Off/On" Vector__XXX
+ SG_ PDM_Input_2_State m0 : 8|1@1- (1,9) [0|1] "Off/On" Vector__XXX
+ SG_ PDM_Input_1_State m0 : 0|1@1- (1,0) [0|1] "Off/On" Vector__XXX
+
+BO_ 64 VCU_Ping: 8 VCU
+>>>>>>> Stashed changes
 
 BO_ 65 VCU_Ping_Ack: 8 VCU
  SG_ VER_MAJOR : 0|8@1+ (1,0) [0|0] ""  VCU_CONFEDITOR
