@@ -585,6 +585,60 @@ bool can_s_vcu_pdm_fan_is_in_range(uint8_t value)
     return (value <= 1u);
 }
 
+int can_s_vcu_temps_init(struct can_s_vcu_temps_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct can_s_vcu_temps_t));
+
+    return 0;
+}
+
+int can_s_vcu_temps_pack(
+    uint8_t* dst_p,
+    const struct can_s_vcu_temps_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= unpack_right_shift_u8(src_p->vcu_max_temp, 0u, 0xffu);
+
+    return(8);
+}
+
+int can_s_vcu_temps_unpack(
+    struct can_s_vcu_temps_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->vcu_max_temp = unpack_right_shift_u8(src_p[0], 0u, 0xffu);
+
+    return(0);
+}
+
+int8_t can_s_vcu_temps_max_temp_encode(double value)
+{
+    return (int8_t)(value);
+}
+
+double can_s_vcu_temps_max_temp_decode(int8_t value)
+{
+    return ((double)value);
+}
+
+bool can_s_vcu_temps_max_temp_is_in_range(int8_t value)
+{
+    return (value <= 127 && value >= -128);
+}
+
 int can_s_vcu_sensors_pack(
     uint8_t *dst_p,
     const struct can_s_vcu_sensors_t *src_p,

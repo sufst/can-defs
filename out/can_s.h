@@ -53,6 +53,7 @@ extern "C" {
 #define CAN_S_VCU_SENSORS_FRAME_ID (0x100u)
 #define CAN_S_VCU_STATE_FRAME_ID (0x101u)
 #define CAN_S_VCU_ERROR_FRAME_ID (0x102u)
+#define CAN_S_VCU_TEMPS_FRAME_ID (0x105u)
 
 /* Frame lengths in bytes. */
 #define CAN_S_OCT_GPS_STATS_LENGTH (8u)
@@ -63,6 +64,7 @@ extern "C" {
 #define CAN_S_VCU_PDM_LENGTH (8u)
 #define CAN_S_VCU_SENSORS_LENGTH (8u)
 #define CAN_S_VCU_STATE_LENGTH (4u)
+#define CAN_S_VCU_TEMPS_LENGTH (8u)
 #define CAN_S_VCU_ERROR_LENGTH (6u)
 
 /* Extended or standard frame types. */
@@ -74,6 +76,7 @@ extern "C" {
 #define CAN_S_VCU_PDM_IS_EXTENDED (0)
 #define CAN_S_VCU_SENSORS_IS_EXTENDED (0)
 #define CAN_S_VCU_STATE_IS_EXTENDED (0)
+#define CAN_S_VCU_TEMPS_IS_EXTENDED (0)
 #define CAN_S_VCU_ERROR_IS_EXTENDED (0)
 
 /* Frame cycle times in milliseconds. */
@@ -92,6 +95,7 @@ extern "C" {
 #define CAN_S_VCU_SENSORS_NAME "VCU_Sensors"
 #define CAN_S_VCU_STATE_NAME "VCU_State"
 #define CAN_S_VCU_ERROR_NAME "VCU_Error"
+#define CAN_S_VCU_TEMPS_NAME "VCU_Temps"
 
 /* Signal Names. */
 #define CAN_S_OCT_GPS_STATS_OCT_GPS_TIME_UCT_NAME "OCT_GPS_TimeUCT"
@@ -115,6 +119,7 @@ extern "C" {
 #define CAN_S_VCU_STATE_VCU_R2_D_NAME "VCU_R2D"
 #define CAN_S_VCU_STATE_VCU_DRS_ACTIVE_NAME "VCU_DRS_Active"
 #define CAN_S_VCU_STATE_VCU_DRS_ALLOWED_NAME "VCU_DRS_Allowed"
+#define CAN_S_VCU_TEMPS_VCU_MAX_TEMP_NAME "VCU_Max_Temp"
 #define CAN_S_VCU_ERROR_VCU_CTRL_ERROR_NAME "VCU_CTRL_Error"
 #define CAN_S_VCU_ERROR_VCU_SCS_ERROR_NAME "VCU_SCS_Error"
 #define CAN_S_VCU_ERROR_VCU_PM100_ERROR_NAME "VCU_PM100_Error"
@@ -345,6 +350,15 @@ struct can_s_vcu_state_t {
      * Offset: 0
      */
     uint8_t vcu_drs_allowed;
+};
+
+struct can_s_vcu_temps_t {
+    /**
+     * Range: -128..127 (-128..127 -)
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t vcu_max_temp;
 };
 
 /**
@@ -941,6 +955,70 @@ double can_s_vcu_pdm_fan_decode(uint8_t value);
  * @return true if in range, false otherwise.
  */
 bool can_s_vcu_pdm_fan_is_in_range(uint8_t value);
+
+/**
+ * Init message fields to default values from VCU_TEMPS.
+ *
+ * @param[in] msg_p Message to init.
+ *
+ * @return zero(0) on success or (-1) in case of nullptr argument.
+ */
+int can_s_vcu_temps_init(struct can_s_vcu_temps_t *msg_p);
+
+/**
+ * Pack message VCU_Temps.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int can_s_vcu_temps_pack(
+    int8_t *dst_p,
+    const struct can_s_vcu_temps_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message VCU_Temps.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int can_s_vcu_temps_unpack(
+    struct can_s_vcu_temps_t *dst_p,
+    const int8_t *src_p,
+    size_t size);
+
+/**
+ * Encode VCU Max Temperature signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+int8_t can_s_vcu_temps_max_temp_encode(double value);
+
+/**
+ * Decode VCU Max Temperature signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+double can_s_vcu_temps_max_temp_decode(int8_t value);
+
+/**
+ * Check that VCU Max Temperature signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool can_s_vcu_temps_max_temp_is_in_range(int8_t value);
 
 /**
  * Pack message VCU_Sensors.
