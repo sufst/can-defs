@@ -722,19 +722,19 @@ bool can_s_vcu_sensors_vcu_bps_is_in_range(uint16_t value)
     return (value <= 1000u);
 }
 
-uint16_t can_s_vcu_sensors_vcu_sagl_encode(double value)
+int16_t can_s_vcu_sensors_vcu_sagl_encode(double value)
 {
-    return (uint16_t)(value / 0.1);
+    return (int16_t)(value / 0.005);
 }
 
-double can_s_vcu_sensors_vcu_sagl_decode(uint16_t value)
+double can_s_vcu_sensors_vcu_sagl_decode(int16_t value)
 {
-    return ((double)value * 0.1);
+    return ((double)value * 0.005);
 }
 
-bool can_s_vcu_sensors_vcu_sagl_is_in_range(uint16_t value)
+bool can_s_vcu_sensors_vcu_sagl_is_in_range(int16_t value)
 {
-    return (value <= 1000u);
+    return (value <= 2000 && value >= -2000);
 }
 
 uint16_t can_s_vcu_sensors_vcu_torque_request_encode(double value)

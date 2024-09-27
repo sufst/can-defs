@@ -1118,7 +1118,7 @@ bool can_s_vcu_sensors_vcu_bps_is_in_range(uint16_t value);
  *
  * @return Encoded signal.
  */
-uint16_t can_s_vcu_sensors_vcu_sagl_encode(double value);
+int16_t can_s_vcu_sensors_vcu_sagl_encode(double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -1127,7 +1127,7 @@ uint16_t can_s_vcu_sensors_vcu_sagl_encode(double value);
  *
  * @return Decoded signal.
  */
-double can_s_vcu_sensors_vcu_sagl_decode(uint16_t value);
+double can_s_vcu_sensors_vcu_sagl_decode(int16_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -1136,7 +1136,7 @@ double can_s_vcu_sensors_vcu_sagl_decode(uint16_t value);
  *
  * @return true if in range, false otherwise.
  */
-bool can_s_vcu_sensors_vcu_sagl_is_in_range(uint16_t value);
+bool can_s_vcu_sensors_vcu_sagl_is_in_range(int16_t value);
 
 /**
  * Encode given signal by applying scaling and offset.

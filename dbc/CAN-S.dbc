@@ -345,7 +345,7 @@ BO_ 260 VCU_PDM: 8 VCU
 
 BO_ 256 VCU_Sensors: 8 VCU
  SG_ VCU_Torque_Request : 48|16@1+ (0.1,0) [0|6553.5] "Nm" Vector__XXX
- SG_ VCU_SAGL : 32|16@1+ (0.1,0) [0|100] "deg" Vector__XXX
+ SG_ VCU_SAGL : 32|16@1- (0.005,0) [-163.84|163.835] "deg" Vector__XXX
  SG_ VCU_BPS : 16|16@1+ (0.1,0) [0|100] "" Vector__XXX
  SG_ VCU_APPS : 0|16@1+ (0.1,0) [0|100] "%" Vector__XXX
 
