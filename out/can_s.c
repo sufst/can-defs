@@ -605,7 +605,7 @@ int can_s_vcu_temps_pack(
 
     memset(&dst_p[0], 0, 8);
 
-    dst_p[0] |= unpack_right_shift_u8(src_p->vcu_max_temp, 0u, 0xffu);
+    dst_p[0] |= pack_left_shift_u8(src_p->vcu_max_temp, 0u, 0xffu);
 
     return(8);
 }
