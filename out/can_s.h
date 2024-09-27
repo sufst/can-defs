@@ -975,7 +975,7 @@ int can_s_vcu_temps_init(struct can_s_vcu_temps_t *msg_p);
  * @return Size of packed data, or negative error code.
  */
 int can_s_vcu_temps_pack(
-    int8_t *dst_p,
+    uint8_t *dst_p,
     const struct can_s_vcu_temps_t *src_p,
     size_t size);
 
@@ -990,7 +990,7 @@ int can_s_vcu_temps_pack(
  */
 int can_s_vcu_temps_unpack(
     struct can_s_vcu_temps_t *dst_p,
-    const int8_t *src_p,
+    const uint8_t *src_p,
     size_t size);
 
 /**
