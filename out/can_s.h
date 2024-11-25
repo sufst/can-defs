@@ -54,6 +54,7 @@ extern "C" {
 #define CAN_S_VCU_STATE_FRAME_ID (0x101u)
 #define CAN_S_VCU_ERROR_FRAME_ID (0x102u)
 #define CAN_S_VCU_TEMPS_FRAME_ID (0x105u)
+#define CAN_S_VCU_SIMULATED_FRAME_ID (0x106u)
 
 /* Frame lengths in bytes. */
 #define CAN_S_OCT_GPS_STATS_LENGTH (8u)
@@ -66,6 +67,7 @@ extern "C" {
 #define CAN_S_VCU_STATE_LENGTH (4u)
 #define CAN_S_VCU_TEMPS_LENGTH (8u)
 #define CAN_S_VCU_ERROR_LENGTH (6u)
+#define CAN_S_VCU_SIMULATED_LENGTH (8u)
 
 /* Extended or standard frame types. */
 #define CAN_S_OCT_GPS_STATS_IS_EXTENDED (0)
@@ -78,6 +80,7 @@ extern "C" {
 #define CAN_S_VCU_STATE_IS_EXTENDED (0)
 #define CAN_S_VCU_TEMPS_IS_EXTENDED (0)
 #define CAN_S_VCU_ERROR_IS_EXTENDED (0)
+#define CAN_S_VCU_SIMULATED_IS_EXTENDED (0)
 
 /* Frame cycle times in milliseconds. */
 
@@ -96,6 +99,7 @@ extern "C" {
 #define CAN_S_VCU_STATE_NAME "VCU_State"
 #define CAN_S_VCU_ERROR_NAME "VCU_Error"
 #define CAN_S_VCU_TEMPS_NAME "VCU_Temps"
+#define CAN_S_VCU_SIMULATED_NAME "VCU_Simulated"
 
 /* Signal Names. */
 #define CAN_S_OCT_GPS_STATS_OCT_GPS_TIME_UCT_NAME "OCT_GPS_TimeUCT"
@@ -126,6 +130,9 @@ extern "C" {
 #define CAN_S_VCU_ERROR_VCU_RTCAN1_ERROR_NAME "VCU_RTCAN1_Error"
 #define CAN_S_VCU_ERROR_VCU_RTCAN2_ERROR_NAME "VCU_RTCAN2_Error"
 #define CAN_S_VCU_ERROR_VCU_CANBC_ERROR_NAME "VCU_CANBC_Error"
+#define CAN_S_VCU_SIMULATED_VCU_SIM_TORQUE_REQUEST_NAME "VCU_Sim_Torque_Request"
+#define CAN_S_VCU_SIMULATED_VCU_SIM_R2D_NAME "VCU_Sim_R2D"
+#define CAN_S_VCU_SIMULATED_VCU_SIM_TS_ON_NAME "VCU_Sim_TS_ON"
 
 /**
  * Signals in message OCT_GPS_Stats.
@@ -408,6 +415,15 @@ struct can_s_vcu_error_t {
      * Offset: 0
      */
     uint8_t vcu_canbc_error;
+};
+
+struct can_s_vcu_simulated_t
+{
+    uint16_t torque_request;
+
+    uint8_t r2_d;
+
+    uint8_t ts_on;
 };
 
 /**
@@ -1536,6 +1552,22 @@ double can_s_vcu_error_vcu_canbc_error_decode(uint8_t value);
  */
 bool can_s_vcu_error_vcu_canbc_error_is_in_range(uint8_t value);
 
+int can_s_vcu_simulated_unpack(
+    struct can_s_vcu_simulated_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+uint16_t can_s_vcu_simulated_torque_request_encode(double value);
+double can_s_vcu_simulated_torque_request_decode(uint16_t value);
+bool can_s_vcu_simulated_torque_request_is_in_range(uint16_t value);
+
+uint8_t can_s_vcu_simulated_r2_d_encode(double value);
+double can_s_vcu_simulated_r2_d_decode(uint8_t value);
+bool can_s_vcu_simulated_r2_d_is_in_range(uint8_t value);
+
+uint8_t can_s_vcu_simulated_ts_on_encode(double value);
+double can_s_vcu_simulated_ts_on_decode(uint8_t value);
+bool can_s_vcu_simulated_ts_on_is_in_range(uint8_t value);
 
 #ifdef __cplusplus
 }
