@@ -1032,3 +1032,46 @@ bool can_s_vcu_error_vcu_canbc_error_is_in_range(uint8_t value)
 
     return (true);
 }
+
+int can_s_vcu_simulation_pack(
+    uint8_t *dst_p,
+    const struct can_s_vcu_simulation_t *src_p,
+    size_t size
+)
+{
+    if (size < CAN_S_VCU_SIMULATION_LENGTH) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, CAN_S_VCU_SIMULATION_LENGTH);
+
+    dst_p[0] |= pack_left_shift_u16(src_p->sim_torque_request, 0u, 0xffu);
+    dst_p[1] |= pack_right_shift_u16(src_p->sim_torque_request, 8u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->sim_bps, 0u, 0xffu);
+    dst_p[3] |= pack_right_shift_u16(src_p->sim_apps, 8u, 0xffu);
+    dst_p[4] |= pack_left_shift_u16(src_p->sim_bps, 0u, 0xffu);
+    dst_p[5] |= pack_right_shift_u16(src_p->sim_bps, 8u, 0xffu);
+    dst_p[6] |= pack_left_shift_u8(src_p->sim_r2_d, 0u, 0x01u);
+    dst_p[6] |= pack_left_shift_u8(src_p->sim_ts_on, 1u, 0x02u);
+}
+
+int can_s_vcu_simulation_unpack(
+    struct can_s_vcu_simulation_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < CAN_S_VCU_SIMULATION_LENGTH) {
+        return (-EINVAL);
+    }
+
+    dst_p->sim_torque_request = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
+    dst_p->sim_torque_request |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
+    dst_p->sim_apps = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
+    dst_p->sim_apps |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
+    dst_p->sim_bps = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
+    dst_p->sim_bps |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
+    dst_p->sim_r2_d = unpack_right_shift_u8(src_p[6], 0u, 0x01u);
+    dst_p->sim_ts_on = unpack_right_shift_u8(src_p[6], 1u, 0x02u);
+
+    return (0);
+}
