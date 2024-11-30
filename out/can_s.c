@@ -1047,7 +1047,7 @@ int can_s_vcu_simulation_pack(
 
     dst_p[0] |= pack_left_shift_u16(src_p->sim_torque_request, 0u, 0xffu);
     dst_p[1] |= pack_right_shift_u16(src_p->sim_torque_request, 8u, 0xffu);
-    dst_p[2] |= pack_left_shift_u16(src_p->sim_bps, 0u, 0xffu);
+    dst_p[2] |= pack_left_shift_u16(src_p->sim_apps, 0u, 0xffu);
     dst_p[3] |= pack_right_shift_u16(src_p->sim_apps, 8u, 0xffu);
     dst_p[4] |= pack_left_shift_u16(src_p->sim_bps, 0u, 0xffu);
     dst_p[5] |= pack_right_shift_u16(src_p->sim_bps, 8u, 0xffu);
