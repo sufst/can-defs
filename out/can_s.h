@@ -1568,6 +1568,8 @@ int can_s_vcu_simulation_pack(
     const struct can_s_vcu_simulation_t *src_p,
     size_t size);
 
+int can_s_vcu_simulate_init(struct can_s_vcu_simulation_t *msg_p);
+
 #ifdef __cplusplus
 }
 #endif

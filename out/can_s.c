@@ -1033,17 +1033,26 @@ bool can_s_vcu_error_vcu_canbc_error_is_in_range(uint8_t value)
     return (true);
 }
 
+int can_s_vcu_simulate_init(struct can_s_vcu_simulation_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct can_s_vcu_simulation_t));
+
+    return 0;
+}
+
 int can_s_vcu_simulation_pack(
     uint8_t *dst_p,
     const struct can_s_vcu_simulation_t *src_p,
     size_t size
 )
 {
-    if (size < CAN_S_VCU_SIMULATION_LENGTH) {
+    if (size < 8u) {
         return (-EINVAL);
     }
 
-    memset(&dst_p[0], 0, CAN_S_VCU_SIMULATION_LENGTH);
+    memset(&dst_p[0], 0, 8);
 
     dst_p[0] |= pack_left_shift_u16(src_p->sim_torque_request, 0u, 0xffu);
     dst_p[1] |= pack_right_shift_u16(src_p->sim_torque_request, 8u, 0xffu);
@@ -1062,7 +1071,7 @@ int can_s_vcu_simulation_unpack(
     const uint8_t *src_p,
     size_t size)
 {
-    if (size < CAN_S_VCU_SIMULATION_LENGTH) {
+    if (size < 8u) {
         return (-EINVAL);
     }
 
