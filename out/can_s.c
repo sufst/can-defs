@@ -1053,6 +1053,8 @@ int can_s_vcu_simulation_pack(
     dst_p[5] |= pack_right_shift_u16(src_p->sim_bps, 8u, 0xffu);
     dst_p[6] |= pack_left_shift_u8(src_p->sim_r2_d, 0u, 0x01u);
     dst_p[6] |= pack_left_shift_u8(src_p->sim_ts_on, 1u, 0x02u);
+
+    return (8);
 }
 
 int can_s_vcu_simulation_unpack(
