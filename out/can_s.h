@@ -54,6 +54,7 @@ extern "C" {
 #define CAN_S_VCU_STATE_FRAME_ID (0x101u)
 #define CAN_S_VCU_ERROR_FRAME_ID (0x102u)
 #define CAN_S_VCU_TEMPS_FRAME_ID (0x105u)
+#define CAN_S_VCU_PDM_OUT_VOLTAGE_FRAME_ID (0x503u)
 
 /* Frame lengths in bytes. */
 #define CAN_S_OCT_GPS_STATS_LENGTH (8u)
