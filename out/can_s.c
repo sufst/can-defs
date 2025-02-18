@@ -1041,8 +1041,8 @@ int can_s_vcu_pdm_voltage_out_unpack(
     if (size && src_p[0] == 1)
     {
         if (size > 5) {
-            vout->pdm_output_4_voltage = src_p[4];
-            vout->pdm_output_5_voltage = src_p[5];
+            vout->pdm_output_4_voltage = src_p[4]/5;
+            vout->pdm_output_5_voltage = src_p[5]/5;
         }
     }
 
