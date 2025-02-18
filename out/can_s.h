@@ -411,6 +411,24 @@ struct can_s_vcu_error_t {
     uint8_t vcu_canbc_error;
 };
 
+struct can_s_vcu_pdm_voltage_out {
+    /**
+     * Range: 0..255 (0..255 -)
+     * Scale: 0.2
+     * Offset: 0
+     * Unit: V
+     */
+    uint8_t pdm_output_4_voltage;
+
+    /**
+     * Range: 0..255 (0..255 -)
+     * Scale: 0.2
+     * Offset: 0
+     * Unit: V
+     */
+    uint8_t pdm_output_5_voltage;
+};
+
 /**
  * Pack message OCT_GPS_Stats.
  *
@@ -1537,6 +1555,20 @@ double can_s_vcu_error_vcu_canbc_error_decode(uint8_t value);
  */
 bool can_s_vcu_error_vcu_canbc_error_is_in_range(uint8_t value);
 
+
+/**
+ * Unpack message PDM_Out_Voltage.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int can_s_vcu_pdm_voltage_out_unpack(
+    struct can_s_vcu_pdm_voltage_out *vout,
+    const uint8_t *src_p,
+    size_t size);
 
 #ifdef __cplusplus
 }
