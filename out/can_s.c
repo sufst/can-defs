@@ -1034,15 +1034,15 @@ bool can_s_vcu_error_vcu_canbc_error_is_in_range(uint8_t value)
 }
 
 int can_s_vcu_pdm_voltage_out_unpack(
-    struct can_s_vcu_pdm_voltage_out *vout,
+    struct can_s_vcu_pdm_voltage_out *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
-    if (size && src_p[0] == 1)
+    if (size && src_p[0] == 0)
     {
         if (size > 5) {
-            vout->pdm_output_4_voltage = src_p[4]/5;
-            vout->pdm_output_5_voltage = src_p[5]/5;
+            dst_p->pdm_output_4_voltage = src_p[4]/5;
+            dst_p->pdm_output_5_voltage = src_p[5]/5;
         }
     }
 
