@@ -54,6 +54,7 @@ extern "C" {
 #define CAN_S_VCU_STATE_FRAME_ID (0x101u)
 #define CAN_S_VCU_ERROR_FRAME_ID (0x102u)
 #define CAN_S_VCU_TEMPS_FRAME_ID (0x105u)
+#define CAN_S_VCU_PDM_OUT_VOLTAGE_FRAME_ID (0x503u)
 
 /* Frame lengths in bytes. */
 #define CAN_S_OCT_GPS_STATS_LENGTH (8u)
@@ -408,6 +409,24 @@ struct can_s_vcu_error_t {
      * Offset: 0
      */
     uint8_t vcu_canbc_error;
+};
+
+struct can_s_vcu_pdm_voltage_out {
+    /**
+     * Range: 0..255 (0..255 -)
+     * Scale: 0.2
+     * Offset: 0
+     * Unit: V
+     */
+    uint8_t pdm_output_4_voltage;
+
+    /**
+     * Range: 0..255 (0..255 -)
+     * Scale: 0.2
+     * Offset: 0
+     * Unit: V
+     */
+    uint8_t pdm_output_5_voltage;
 };
 
 /**
@@ -1536,6 +1555,20 @@ double can_s_vcu_error_vcu_canbc_error_decode(uint8_t value);
  */
 bool can_s_vcu_error_vcu_canbc_error_is_in_range(uint8_t value);
 
+
+/**
+ * Unpack message PDM_Out_Voltage.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int can_s_vcu_pdm_voltage_out_unpack(
+    struct can_s_vcu_pdm_voltage_out *vout,
+    const uint8_t *src_p,
+    size_t size);
 
 #ifdef __cplusplus
 }
