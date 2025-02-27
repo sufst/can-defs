@@ -44,15 +44,17 @@ BO_ 3221225472 VECTOR__INDEPENDENT_SIG_MSG: 0 Vector__XXX
  SG_ OCT_GPS_Latitude : 0|31@1- (0.0001,0) [0|909999999] "" Vector__XXX
 
 BO_ 262 VCU_Simulation: 8 Vector__XXX
- SG_ VCU_Sim_BPS : 32|16@1+ (0.1,0) [0|100] "%" Vector__XXX
- SG_ VCU_Sim_APPS : 16|16@1+ (0.1,0) [0|100] "%" Vector__XXX
- SG_ VCU_Sim_TS_ON : 49|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ VCU_Sim_R2D : 48|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ VCU_Sim_Torque_Request : 0|16@1+ (0.1,0) [0|6553.5] "Nm" Vector__XXX
+ SG_ VCU_Sim_Torque_Request m0 : 40|16@1+ (0.1,0) [0|6553.5] "Nm" Vector__XXX
+ SG_ VCU_Sim_Power m1 : 8|16@1+ (0.2,0) [0|13107] "W" Vector__XXX
+ SG_ VCU_Simulation_MUX M : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ VCU_Sim_BPS m0 : 24|16@1+ (0.1,0) [0|100] "%" Vector__XXX
+ SG_ VCU_Sim_APPS m0 : 8|16@1+ (0.1,0) [0|100] "%" Vector__XXX
+ SG_ VCU_Sim_TS_ON m0 : 57|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ VCU_Sim_R2D m0 : 56|1@1+ (1,0) [0|1] "" Vector__XXX
 
 BO_ 1536 CAN_NODE_0: 8 CAN_NODE_0
- SG_ CAN_NODE_THERM_2 m2 : 16|8@1- (1,0) [-128|127] "°C" Vector__XXX
- SG_ CAN_NODE_THERM_1 m2 : 8|8@1- (1,0) [-128|127] "°C" Vector__XXX
+ SG_ CAN_NODE_THERM_2 m2 : 16|8@1- (1,0) [-128|127] "ï¿½C" Vector__XXX
+ SG_ CAN_NODE_THERM_1 m2 : 8|8@1- (1,0) [-128|127] "ï¿½C" Vector__XXX
  SG_ CAN_NODE_PD_9 m1 : 40|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
  SG_ CAN_NODE_PD_8 m1 : 28|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
  SG_ CAN_NODE_PD_7 m1 : 16|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
@@ -66,8 +68,8 @@ BO_ 1536 CAN_NODE_0: 8 CAN_NODE_0
  SG_ CAN_NODE_multiplexor M : 0|4@1+ (1,0) [0|15] "" Vector__XXX
 
 BO_ 1537 CAN_NODE_1: 8 CAN_NODE_1
- SG_ CAN_NODE_THERM_2 m2 : 16|8@1- (1,0) [-128|127] "°C" Vector__XXX
- SG_ CAN_NODE_THERM_1 m2 : 8|8@1- (1,0) [-128|127] "°C" Vector__XXX
+ SG_ CAN_NODE_THERM_2 m2 : 16|8@1- (1,0) [-128|127] "ï¿½C" Vector__XXX
+ SG_ CAN_NODE_THERM_1 m2 : 8|8@1- (1,0) [-128|127] "ï¿½C" Vector__XXX
  SG_ CAN_NODE_PD_9 m1 : 40|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
  SG_ CAN_NODE_PD_8 m1 : 28|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
  SG_ CAN_NODE_PD_7 m1 : 16|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
@@ -81,8 +83,8 @@ BO_ 1537 CAN_NODE_1: 8 CAN_NODE_1
  SG_ CAN_NODE_multiplexor M : 0|4@1+ (1,0) [0|15] "" Vector__XXX
 
 BO_ 1538 CAN_NODE_2: 8 CAN_NODE_2
- SG_ CAN_NODE_THERM_2 m2 : 16|8@1- (1,0) [-128|127] "°C" Vector__XXX
- SG_ CAN_NODE_THERM_1 m2 : 8|8@1- (1,0) [-128|127] "°C" Vector__XXX
+ SG_ CAN_NODE_THERM_2 m2 : 16|8@1- (1,0) [-128|127] "ï¿½C" Vector__XXX
+ SG_ CAN_NODE_THERM_1 m2 : 8|8@1- (1,0) [-128|127] "ï¿½C" Vector__XXX
  SG_ CAN_NODE_PD_9 m1 : 40|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
  SG_ CAN_NODE_PD_8 m1 : 28|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
  SG_ CAN_NODE_PD_7 m1 : 16|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
@@ -96,8 +98,8 @@ BO_ 1538 CAN_NODE_2: 8 CAN_NODE_2
  SG_ CAN_NODE_multiplexor M : 0|4@1+ (1,0) [0|15] "" Vector__XXX
 
 BO_ 1539 CAN_NODE_3: 8 CAN_NODE_3
- SG_ CAN_NODE_THERM_2 m2 : 16|8@1- (1,0) [-128|127] "°C" Vector__XXX
- SG_ CAN_NODE_THERM_1 m2 : 8|8@1- (1,0) [-128|127] "°C" Vector__XXX
+ SG_ CAN_NODE_THERM_2 m2 : 16|8@1- (1,0) [-128|127] "ï¿½C" Vector__XXX
+ SG_ CAN_NODE_THERM_1 m2 : 8|8@1- (1,0) [-128|127] "ï¿½C" Vector__XXX
  SG_ CAN_NODE_PD_9 m1 : 40|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
  SG_ CAN_NODE_PD_8 m1 : 28|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
  SG_ CAN_NODE_PD_7 m1 : 16|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
@@ -111,8 +113,8 @@ BO_ 1539 CAN_NODE_3: 8 CAN_NODE_3
  SG_ CAN_NODE_multiplexor M : 0|4@1+ (1,0) [0|15] "" Vector__XXX
 
 BO_ 1540 CAN_NODE_4: 8 CAN_NODE_4
- SG_ CAN_NODE_THERM_2 m2 : 16|8@1- (1,0) [-128|127] "°C" Vector__XXX
- SG_ CAN_NODE_THERM_1 m2 : 8|8@1- (1,0) [-128|127] "°C" Vector__XXX
+ SG_ CAN_NODE_THERM_2 m2 : 16|8@1- (1,0) [-128|127] "ï¿½C" Vector__XXX
+ SG_ CAN_NODE_THERM_1 m2 : 8|8@1- (1,0) [-128|127] "ï¿½C" Vector__XXX
  SG_ CAN_NODE_PD_9 m1 : 40|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
  SG_ CAN_NODE_PD_8 m1 : 28|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
  SG_ CAN_NODE_PD_7 m1 : 16|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
