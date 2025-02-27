@@ -507,14 +507,10 @@ class TelemetrySystemGenerator:
 
 
 if __name__ == '__main__':
+    abs_path = os.getcwd()
 
-    # TODO: make this into an actual CLI, e.g. with argparse
-    if len(sys.argv) < 3:
-        print('Error: please specify two DBC files: can_c and can_s')
-        sys.exit(1)
-
-    can_c_file = sys.argv[1]
-    can_s_file = sys.argv[2]
+    can_c_file = os.path.abspath(os.path.join(abs_path, 'dbc', 'CAN-C.dbc'))
+    can_s_file = os.path.abspath(os.path.join(abs_path, 'dbc', 'CAN-S.dbc'))
 
     if not os.path.isfile(can_c_file):
         print('Error: invalid CAN-C file')

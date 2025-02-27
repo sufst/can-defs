@@ -74,7 +74,7 @@ environment.
 From the command line:
 
 ```sh
-python -m tsgen <PATH TO DBC FILE>
+python -m tsgen
 ```
 
 ### Releases
