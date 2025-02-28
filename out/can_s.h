@@ -54,6 +54,7 @@ extern "C" {
 #define CAN_S_VCU_STATE_FRAME_ID (0x101u)
 #define CAN_S_VCU_ERROR_FRAME_ID (0x102u)
 #define CAN_S_VCU_TEMPS_FRAME_ID (0x105u)
+#define CAN_S_MSGID_0_X201_FRAME_ID (0x201u)
 
 /* Frame lengths in bytes. */
 #define CAN_S_OCT_GPS_STATS_LENGTH (8u)
@@ -408,6 +409,57 @@ struct can_s_vcu_error_t {
      * Offset: 0
      */
     uint8_t vcu_canbc_error;
+};
+
+/**
+ * Signals in message MSGID_0X201.
+ *
+ * This ID Transmits at 8 ms.
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct can_s_msgid_0_x201_t {
+    /**
+     * Range: -
+     * Scale: 0.1
+     * Offset: 0
+     */
+    uint16_t bms_pack_current;
+
+    /**
+     * Range: -
+     * Scale: 0.1
+     * Offset: 0
+     */
+    uint16_t bms_pack_inst_voltage;
+
+    /**
+     * Range: -
+     * Scale: 0.5
+     * Offset: 0
+     */
+    uint8_t bms_pack_soc;
+
+    /**
+     * Range: -
+     * Scale: 0.1
+     * Offset: 0
+     */
+    uint8_t bms_maximum_pack_voltage;
+
+    /**
+     * Range: -
+     * Scale: 0.1
+     * Offset: 0
+     */
+    uint8_t bms_minimum_pack_voltage;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 1721
+     */
+    uint8_t bms_total_pack_cycles;
 };
 
 /**
@@ -1536,6 +1588,19 @@ double can_s_vcu_error_vcu_canbc_error_decode(uint8_t value);
  */
 bool can_s_vcu_error_vcu_canbc_error_is_in_range(uint8_t value);
 
+/**
+ * Unpack message MSGID_0X201.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int can_s_msgid_0_x201_unpack(
+    struct can_s_msgid_0_x201_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
 
 #ifdef __cplusplus
 }
