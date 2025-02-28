@@ -1033,18 +1033,72 @@ bool can_s_vcu_error_vcu_canbc_error_is_in_range(uint8_t value)
     return (true);
 }
 
-int can_s_vcu_pdm_voltage_out_unpack(
-    struct can_s_vcu_pdm_voltage_out *dst_p,
+int can_s_pdm_out_voltage_unpack(
+    struct can_s_pdm_out_voltage_t *dst_p,
     const uint8_t *src_p,
     size_t size)
 {
-    if (size && src_p[0] == 0)
-    {
-        if (size > 5) {
-            dst_p->pdm_output_4_voltage = src_p[4]/5;
-            dst_p->pdm_output_5_voltage = src_p[5]/5;
-        }
+    uint8_t pdm_out_voltage_compound_id;
+
+    if (size < 8u) {
+        return (-EINVAL);
     }
 
-    return 0;
+    pdm_out_voltage_compound_id = unpack_right_shift_u8(src_p[0], 0u, 0xffu);
+    dst_p->pdm_out_voltage_compound_id = (int8_t)pdm_out_voltage_compound_id;
+
+    switch (dst_p->pdm_out_voltage_compound_id) {
+
+    case 0:
+        dst_p->pdm_output_1_voltage = unpack_right_shift_u8(src_p[1], 0u, 0xffu);
+        dst_p->pdm_output_2_voltage = unpack_right_shift_u8(src_p[2], 0u, 0xffu);
+        dst_p->pdm_output_3_voltage = unpack_right_shift_u8(src_p[3], 0u, 0xffu);
+        dst_p->pdm_output_4_voltage = unpack_right_shift_u8(src_p[4], 0u, 0xffu);
+        dst_p->pdm_output_5_voltage = unpack_right_shift_u8(src_p[5], 0u, 0xffu);
+        dst_p->pdm_output_6_voltage = unpack_right_shift_u8(src_p[6], 0u, 0xffu);
+        dst_p->pdm_output_7_voltage = unpack_right_shift_u8(src_p[7], 0u, 0xffu);
+        break;
+
+    case 1:
+        dst_p->pdm_output_8_voltage = unpack_right_shift_u8(src_p[1], 0u, 0xffu);
+        dst_p->pdm_output_9_voltage = unpack_right_shift_u8(src_p[2], 0u, 0xffu);
+        dst_p->pdm_output_10_voltage = unpack_right_shift_u8(src_p[3], 0u, 0xffu);
+        dst_p->pdm_output_11_voltage = unpack_right_shift_u8(src_p[4], 0u, 0xffu);
+        dst_p->pdm_output_12_voltage = unpack_right_shift_u8(src_p[5], 0u, 0xffu);
+        dst_p->pdm_output_13_voltage = unpack_right_shift_u8(src_p[6], 0u, 0xffu);
+        dst_p->pdm_output_14_voltage = unpack_right_shift_u8(src_p[7], 0u, 0xffu);
+        break;
+
+    case 2:
+        dst_p->pdm_output_15_voltage = unpack_right_shift_u8(src_p[1], 0u, 0xffu);
+        dst_p->pdm_output_16_voltage = unpack_right_shift_u8(src_p[2], 0u, 0xffu);
+        dst_p->pdm_output_17_voltage = unpack_right_shift_u8(src_p[3], 0u, 0xffu);
+        dst_p->pdm_output_18_voltage = unpack_right_shift_u8(src_p[4], 0u, 0xffu);
+        dst_p->pdm_output_19_voltage = unpack_right_shift_u8(src_p[5], 0u, 0xffu);
+        dst_p->pdm_output_20_voltage = unpack_right_shift_u8(src_p[6], 0u, 0xffu);
+        dst_p->pdm_output_21_voltage = unpack_right_shift_u8(src_p[7], 0u, 0xffu);
+        break;
+
+    case 3:
+        dst_p->pdm_output_22_voltage = unpack_right_shift_u8(src_p[1], 0u, 0xffu);
+        dst_p->pdm_output_23_voltage = unpack_right_shift_u8(src_p[2], 0u, 0xffu);
+        dst_p->pdm_output_24_voltage = unpack_right_shift_u8(src_p[3], 0u, 0xffu);
+        dst_p->pdm_output_25_voltage = unpack_right_shift_u8(src_p[4], 0u, 0xffu);
+        dst_p->pdm_output_26_voltage = unpack_right_shift_u8(src_p[5], 0u, 0xffu);
+        dst_p->pdm_output_27_voltage = unpack_right_shift_u8(src_p[6], 0u, 0xffu);
+        dst_p->pdm_output_28_voltage = unpack_right_shift_u8(src_p[7], 0u, 0xffu);
+        break;
+
+    case 4:
+        dst_p->pdm_output_29_voltage = unpack_right_shift_u8(src_p[1], 0u, 0xffu);
+        dst_p->pdm_output_30_voltage = unpack_right_shift_u8(src_p[2], 0u, 0xffu);
+        dst_p->pdm_output_31_voltage = unpack_right_shift_u8(src_p[3], 0u, 0xffu);
+        dst_p->pdm_output_32_voltage = unpack_right_shift_u8(src_p[4], 0u, 0xffu);
+        break;
+
+    default:
+        break;
+    }
+
+    return (0);
 }

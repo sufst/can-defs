@@ -54,7 +54,7 @@ extern "C" {
 #define CAN_S_VCU_STATE_FRAME_ID (0x101u)
 #define CAN_S_VCU_ERROR_FRAME_ID (0x102u)
 #define CAN_S_VCU_TEMPS_FRAME_ID (0x105u)
-#define CAN_S_VCU_PDM_OUT_VOLTAGE_FRAME_ID (0x503u)
+#define CAN_S_PDM_OUT_VOLTAGE_FRAME_ID (0x503u)
 
 /* Frame lengths in bytes. */
 #define CAN_S_OCT_GPS_STATS_LENGTH (8u)
@@ -411,22 +411,242 @@ struct can_s_vcu_error_t {
     uint8_t vcu_canbc_error;
 };
 
-struct can_s_vcu_pdm_voltage_out {
+/**
+ * Signals in message PDM_Out_Voltage.
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct can_s_pdm_out_voltage_t {
     /**
-     * Range: 0..255 (0..255 -)
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    int8_t pdm_out_voltage_compound_id;
+
+    /**
+     * Range: 0..255 (0..51 V)
      * Scale: 0.2
      * Offset: 0
-     * Unit: V
+     */
+    uint8_t pdm_output_8_voltage;
+
+    /**
+     * Range: 0..255 (0..51 V)
+     * Scale: 0.2
+     * Offset: 0
+     */
+    uint8_t pdm_output_29_voltage;
+
+    /**
+     * Range: 0..255 (0..51 V)
+     * Scale: 0.2
+     * Offset: 0
+     */
+    uint8_t pdm_output_22_voltage;
+
+    /**
+     * Range: 0..255 (0..51 V)
+     * Scale: 0.2
+     * Offset: 0
+     */
+    uint8_t pdm_output_1_voltage;
+
+    /**
+     * Range: 0..255 (0..51 V)
+     * Scale: 0.2
+     * Offset: 0
+     */
+    uint8_t pdm_output_15_voltage;
+
+    /**
+     * Range: 0..255 (0..51 V)
+     * Scale: 0.2
+     * Offset: 0
+     */
+    uint8_t pdm_output_9_voltage;
+
+    /**
+     * Range: 0..255 (0..51 V)
+     * Scale: 0.2
+     * Offset: 0
+     */
+    uint8_t pdm_output_30_voltage;
+
+    /**
+     * Range: 0..255 (0..51 V)
+     * Scale: 0.2
+     * Offset: 0
+     */
+    uint8_t pdm_output_2_voltage;
+
+    /**
+     * Range: 0..255 (0..51 V)
+     * Scale: 0.2
+     * Offset: 0
+     */
+    uint8_t pdm_output_23_voltage;
+
+    /**
+     * Range: 0..255 (0..51 V)
+     * Scale: 0.2
+     * Offset: 0
+     */
+    uint8_t pdm_output_16_voltage;
+
+    /**
+     * Range: 0..255 (0..51 V)
+     * Scale: 0.2
+     * Offset: 0
+     */
+    uint8_t pdm_output_3_voltage;
+
+    /**
+     * Range: 0..255 (0..51 V)
+     * Scale: 0.2
+     * Offset: 0
+     */
+    uint8_t pdm_output_31_voltage;
+
+    /**
+     * Range: 0..255 (0..51 V)
+     * Scale: 0.2
+     * Offset: 0
+     */
+    uint8_t pdm_output_24_voltage;
+
+    /**
+     * Range: 0..255 (0..51 V)
+     * Scale: 0.2
+     * Offset: 0
+     */
+    uint8_t pdm_output_17_voltage;
+
+    /**
+     * Range: 0..255 (0..51 V)
+     * Scale: 0.2
+     * Offset: 0
+     */
+    uint8_t pdm_output_10_voltage;
+
+    /**
+     * Range: 0..255 (0..51 V)
+     * Scale: 0.2
+     * Offset: 0
      */
     uint8_t pdm_output_4_voltage;
 
     /**
-     * Range: 0..255 (0..255 -)
+     * Range: 0..255 (0..51 V)
      * Scale: 0.2
      * Offset: 0
-     * Unit: V
+     */
+    uint8_t pdm_output_32_voltage;
+
+    /**
+     * Range: 0..255 (0..51 V)
+     * Scale: 0.2
+     * Offset: 0
+     */
+    uint8_t pdm_output_25_voltage;
+
+    /**
+     * Range: 0..255 (0..51 V)
+     * Scale: 0.2
+     * Offset: 0
+     */
+    uint8_t pdm_output_18_voltage;
+
+    /**
+     * Range: 0..255 (0..51 V)
+     * Scale: 0.2
+     * Offset: 0
+     */
+    uint8_t pdm_output_11_voltage;
+
+    /**
+     * Range: 0..255 (0..51 V)
+     * Scale: 0.2
+     * Offset: 0
      */
     uint8_t pdm_output_5_voltage;
+
+    /**
+     * Range: 0..255 (0..51 V)
+     * Scale: 0.2
+     * Offset: 0
+     */
+    uint8_t pdm_output_26_voltage;
+
+    /**
+     * Range: 0..255 (0..51 V)
+     * Scale: 0.2
+     * Offset: 0
+     */
+    uint8_t pdm_output_19_voltage;
+
+    /**
+     * Range: 0..255 (0..51 V)
+     * Scale: 0.2
+     * Offset: 0
+     */
+    uint8_t pdm_output_12_voltage;
+
+    /**
+     * Range: 0..255 (0..51 V)
+     * Scale: 0.2
+     * Offset: 0
+     */
+    uint8_t pdm_output_6_voltage;
+
+    /**
+     * Range: 0..255 (0..51 V)
+     * Scale: 0.2
+     * Offset: 0
+     */
+    uint8_t pdm_output_27_voltage;
+
+    /**
+     * Range: 0..255 (0..51 V)
+     * Scale: 0.2
+     * Offset: 0
+     */
+    uint8_t pdm_output_20_voltage;
+
+    /**
+     * Range: 0..255 (0..51 V)
+     * Scale: 0.2
+     * Offset: 0
+     */
+    uint8_t pdm_output_13_voltage;
+
+    /**
+     * Range: 0..255 (0..51 V)
+     * Scale: 0.2
+     * Offset: 0
+     */
+    uint8_t pdm_output_7_voltage;
+
+    /**
+     * Range: 0..255 (0..51 V)
+     * Scale: 0.2
+     * Offset: 0
+     */
+    uint8_t pdm_output_28_voltage;
+
+    /**
+     * Range: 0..255 (0..51 V)
+     * Scale: 0.2
+     * Offset: 0
+     */
+    uint8_t pdm_output_21_voltage;
+
+    /**
+     * Range: 0..255 (0..51 V)
+     * Scale: 0.2
+     * Offset: 0
+     */
+    uint8_t pdm_output_14_voltage;
 };
 
 /**
@@ -1565,8 +1785,8 @@ bool can_s_vcu_error_vcu_canbc_error_is_in_range(uint8_t value);
  *
  * @return zero(0) or negative error code.
  */
-int can_s_vcu_pdm_voltage_out_unpack(
-    struct can_s_vcu_pdm_voltage_out *vout,
+int can_s_pdm_out_voltage_unpack(
+    struct can_s_pdm_out_voltage_t *dst_p,
     const uint8_t *src_p,
     size_t size);
 
