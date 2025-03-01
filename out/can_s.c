@@ -1075,14 +1075,29 @@ int can_s_vcu_simulation_unpack(
         return (-EINVAL);
     }
 
-    dst_p->sim_torque_request = unpack_right_shift_u16(src_p[0], 0u, 0xffu);
-    dst_p->sim_torque_request |= unpack_left_shift_u16(src_p[1], 8u, 0xffu);
-    dst_p->sim_apps = unpack_right_shift_u16(src_p[2], 0u, 0xffu);
-    dst_p->sim_apps |= unpack_left_shift_u16(src_p[3], 8u, 0xffu);
-    dst_p->sim_bps = unpack_right_shift_u16(src_p[4], 0u, 0xffu);
-    dst_p->sim_bps |= unpack_left_shift_u16(src_p[5], 8u, 0xffu);
-    dst_p->sim_r2_d = unpack_right_shift_u8(src_p[6], 0u, 0x01u);
-    dst_p->sim_ts_on = unpack_right_shift_u8(src_p[6], 1u, 0x02u);
+    uint8_t multiplexer = unpack_right_shift_u8(src_p[0], 0u, 0xffu);
+
+    switch (multiplexer) {
+
+    case 0:
+        dst_p->sim_apps = unpack_right_shift_u16(src_p[1], 0u, 0xffu);
+        dst_p->sim_apps |= unpack_left_shift_u16(src_p[2], 8u, 0xffu);
+        dst_p->sim_bps = unpack_right_shift_u16(src_p[3], 0u, 0xffu);
+        dst_p->sim_bps |= unpack_left_shift_u16(src_p[4], 8u, 0xffu);
+        dst_p->sim_torque_request = unpack_right_shift_u16(src_p[5], 0u, 0xffu);
+        dst_p->sim_torque_request |= unpack_left_shift_u16(src_p[6], 8u, 0xffu);
+        dst_p->sim_r2_d = unpack_right_shift_u8(src_p[7], 0u, 0x01u);
+        dst_p->sim_ts_on = unpack_right_shift_u8(src_p[7], 1u, 0x02u);
+        break;
+
+    case 1:
+        dst_p->sim_power = unpack_right_shift_u16(src_p[1], 0u, 0xffu);
+        dst_p->sim_power |= unpack_left_shift_u16(src_p[2], 8u, 0xffu);
+        break;
+
+    default:
+        break;
+    }
 
     return (0);
 }

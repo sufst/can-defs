@@ -421,6 +421,8 @@ struct can_s_vcu_error_t {
 
 struct can_s_vcu_simulation_t
 {
+    uint16_t sim_power;
+
     uint16_t sim_torque_request;
 
     uint8_t sim_r2_d;
