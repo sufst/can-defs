@@ -1045,8 +1045,7 @@ int can_s_vcu_simulate_init(struct can_s_vcu_simulation_t *msg_p)
 int can_s_vcu_simulation_pack(
     uint8_t *dst_p,
     const struct can_s_vcu_simulation_t *src_p,
-    size_t size
-)
+    size_t size)
 {
     if (size < 8u) {
         return (-EINVAL);
@@ -1054,14 +1053,29 @@ int can_s_vcu_simulation_pack(
 
     memset(&dst_p[0], 0, 8);
 
-    dst_p[0] |= pack_left_shift_u16(src_p->sim_torque_request, 0u, 0xffu);
-    dst_p[1] |= pack_right_shift_u16(src_p->sim_torque_request, 8u, 0xffu);
-    dst_p[2] |= pack_left_shift_u16(src_p->sim_apps, 0u, 0xffu);
-    dst_p[3] |= pack_right_shift_u16(src_p->sim_apps, 8u, 0xffu);
-    dst_p[4] |= pack_left_shift_u16(src_p->sim_bps, 0u, 0xffu);
-    dst_p[5] |= pack_right_shift_u16(src_p->sim_bps, 8u, 0xffu);
-    dst_p[6] |= pack_left_shift_u8(src_p->sim_r2_d, 0u, 0x01u);
-    dst_p[6] |= pack_left_shift_u8(src_p->sim_ts_on, 1u, 0x02u);
+    dst_p[0] |= pack_left_shift_u8(src_p->multiplexer, 0u, 0xffu);
+
+    switch (src_p->multiplexer) {
+
+    case 0:
+        dst_p[1] |= pack_left_shift_u16(src_p->sim_apps, 0u, 0xffu);
+        dst_p[2] |= pack_right_shift_u16(src_p->sim_apps, 8u, 0xffu);
+        dst_p[3] |= pack_left_shift_u16(src_p->sim_bps, 0u, 0xffu);
+        dst_p[4] |= pack_right_shift_u16(src_p->sim_bps, 8u, 0xffu);
+        dst_p[5] |= pack_left_shift_u16(src_p->sim_torque_request, 0u, 0xffu);
+        dst_p[6] |= pack_right_shift_u16(src_p->sim_torque_request, 8u, 0xffu);
+        dst_p[7] |= pack_left_shift_u8(src_p->sim_r2_d, 0u, 0x01u);
+        dst_p[7] |= pack_left_shift_u8(src_p->sim_ts_on, 1u, 0x02u);
+        break;
+
+    case 1:
+        dst_p[1] |= pack_left_shift_u16(src_p->sim_power, 0u, 0xffu);
+        dst_p[2] |= pack_right_shift_u16(src_p->sim_power, 8u, 0xffu);
+        break;
+
+    default:
+        break;
+    }
 
     return (8);
 }
@@ -1075,9 +1089,9 @@ int can_s_vcu_simulation_unpack(
         return (-EINVAL);
     }
 
-    uint8_t multiplexer = unpack_right_shift_u8(src_p[0], 0u, 0xffu);
+    dst_p->multiplexer = unpack_right_shift_u8(src_p[0], 0u, 0xffu);
 
-    switch (multiplexer) {
+    switch (dst_p->multiplexer) {
 
     case 0:
         dst_p->sim_apps = unpack_right_shift_u16(src_p[1], 0u, 0xffu);

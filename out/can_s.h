@@ -131,6 +131,7 @@ extern "C" {
 #define CAN_S_VCU_ERROR_VCU_RTCAN2_ERROR_NAME "VCU_RTCAN2_Error"
 #define CAN_S_VCU_ERROR_VCU_CANBC_ERROR_NAME "VCU_CANBC_Error"
 #define CAN_S_VCU_SIMULATION_VCU_SIM_TORQUE_REQUEST_NAME "VCU_Sim_Torque_Request"
+#define CAN_S_VCU_SIMULATION_VCU_SIM_POWER_NAME "VCU_Sim_Power"
 #define CAN_S_VCU_SIMULATION_VCU_SIM_R2D_NAME "VCU_Sim_R2D"
 #define CAN_S_VCU_SIMULATION_VCU_SIM_TS_ON_NAME "VCU_Sim_TS_ON"
 #define CAN_S_VCU_SIMULATION_VCU_SIM_APPS_NAME "VCU_Sim_APPS"
@@ -421,6 +422,8 @@ struct can_s_vcu_error_t {
 
 struct can_s_vcu_simulation_t
 {
+    uint8_t multiplexer;
+
     uint16_t sim_power;
 
     uint16_t sim_torque_request;
