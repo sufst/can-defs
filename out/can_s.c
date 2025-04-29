@@ -922,6 +922,27 @@ int can_s_vcu_error_unpack(
     return (0);
 }
 
+int can_s_msgid_0_x201_unpack(
+    struct can_s_msgid_0_x201_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->bms_pack_current = unpack_left_shift_u16(src_p[0], 8u, 0xffu);
+    dst_p->bms_pack_current |= unpack_right_shift_u16(src_p[1], 0u, 0xffu);
+    dst_p->bms_pack_inst_voltage = unpack_left_shift_u16(src_p[2], 8u, 0xffu);
+    dst_p->bms_pack_inst_voltage |= unpack_right_shift_u16(src_p[3], 0u, 0xffu);
+    dst_p->bms_pack_soc = unpack_right_shift_u8(src_p[4], 0u, 0xffu);
+    dst_p->bms_maximum_pack_voltage = unpack_right_shift_u8(src_p[5], 0u, 0xffu);
+    dst_p->bms_minimum_pack_voltage = unpack_right_shift_u8(src_p[6], 0u, 0xffu);
+    dst_p->bms_total_pack_cycles = unpack_right_shift_u8(src_p[7], 0u, 0xffu);
+
+    return (0);
+}
+
 int can_s_vcu_error_init(struct can_s_vcu_error_t *msg_p)
 {
     if (msg_p == NULL) return -1;
