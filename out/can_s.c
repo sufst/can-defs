@@ -922,6 +922,29 @@ int can_s_vcu_error_unpack(
     return (0);
 }
 
+int can_s_msgid_0_x201_pack(
+    uint8_t *dst_p,
+    const struct can_s_msgid_0_x201_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_right_shift_u16(src_p->bms_pack_current, 8u, 0xffu);
+    dst_p[1] |= pack_left_shift_u16(src_p->bms_pack_current, 0u, 0xffu);
+    dst_p[2] |= pack_right_shift_u16(src_p->bms_pack_inst_voltage, 8u, 0xffu);
+    dst_p[3] |= pack_left_shift_u16(src_p->bms_pack_inst_voltage, 0u, 0xffu);
+    dst_p[4] |= pack_left_shift_u8(src_p->bms_pack_soc, 0u, 0xffu);
+    dst_p[5] |= pack_left_shift_u8(src_p->bms_maximum_pack_voltage, 0u, 0xffu);
+    dst_p[6] |= pack_left_shift_u8(src_p->bms_minimum_pack_voltage, 0u, 0xffu);
+    dst_p[7] |= pack_left_shift_u8(src_p->bms_total_pack_cycles, 0u, 0xffu);
+
+    return (8);
+}
+
 int can_s_msgid_0_x201_unpack(
     struct can_s_msgid_0_x201_t *dst_p,
     const uint8_t *src_p,
@@ -941,6 +964,288 @@ int can_s_msgid_0_x201_unpack(
     dst_p->bms_total_pack_cycles = unpack_right_shift_u8(src_p[7], 0u, 0xffu);
 
     return (0);
+}
+
+uint16_t can_s_msgid_0_x201_bms_pack_current_encode(double value)
+{
+    return (uint16_t)(value / 0.1);
+}
+
+double can_s_msgid_0_x201_bms_pack_current_decode(uint16_t value)
+{
+    return ((double)value * 0.1);
+}
+
+bool can_s_msgid_0_x201_bms_pack_current_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint16_t can_s_msgid_0_x201_bms_pack_inst_voltage_encode(double value)
+{
+    return (uint16_t)(value / 0.1);
+}
+
+double can_s_msgid_0_x201_bms_pack_inst_voltage_decode(uint16_t value)
+{
+    return ((double)value * 0.1);
+}
+
+bool can_s_msgid_0_x201_bms_pack_inst_voltage_is_in_range(uint16_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint8_t can_s_msgid_0_x201_bms_pack_soc_encode(double value)
+{
+    return (uint8_t)(value / 0.5);
+}
+
+double can_s_msgid_0_x201_bms_pack_soc_decode(uint8_t value)
+{
+    return ((double)value * 0.5);
+}
+
+bool can_s_msgid_0_x201_bms_pack_soc_is_in_range(uint8_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint8_t can_s_msgid_0_x201_bms_maximum_pack_voltage_encode(double value)
+{
+    return (uint8_t)(value / 0.1);
+}
+
+double can_s_msgid_0_x201_bms_maximum_pack_voltage_decode(uint8_t value)
+{
+    return ((double)value * 0.1);
+}
+
+bool can_s_msgid_0_x201_bms_maximum_pack_voltage_is_in_range(uint8_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint8_t can_s_msgid_0_x201_bms_minimum_pack_voltage_encode(double value)
+{
+    return (uint8_t)(value / 0.1);
+}
+
+double can_s_msgid_0_x201_bms_minimum_pack_voltage_decode(uint8_t value)
+{
+    return ((double)value * 0.1);
+}
+
+bool can_s_msgid_0_x201_bms_minimum_pack_voltage_is_in_range(uint8_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint8_t can_s_msgid_0_x201_bms_total_pack_cycles_encode(double value)
+{
+    return (uint8_t)(value - 1721.0);
+}
+
+double can_s_msgid_0_x201_bms_total_pack_cycles_decode(uint8_t value)
+{
+    return ((double)value + 1721.0);
+}
+
+bool can_s_msgid_0_x201_bms_total_pack_cycles_is_in_range(uint8_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+int can_s_msgid_0_x202_pack(
+    uint8_t *dst_p,
+    const struct can_s_msgid_0_x202_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u8(src_p->bms_high_temperature, 0u, 0xffu);
+    dst_p[1] |= pack_left_shift_u8(src_p->bms_low_temperature, 0u, 0xffu);
+    dst_p[2] |= pack_left_shift_u8(src_p->bms_average_temperature, 0u, 0xffu);
+    dst_p[3] |= pack_left_shift_u8(src_p->bms_internal_temperature, 0u, 0xffu);
+    dst_p[4] |= pack_left_shift_u8(src_p->bms_high_thermistor_id, 0u, 0xffu);
+    dst_p[5] |= pack_left_shift_u8(src_p->bms_low_thermistor_id, 0u, 0xffu);
+    dst_p[6] |= pack_left_shift_u8(src_p->bms_maximum_cell_voltage, 0u, 0xffu);
+    dst_p[7] |= pack_left_shift_u8(src_p->bms_minimum_cell_voltage, 0u, 0xffu);
+
+    return (8);
+}
+
+int can_s_msgid_0_x202_unpack(
+    struct can_s_msgid_0_x202_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->bms_high_temperature = unpack_right_shift_u8(src_p[0], 0u, 0xffu);
+    dst_p->bms_low_temperature = unpack_right_shift_u8(src_p[1], 0u, 0xffu);
+    dst_p->bms_average_temperature = unpack_right_shift_u8(src_p[2], 0u, 0xffu);
+    dst_p->bms_internal_temperature = unpack_right_shift_u8(src_p[3], 0u, 0xffu);
+    dst_p->bms_high_thermistor_id = unpack_right_shift_u8(src_p[4], 0u, 0xffu);
+    dst_p->bms_low_thermistor_id = unpack_right_shift_u8(src_p[5], 0u, 0xffu);
+    dst_p->bms_maximum_cell_voltage = unpack_right_shift_u8(src_p[6], 0u, 0xffu);
+    dst_p->bms_minimum_cell_voltage = unpack_right_shift_u8(src_p[7], 0u, 0xffu);
+
+    return (0);
+}
+
+uint8_t can_s_msgid_0_x202_bms_high_temperature_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double can_s_msgid_0_x202_bms_high_temperature_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool can_s_msgid_0_x202_bms_high_temperature_is_in_range(uint8_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint8_t can_s_msgid_0_x202_bms_low_temperature_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double can_s_msgid_0_x202_bms_low_temperature_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool can_s_msgid_0_x202_bms_low_temperature_is_in_range(uint8_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint8_t can_s_msgid_0_x202_bms_average_temperature_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double can_s_msgid_0_x202_bms_average_temperature_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool can_s_msgid_0_x202_bms_average_temperature_is_in_range(uint8_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint8_t can_s_msgid_0_x202_bms_internal_temperature_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double can_s_msgid_0_x202_bms_internal_temperature_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool can_s_msgid_0_x202_bms_internal_temperature_is_in_range(uint8_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint8_t can_s_msgid_0_x202_bms_high_thermistor_id_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double can_s_msgid_0_x202_bms_high_thermistor_id_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool can_s_msgid_0_x202_bms_high_thermistor_id_is_in_range(uint8_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint8_t can_s_msgid_0_x202_bms_low_thermistor_id_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double can_s_msgid_0_x202_bms_low_thermistor_id_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool can_s_msgid_0_x202_bms_low_thermistor_id_is_in_range(uint8_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint8_t can_s_msgid_0_x202_bms_maximum_cell_voltage_encode(double value)
+{
+    return (uint8_t)(value / 0.0001);
+}
+
+double can_s_msgid_0_x202_bms_maximum_cell_voltage_decode(uint8_t value)
+{
+    return ((double)value * 0.0001);
+}
+
+bool can_s_msgid_0_x202_bms_maximum_cell_voltage_is_in_range(uint8_t value)
+{
+    (void)value;
+
+    return (true);
+}
+
+uint8_t can_s_msgid_0_x202_bms_minimum_cell_voltage_encode(double value)
+{
+    return (uint8_t)(value / 0.0001);
+}
+
+double can_s_msgid_0_x202_bms_minimum_cell_voltage_decode(uint8_t value)
+{
+    return ((double)value * 0.0001);
+}
+
+bool can_s_msgid_0_x202_bms_minimum_cell_voltage_is_in_range(uint8_t value)
+{
+    (void)value;
+
+    return (true);
 }
 
 int can_s_vcu_error_init(struct can_s_vcu_error_t *msg_p)
