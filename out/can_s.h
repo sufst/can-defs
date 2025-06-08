@@ -350,6 +350,13 @@ struct can_s_vcu_state_t {
      * Offset: 0
      */
     uint8_t vcu_drs_allowed;
+
+    /**
+     * Range: 0..1 (0..1 -)
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t vcu_power_saving;
 };
 
 struct can_s_vcu_temps_t {
@@ -1336,6 +1343,33 @@ double can_s_vcu_state_vcu_drs_allowed_decode(uint8_t value);
  * @return true if in range, false otherwise.
  */
 bool can_s_vcu_state_vcu_drs_allowed_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t can_s_vcu_state_vcu_power_saving_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double can_s_vcu_state_vcu_power_saving_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool can_s_vcu_state_vcu_power_saving_is_in_range(uint8_t value);
 
 /**
  * Pack message VCU_Error.

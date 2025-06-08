@@ -771,6 +771,7 @@ int can_s_vcu_state_pack(
     dst_p[3] |= pack_left_shift_u8(src_p->vcu_r2_d, 0u, 0x01u);
     dst_p[3] |= pack_left_shift_u8(src_p->vcu_drs_active, 1u, 0x02u);
     dst_p[3] |= pack_left_shift_u8(src_p->vcu_drs_allowed, 2u, 0x04u);
+    dst_p[3] |= pack_left_shift_u8(src_p->vcu_power_saving, 3u, 0x08u);
 
     return (4);
 }
@@ -790,6 +791,7 @@ int can_s_vcu_state_unpack(
     dst_p->vcu_r2_d = unpack_right_shift_u8(src_p[3], 0u, 0x01u);
     dst_p->vcu_drs_active = unpack_right_shift_u8(src_p[3], 1u, 0x02u);
     dst_p->vcu_drs_allowed = unpack_right_shift_u8(src_p[3], 2u, 0x04u);
+    dst_p->vcu_power_saving = unpack_right_shift_u8(src_p[3], 3u, 0x08u);
 
     return (0);
 }
@@ -878,6 +880,21 @@ double can_s_vcu_state_vcu_drs_allowed_decode(uint8_t value)
 }
 
 bool can_s_vcu_state_vcu_drs_allowed_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t can_s_vcu_state_vcu_power_saving_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double can_s_vcu_state_vcu_power_saving_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool can_s_vcu_state_vcu_power_saving_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
