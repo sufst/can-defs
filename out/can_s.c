@@ -771,6 +771,7 @@ int can_s_vcu_state_pack(
     dst_p[3] |= pack_left_shift_u8(src_p->vcu_r2_d, 0u, 0x01u);
     dst_p[3] |= pack_left_shift_u8(src_p->vcu_drs_active, 1u, 0x02u);
     dst_p[3] |= pack_left_shift_u8(src_p->vcu_drs_allowed, 2u, 0x04u);
+    dst_p[3] |= pack_left_shift_u8(src_p->vcu_power_saving, 3u, 0x08u);
 
     return (4);
 }
@@ -790,6 +791,7 @@ int can_s_vcu_state_unpack(
     dst_p->vcu_r2_d = unpack_right_shift_u8(src_p[3], 0u, 0x01u);
     dst_p->vcu_drs_active = unpack_right_shift_u8(src_p[3], 1u, 0x02u);
     dst_p->vcu_drs_allowed = unpack_right_shift_u8(src_p[3], 2u, 0x04u);
+    dst_p->vcu_power_saving = unpack_right_shift_u8(src_p[3], 3u, 0x08u);
 
     return (0);
 }
@@ -878,6 +880,21 @@ double can_s_vcu_state_vcu_drs_allowed_decode(uint8_t value)
 }
 
 bool can_s_vcu_state_vcu_drs_allowed_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t can_s_vcu_state_vcu_power_saving_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double can_s_vcu_state_vcu_power_saving_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool can_s_vcu_state_vcu_power_saving_is_in_range(uint8_t value)
 {
     return (value <= 1u);
 }
@@ -1357,4 +1374,87 @@ bool can_s_vcu_error_vcu_canbc_error_is_in_range(uint8_t value)
     (void)value;
 
     return (true);
+}
+
+int can_s_vcu_simulate_init(struct can_s_vcu_simulation_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct can_s_vcu_simulation_t));
+
+    return 0;
+}
+
+int can_s_vcu_simulation_pack(
+    uint8_t *dst_p,
+    const struct can_s_vcu_simulation_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 8);
+
+    dst_p[0] |= pack_left_shift_u8(src_p->multiplexer, 0u, 0xffu);
+
+    switch (src_p->multiplexer) {
+
+    case 0:
+        dst_p[1] |= pack_left_shift_u16(src_p->sim_apps, 0u, 0xffu);
+        dst_p[2] |= pack_right_shift_u16(src_p->sim_apps, 8u, 0xffu);
+        dst_p[3] |= pack_left_shift_u16(src_p->sim_bps, 0u, 0xffu);
+        dst_p[4] |= pack_right_shift_u16(src_p->sim_bps, 8u, 0xffu);
+        dst_p[5] |= pack_left_shift_u16(src_p->sim_torque_request, 0u, 0xffu);
+        dst_p[6] |= pack_right_shift_u16(src_p->sim_torque_request, 8u, 0xffu);
+        dst_p[7] |= pack_left_shift_u8(src_p->sim_r2_d, 0u, 0x01u);
+        dst_p[7] |= pack_left_shift_u8(src_p->sim_ts_on, 1u, 0x02u);
+        break;
+
+    case 1:
+        dst_p[1] |= pack_left_shift_u16(src_p->sim_power, 0u, 0xffu);
+        dst_p[2] |= pack_right_shift_u16(src_p->sim_power, 8u, 0xffu);
+        break;
+
+    default:
+        break;
+    }
+
+    return (8);
+}
+
+int can_s_vcu_simulation_unpack(
+    struct can_s_vcu_simulation_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 8u) {
+        return (-EINVAL);
+    }
+
+    dst_p->multiplexer = unpack_right_shift_u8(src_p[0], 0u, 0xffu);
+
+    switch (dst_p->multiplexer) {
+
+    case 0:
+        dst_p->sim_apps = unpack_right_shift_u16(src_p[1], 0u, 0xffu);
+        dst_p->sim_apps |= unpack_left_shift_u16(src_p[2], 8u, 0xffu);
+        dst_p->sim_bps = unpack_right_shift_u16(src_p[3], 0u, 0xffu);
+        dst_p->sim_bps |= unpack_left_shift_u16(src_p[4], 8u, 0xffu);
+        dst_p->sim_torque_request = unpack_right_shift_u16(src_p[5], 0u, 0xffu);
+        dst_p->sim_torque_request |= unpack_left_shift_u16(src_p[6], 8u, 0xffu);
+        dst_p->sim_r2_d = unpack_right_shift_u8(src_p[7], 0u, 0x01u);
+        dst_p->sim_ts_on = unpack_right_shift_u8(src_p[7], 1u, 0x02u);
+        break;
+
+    case 1:
+        dst_p->sim_power = unpack_right_shift_u16(src_p[1], 0u, 0xffu);
+        dst_p->sim_power |= unpack_left_shift_u16(src_p[2], 8u, 0xffu);
+        break;
+
+    default:
+        break;
+    }
+
+    return (0);
 }
