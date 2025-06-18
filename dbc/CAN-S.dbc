@@ -33,7 +33,7 @@ NS_ :
 
 BS_:
 
-BU_: CAN_NODE_4 CAN_NODE_3 CAN_NODE_2 CAN_NODE_1 CAN_NODE_0 VCU BMS
+BU_: Dash CAN_NODE_4 CAN_NODE_3 CAN_NODE_2 CAN_NODE_1 CAN_NODE_0 VCU BMS
 
 
 BO_ 3221225472 VECTOR__INDEPENDENT_SIG_MSG: 0 Vector__XXX
@@ -42,6 +42,9 @@ BO_ 3221225472 VECTOR__INDEPENDENT_SIG_MSG: 0 Vector__XXX
  SG_ OCT_GPS_HDOP : 0|8@1+ (1,0) [0|256] "" Vector__XXX
  SG_ OCT_GPS_Longitude : 0|32@1- (0.0001,0) [0|1809999999] "" Vector__XXX
  SG_ OCT_GPS_Latitude : 0|31@1- (0.0001,0) [0|909999999] "" Vector__XXX
+
+BO_ 768 Dash_General: 1 Dash
+ SG_ Dash_Reverse : 0|1@1+ (1,0) [0|1] "" Vector__XXX
 
 BO_ 1536 CAN_NODE_0: 8 CAN_NODE_0
  SG_ CAN_NODE_THERM_2 m2 : 16|8@1- (1,0) [-128|127] "°C" Vector__XXX
@@ -350,6 +353,7 @@ BO_ 256 VCU_Sensors: 8 VCU
  SG_ VCU_APPS : 0|16@1+ (0.1,0) [0|100] "%" Vector__XXX
 
 BO_ 257 VCU_State: 4 VCU
+ SG_ VCU_Power_Saving : 27|1@1+ (1,0) [0|1] "" Vector__XXX
  SG_ VCU_Rolling_Counter : 0|16@1+ (1,0) [0|65535] "" Vector__XXX
  SG_ VCU_DRS_Allowed : 26|1@1+ (1,0) [0|1] "" Vector__XXX
  SG_ VCU_DRS_Active : 25|1@1+ (1,0) [0|1] "" Vector__XXX
