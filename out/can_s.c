@@ -112,6 +112,51 @@ static inline uint32_t unpack_right_shift_u32(
     return (uint32_t)((uint32_t)(value & mask) >> shift);
 }
 
+int can_s_dash_general_pack(
+    uint8_t *dst_p,
+    const struct can_s_dash_general_t *src_p,
+    size_t size)
+{
+    if (size < 1u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 1);
+
+    dst_p[0] |= pack_left_shift_u8(src_p->dash_reverse, 0u, 0x01u);
+
+    return (1);
+}
+
+int can_s_dash_general_unpack(
+    struct can_s_dash_general_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 1u) {
+        return (-EINVAL);
+    }
+
+    dst_p->dash_reverse = unpack_right_shift_u8(src_p[0], 0u, 0x01u);
+
+    return (0);
+}
+
+uint8_t can_s_dash_general_dash_reverse_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double can_s_dash_general_dash_reverse_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool can_s_dash_general_dash_reverse_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
 int can_s_oct_gps_stats_pack(
     uint8_t *dst_p,
     const struct can_s_oct_gps_stats_t *src_p,

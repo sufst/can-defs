@@ -44,6 +44,7 @@ extern "C" {
 #endif
 
 /* Frame ids. */
+#define CAN_S_DASH_GENERAL_FRAME_ID (0x300u)
 #define CAN_S_OCT_GPS_STATS_FRAME_ID (0x81u)
 #define CAN_S_OCT_GPS_LAT_LONG_FRAME_ID (0x80u)
 #define CAN_S_VCU_PING_FRAME_ID (0x40u)
@@ -56,6 +57,7 @@ extern "C" {
 #define CAN_S_VCU_TEMPS_FRAME_ID (0x105u)
 
 /* Frame lengths in bytes. */
+#define CAN_S_DASH_GENERAL_LENGTH (1u)
 #define CAN_S_OCT_GPS_STATS_LENGTH (8u)
 #define CAN_S_OCT_GPS_LAT_LONG_LENGTH (8u)
 #define CAN_S_VCU_PING_LENGTH (8u)
@@ -68,6 +70,7 @@ extern "C" {
 #define CAN_S_VCU_ERROR_LENGTH (6u)
 
 /* Extended or standard frame types. */
+#define CAN_S_DASH_GENERAL_IS_EXTENDED (0)
 #define CAN_S_OCT_GPS_STATS_IS_EXTENDED (0)
 #define CAN_S_OCT_GPS_LAT_LONG_IS_EXTENDED (0)
 #define CAN_S_VCU_PING_IS_EXTENDED (0)
@@ -86,6 +89,7 @@ extern "C" {
 
 
 /* Frame Names. */
+#define CAN_S_DASH_GENERAL_NAME "Dash_General"
 #define CAN_S_OCT_GPS_STATS_NAME "OCT_GPS_Stats"
 #define CAN_S_OCT_GPS_LAT_LONG_NAME "OCT_GPS_LatLong"
 #define CAN_S_VCU_PING_NAME "VCU_Ping"
@@ -98,6 +102,7 @@ extern "C" {
 #define CAN_S_VCU_TEMPS_NAME "VCU_Temps"
 
 /* Signal Names. */
+#define CAN_S_DASH_REVERSE "Dash_Reverse"
 #define CAN_S_OCT_GPS_STATS_OCT_GPS_TIME_UCT_NAME "OCT_GPS_TimeUCT"
 #define CAN_S_OCT_GPS_STATS_OCT_GPS_NUM_SATS_NAME "OCT_GPS_NumSats"
 #define CAN_S_OCT_GPS_STATS_OCT_GPS_HDOP_NAME "OCT_GPS_HDOP"
@@ -134,6 +139,21 @@ extern "C" {
  *
  * All signal values are as on the CAN bus.
  */
+
+/**
+ * Signals in message Dash_General.
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct can_s_dash_general_t {
+    /**
+     * Range: 0..1 (0..1 -)
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t dash_reverse;
+};
+
 struct can_s_oct_gps_stats_t {
     /**
      * Range: 0..2400000000 (0..24000000 -)
@@ -409,6 +429,61 @@ struct can_s_vcu_error_t {
      */
     uint8_t vcu_canbc_error;
 };
+
+/**
+ * Pack message Dash_General.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int can_s_dash_general_pack(
+    uint8_t *dst_p,
+    const struct can_s_dash_general_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message Dash_General.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int can_s_dash_general_unpack(
+    struct can_s_dash_general_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t can_s_dash_general_dash_reverse_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double can_s_dash_general_dash_reverse_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool can_s_dash_general_dash_reverse_is_in_range(uint8_t value);
 
 /**
  * Pack message OCT_GPS_Stats.
