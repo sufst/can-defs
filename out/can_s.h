@@ -54,6 +54,8 @@ extern "C" {
 #define CAN_S_VCU_STATE_FRAME_ID (0x101u)
 #define CAN_S_VCU_ERROR_FRAME_ID (0x102u)
 #define CAN_S_VCU_TEMPS_FRAME_ID (0x105u)
+#define CAN_S_MSGID_0_X201_FRAME_ID (0x201u)
+#define CAN_S_MSGID_0_X202_FRAME_ID (0x202u)
 #define CAN_S_VCU_SIMULATION_FRAME_ID (0x106u)
 
 /* Frame lengths in bytes. */
@@ -360,6 +362,13 @@ struct can_s_vcu_state_t {
      * Offset: 0
      */
     uint8_t vcu_drs_allowed;
+
+    /**
+     * Range: 0..1 (0..1 -)
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t vcu_power_saving;
 };
 
 struct can_s_vcu_temps_t {
@@ -435,6 +444,122 @@ struct can_s_vcu_simulation_t
     uint16_t sim_apps;
 
     uint16_t sim_bps;
+};
+
+/**
+ * Signals in message MSGID_0X201.
+ *
+ * This ID Transmits at 8 ms.
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct can_s_msgid_0_x201_t {
+    /**
+     * Range: -
+     * Scale: 0.1
+     * Offset: 0
+     */
+    uint16_t bms_pack_current;
+
+    /**
+     * Range: -
+     * Scale: 0.1
+     * Offset: 0
+     */
+    uint16_t bms_pack_inst_voltage;
+
+    /**
+     * Range: -
+     * Scale: 0.5
+     * Offset: 0
+     */
+    uint8_t bms_pack_soc;
+
+    /**
+     * Range: -
+     * Scale: 0.1
+     * Offset: 0
+     */
+    uint8_t bms_maximum_pack_voltage;
+
+    /**
+     * Range: -
+     * Scale: 0.1
+     * Offset: 0
+     */
+    uint8_t bms_minimum_pack_voltage;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 1721
+     */
+    uint8_t bms_total_pack_cycles;
+};
+
+/**
+ * Signals in message MSGID_0X202.
+ *
+ * This ID Transmits at 8 ms.
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct can_s_msgid_0_x202_t {
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t bms_high_temperature;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t bms_low_temperature;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t bms_average_temperature;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t bms_internal_temperature;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t bms_high_thermistor_id;
+
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t bms_low_thermistor_id;
+
+    /**
+     * Range: -
+     * Scale: 0.0001
+     * Offset: 0
+     */
+    uint8_t bms_maximum_cell_voltage;
+
+    /**
+     * Range: -
+     * Scale: 0.0001
+     * Offset: 0
+     */
+    uint8_t bms_minimum_cell_voltage;
 };
 
 /**
@@ -1365,6 +1490,33 @@ double can_s_vcu_state_vcu_drs_allowed_decode(uint8_t value);
 bool can_s_vcu_state_vcu_drs_allowed_is_in_range(uint8_t value);
 
 /**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t can_s_vcu_state_vcu_power_saving_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double can_s_vcu_state_vcu_power_saving_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool can_s_vcu_state_vcu_power_saving_is_in_range(uint8_t value);
+
+/**
  * Pack message VCU_Error.
  *
  * @param[out] dst_p Buffer to pack the message into.
@@ -1562,6 +1714,440 @@ double can_s_vcu_error_vcu_canbc_error_decode(uint8_t value);
  * @return true if in range, false otherwise.
  */
 bool can_s_vcu_error_vcu_canbc_error_is_in_range(uint8_t value);
+
+/**
+ * Pack message MSGID_0X201.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int can_s_msgid_0_x201_pack(
+    uint8_t *dst_p,
+    const struct can_s_msgid_0_x201_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message MSGID_0X201.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int can_s_msgid_0_x201_unpack(
+    struct can_s_msgid_0_x201_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t can_s_msgid_0_x201_bms_pack_current_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double can_s_msgid_0_x201_bms_pack_current_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool can_s_msgid_0_x201_bms_pack_current_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint16_t can_s_msgid_0_x201_bms_pack_inst_voltage_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double can_s_msgid_0_x201_bms_pack_inst_voltage_decode(uint16_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool can_s_msgid_0_x201_bms_pack_inst_voltage_is_in_range(uint16_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t can_s_msgid_0_x201_bms_pack_soc_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double can_s_msgid_0_x201_bms_pack_soc_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool can_s_msgid_0_x201_bms_pack_soc_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t can_s_msgid_0_x201_bms_maximum_pack_voltage_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double can_s_msgid_0_x201_bms_maximum_pack_voltage_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool can_s_msgid_0_x201_bms_maximum_pack_voltage_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t can_s_msgid_0_x201_bms_minimum_pack_voltage_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double can_s_msgid_0_x201_bms_minimum_pack_voltage_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool can_s_msgid_0_x201_bms_minimum_pack_voltage_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t can_s_msgid_0_x201_bms_total_pack_cycles_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double can_s_msgid_0_x201_bms_total_pack_cycles_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool can_s_msgid_0_x201_bms_total_pack_cycles_is_in_range(uint8_t value);
+
+/**
+ * Pack message MSGID_0X202.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int can_s_msgid_0_x202_pack(
+    uint8_t *dst_p,
+    const struct can_s_msgid_0_x202_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message MSGID_0X202.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int can_s_msgid_0_x202_unpack(
+    struct can_s_msgid_0_x202_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t can_s_msgid_0_x202_bms_high_temperature_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double can_s_msgid_0_x202_bms_high_temperature_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool can_s_msgid_0_x202_bms_high_temperature_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t can_s_msgid_0_x202_bms_low_temperature_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double can_s_msgid_0_x202_bms_low_temperature_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool can_s_msgid_0_x202_bms_low_temperature_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t can_s_msgid_0_x202_bms_average_temperature_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double can_s_msgid_0_x202_bms_average_temperature_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool can_s_msgid_0_x202_bms_average_temperature_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t can_s_msgid_0_x202_bms_internal_temperature_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double can_s_msgid_0_x202_bms_internal_temperature_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool can_s_msgid_0_x202_bms_internal_temperature_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t can_s_msgid_0_x202_bms_high_thermistor_id_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double can_s_msgid_0_x202_bms_high_thermistor_id_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool can_s_msgid_0_x202_bms_high_thermistor_id_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t can_s_msgid_0_x202_bms_low_thermistor_id_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double can_s_msgid_0_x202_bms_low_thermistor_id_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool can_s_msgid_0_x202_bms_low_thermistor_id_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t can_s_msgid_0_x202_bms_maximum_cell_voltage_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double can_s_msgid_0_x202_bms_maximum_cell_voltage_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool can_s_msgid_0_x202_bms_maximum_cell_voltage_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t can_s_msgid_0_x202_bms_minimum_cell_voltage_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double can_s_msgid_0_x202_bms_minimum_cell_voltage_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool can_s_msgid_0_x202_bms_minimum_cell_voltage_is_in_range(uint8_t value);
 
 int can_s_vcu_simulation_unpack(
     struct can_s_vcu_simulation_t *dst_p,
