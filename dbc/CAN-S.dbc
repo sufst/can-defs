@@ -44,18 +44,18 @@ BO_ 3221225472 VECTOR__INDEPENDENT_SIG_MSG: 0 Vector__XXX
  SG_ OCT_GPS_Latitude : 0|31@1- (0.0001,0) [0|909999999] "" Vector__XXX
 
 BO_ 1616 SB_Strain: 6 SENSOR_BOARD
- SG_ SB_Strain_9 m9 : 4|32@1- (1,0) [-0.004|0.004] "m/m" Vector__XXX
- SG_ SB_Strain_8 m8 : 4|32@1- (1,0) [-0.004|0.004] "m/m" Vector__XXX
- SG_ SB_Strain_7 m7 : 4|32@1- (1,0) [-0.004|0.004] "m/m" Vector__XXX
- SG_ SB_Strain_6 m6 : 4|32@1- (1,0) [-0.004|0.004] "m/m" Vector__XXX
- SG_ SB_Strain_5 m5 : 4|32@1- (1,0) [-0.004|0.004] "m/m" Vector__XXX
- SG_ SB_Strain_4 m4 : 4|32@1- (1,0) [-0.004|0.004] "m/m" Vector__XXX
- SG_ SB_Strain_3 m3 : 4|32@1- (1,0) [-0.004|0.004] "m/m" Vector__XXX
- SG_ SB_Strain_2 m2 : 4|32@1- (1,0) [-0.004|0.004] "m/m" Vector__XXX
- SG_ SB_Strain_12 m12 : 4|32@1- (1,0) [-0.004|0.004] "m/m" Vector__XXX
- SG_ SB_Strain_11 m11 : 4|32@1- (1,0) [-0.004|0.004] "m/m" Vector__XXX
- SG_ SB_Strain_10 m10 : 4|32@1- (1,0) [-0.004|0.004] "m/m" Vector__XXX
- SG_ SB_Strain_1 m1 : 4|32@1- (1,0) [-0.004|0.004] "m/m" Vector__XXX
+ SG_ SB_Strain_9 m9 : 8|16@1+ (1.953125E-06,-0.004) [-0.004|0.123998046875] "m/m" Vector__XXX
+ SG_ SB_Strain_8 m8 : 8|16@1+ (1.953125E-06,-0.004) [-0.004|0.123998046875] "m/m" Vector__XXX
+ SG_ SB_Strain_7 m7 : 8|16@1+ (1.953125E-06,-0.004) [-0.004|0.123998046875] "m/m" Vector__XXX
+ SG_ SB_Strain_6 m6 : 8|16@1+ (1.953125E-06,-0.004) [-0.004|0.123998046875] "m/m" Vector__XXX
+ SG_ SB_Strain_5 m5 : 8|16@1+ (1.953125E-06,-0.004) [-0.004|0.123998046875] "m/m" Vector__XXX
+ SG_ SB_Strain_4 m4 : 8|16@1+ (1.953125E-06,-0.004) [-0.004|0.123998046875] "m/m" Vector__XXX
+ SG_ SB_Strain_3 m3 : 8|16@1+ (1.953125E-06,-0.004) [-0.004|0.123998046875] "m/m" Vector__XXX
+ SG_ SB_Strain_2 m2 : 8|16@1+ (1.953125E-06,-0.004) [-0.004|0.123998046875] "m/m" Vector__XXX
+ SG_ SB_Strain_12 m12 : 8|16@1+ (1.953125E-06,-0.004) [-0.004|0.123998046875] "m/m" Vector__XXX
+ SG_ SB_Strain_11 m11 : 8|16@1+ (1.953125E-06,-0.004) [-0.004|0.123998046875] "m/m" Vector__XXX
+ SG_ SB_Strain_10 m10 : 8|16@1+ (1.953125E-06,-0.004) [-0.004|0.123998046875] "m/m" Vector__XXX
+ SG_ SB_Strain_1 m1 : 8|16@1+ (1.953125E-06,-0.004) [-0.004|0.123998046875] "m/m" Vector__XXX
  SG_ SB_Strain_multiplexor M : 0|4@1- (1,0) [0|12] "Num" Vector__XXX
 
 BO_ 1536 CAN_NODE_0: 8 CAN_NODE_0
@@ -458,16 +458,4 @@ BA_DEF_ BO_  "OCT_ENABLE" ENUM  "False","True";
 BA_DEF_DEF_  "BusType" "CAN";
 BA_DEF_DEF_  "OCT_PDU_ID" 0;
 BA_DEF_DEF_  "OCT_ENABLE" "False";
-SIG_VALTYPE_ 1616 SB_Strain_9 : 1;
-SIG_VALTYPE_ 1616 SB_Strain_8 : 1;
-SIG_VALTYPE_ 1616 SB_Strain_7 : 1;
-SIG_VALTYPE_ 1616 SB_Strain_6 : 1;
-SIG_VALTYPE_ 1616 SB_Strain_5 : 1;
-SIG_VALTYPE_ 1616 SB_Strain_4 : 1;
-SIG_VALTYPE_ 1616 SB_Strain_3 : 1;
-SIG_VALTYPE_ 1616 SB_Strain_2 : 1;
-SIG_VALTYPE_ 1616 SB_Strain_12 : 1;
-SIG_VALTYPE_ 1616 SB_Strain_11 : 1;
-SIG_VALTYPE_ 1616 SB_Strain_10 : 1;
-SIG_VALTYPE_ 1616 SB_Strain_1 : 1;
 
