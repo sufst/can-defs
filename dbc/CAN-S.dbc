@@ -56,7 +56,7 @@ BO_ 1616 SB_Strain: 3 SENSOR_BOARD
  SG_ SB_Strain_11 m11 : 8|16@1+ (1.953125E-06,-0.004) [-0.004|0.123998046875] "m/m" Vector__XXX
  SG_ SB_Strain_10 m10 : 8|16@1+ (1.953125E-06,-0.004) [-0.004|0.123998046875] "m/m" Vector__XXX
  SG_ SB_Strain_1 m1 : 8|16@1+ (1.953125E-06,-0.004) [-0.004|0.123998046875] "m/m" Vector__XXX
- SG_ SB_Strain_multiplexor M : 0|4@1- (1,0) [0|12] "Num" Vector__XXX
+ SG_ SB_Strain_multiplexor M : 0|4@1+ (1,0) [0|15] "Num" Vector__XXX
 
 BO_ 1536 CAN_NODE_0: 8 CAN_NODE_0
  SG_ CAN_NODE_THERM_2 m2 : 16|8@1- (1,0) [-128|127] "°C" Vector__XXX
