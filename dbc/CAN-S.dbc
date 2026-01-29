@@ -33,7 +33,11 @@ NS_ :
 
 BS_:
 
-BU_: CAN_NODE_4 CAN_NODE_3 CAN_NODE_2 CAN_NODE_1 CAN_NODE_0 VCU BMS
+BU_: LV_BMS CAN_NODE_4 CAN_NODE_3 CAN_NODE_2 CAN_NODE_1 CAN_NODE_0 VCU BMS
+VAL_TABLE_ LV_BMS_Shutdown_Reason 8 "LV_BMS_SD_REASON_WDT" 7 "LV_BMS_SD_REASON_OVER_CURR" 6 "LV_BMS_SD_REASON_OVER_TEMP" 5 "LV_BMS_SD_REASON_UNDER_TEMP" 4 "LV_BMS_SD_REASON_OVER_V" 3 "LV_BMS_SD_REASON_UNDER_V" 2 "LV_BMS_SD_REASON_CHARGE_DONE" 1 "LV_BMS_SD_REASON_TIMER" 0 "LV_BMS_SD_REASON_NONE" ;
+VAL_TABLE_ LV_BMS_Lockout_Reason 255 "LV_BMS_Lockout_None" 7 "LV_BMS_Lockout_Measure_Fault" 6 "LV_BMS_Lockout_Comm_Fault" 5 "LV_BMS_Lockout_Overcurrent" 4 "LV_BMS_Lockout_Undertemp" 3 "LV_BMS_Lockout_Overtemp" 2 "LV_BMS_Lockout_Undervolt" 1 "LV_BMS_Lockout_Overvolt" ;
+VAL_TABLE_ LV_BMS_Critical_Byte 3 "Critical_Current" 2 "Critical_Temp" 1 "Critical_Voltage" 0 "." ;
+VAL_TABLE_ LV_BMS_status 5 "LV_BMS Locked Out" 4 "LV_BMS Full" 3 "LV_BMS Empty" 2 "LV_BMS Charging" 1 "LV_BMS Discharging" 0 "LV_BMS Powered Down" ;
 
 
 BO_ 3221225472 VECTOR__INDEPENDENT_SIG_MSG: 0 Vector__XXX
@@ -42,6 +46,49 @@ BO_ 3221225472 VECTOR__INDEPENDENT_SIG_MSG: 0 Vector__XXX
  SG_ OCT_GPS_HDOP : 0|8@1+ (1,0) [0|256] "" Vector__XXX
  SG_ OCT_GPS_Longitude : 0|32@1- (0.0001,0) [0|1809999999] "" Vector__XXX
  SG_ OCT_GPS_Latitude : 0|31@1- (0.0001,0) [0|909999999] "" Vector__XXX
+
+BO_ 7 LV_BMS_Shutdown_Reason: 4 LV_BMS
+ SG_ LV_BMS_Shutdown_Voltage : 16|16@1+ (0.000977,0) [0|0] "V" Vector__XXX
+ SG_ LV_BMS_Shutdown_Value : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LV_BMS_Shutdown_Temperature : 16|8@1- (1,0) [0|0] "'C" Vector__XXX
+ SG_ LV_BMS_Shutdown_Current : 16|16@1- (0.001953125,0) [0|0] "A" Vector__XXX
+ SG_ LV_BMS_Shutdown_Cell : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LV_BMS_Shutdown_Byte : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 6 LV_BMS_Battery_Locked_Out: 4 LV_BMS
+ SG_ LV_BMS_Lockout_Value : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LV_BMS_Lockout_Cell : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LV_BMS_Lockout_Reason : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 5 LV_BMS_Critical_Warning: 4 LV_BMS
+ SG_ LV_BMS_Critical_Temperature : 16|8@1- (1,0) [0|0] "'C" Vector__XXX
+ SG_ LV_BMS_Critical_Current : 16|16@1- (0.001953125,0) [0|0] "A" Vector__XXX
+ SG_ LV_BMS_Critical_Voltage : 16|16@1+ (0.000977,0) [0|0] "V" Vector__XXX
+ SG_ LV_BMS_Critical_Value : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LV_BMS_Critical_Cell : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LV_BMS_Critical_Byte : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 4 LV_BMS_Almost_Empty_Warning: 0 LV_BMS
+
+BO_ 3 LV_BMS_Battery_Status: 8 LV_BMS
+ SG_ LV_BMS_Lockout_Count : 48|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LV_BMS_Shutdown_Count : 32|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LV_BMS_Charge_Cycle_Count : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ LV_BMS_SOC : 8|8@1+ (1,0) [0|100] "%" Vector__XXX
+ SG_ LV_BMS_Status : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 2 LV_BMS_Battery_Current: 2 LV_BMS
+ SG_ LV_BMS_Current : 0|16@1- (0.001953125,0) [0|0] "A" Vector__XXX
+
+BO_ 1 LV_BMS_Cell_Temperatures: 3 LV_BMS
+ SG_ LV_BMS_Cell_3_Temperature : 16|8@1- (1,0) [0|0] "'C" Vector__XXX
+ SG_ LV_BMS_Cell_2_Temperature : 8|8@1- (1,0) [0|0] "'C" Vector__XXX
+ SG_ LV_BMS_Cell_1_Temperature : 0|8@1- (1,0) [0|0] "'C" Vector__XXX
+
+BO_ 0 LV_BMS_Cell_Voltages: 6 LV_BMS
+ SG_ LV_BMS_Cell_3_Volltage : 32|16@1+ (0.000977,0) [0|0] "V" Vector__XXX
+ SG_ LV_BMS_Cell_2_Volltage : 16|16@1+ (0.000977,0) [0|0] "V" Vector__XXX
+ SG_ LV_BMS_Cell_1_Volltage : 0|16@1+ (0.000977,0) [0|0] "V" Vector__XXX
 
 BO_ 1536 CAN_NODE_0: 8 CAN_NODE_0
  SG_ CAN_NODE_THERM_2 m2 : 16|8@1- (1,0) [-128|127] "°C" Vector__XXX
@@ -443,4 +490,8 @@ BA_DEF_ BO_  "OCT_ENABLE" ENUM  "False","True";
 BA_DEF_DEF_  "BusType" "CAN";
 BA_DEF_DEF_  "OCT_PDU_ID" 0;
 BA_DEF_DEF_  "OCT_ENABLE" "False";
+VAL_ 7 LV_BMS_Shutdown_Byte 8 "LV_BMS_SD_REASON_WDT" 7 "LV_BMS_SD_REASON_OVER_CURR" 6 "LV_BMS_SD_REASON_OVER_TEMP" 5 "LV_BMS_SD_REASON_UNDER_TEMP" 4 "LV_BMS_SD_REASON_OVER_V" 3 "LV_BMS_SD_REASON_UNDER_V" 2 "LV_BMS_SD_REASON_CHARGE_DONE" 1 "LV_BMS_SD_REASON_TIMER" 0 "LV_BMS_SD_REASON_NONE" ;
+VAL_ 6 LV_BMS_Lockout_Reason 255 "LV_BMS_Lockout_None" 7 "LV_BMS_Lockout_Measure_Fault" 6 "LV_BMS_Lockout_Comm_Fault" 5 "LV_BMS_Lockout_Overcurrent" 4 "LV_BMS_Lockout_Undertemp" 3 "LV_BMS_Lockout_Overtemp" 2 "LV_BMS_Lockout_Undervolt" 1 "LV_BMS_Lockout_Overvolt" ;
+VAL_ 5 LV_BMS_Critical_Byte 3 "Critical_Current" 2 "Critical_Temp" 1 "Critical_Voltage" 0 "." ;
+VAL_ 3 LV_BMS_Status 5 "LV_BMS Locked Out" 4 "LV_BMS Full" 3 "LV_BMS Empty" 2 "LV_BMS Charging" 1 "LV_BMS Discharging" 0 "LV_BMS Powered Down" ;
 
