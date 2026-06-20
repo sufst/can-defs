@@ -33,8 +33,7 @@ NS_ :
 
 BS_:
 
-BU_: CAN_NODE_4 CAN_NODE_3 CAN_NODE_2 CAN_NODE_1 CAN_NODE_0 VCU BMS
-
+BU_: VCU BMS DASH_SENSORS LV_BOX PEDAL_BOX REAR_BOX
 
 BO_ 3221225472 VECTOR__INDEPENDENT_SIG_MSG: 0 Vector__XXX
  SG_ OCT_GPS_TimeUCT : 0|25@1+ (0.01,0) [0|24000000] "" Vector__XXX
@@ -42,81 +41,6 @@ BO_ 3221225472 VECTOR__INDEPENDENT_SIG_MSG: 0 Vector__XXX
  SG_ OCT_GPS_HDOP : 0|8@1+ (1,0) [0|256] "" Vector__XXX
  SG_ OCT_GPS_Longitude : 0|32@1- (0.0001,0) [0|1809999999] "" Vector__XXX
  SG_ OCT_GPS_Latitude : 0|31@1- (0.0001,0) [0|909999999] "" Vector__XXX
-
-BO_ 1536 CAN_NODE_0: 8 CAN_NODE_0
- SG_ CAN_NODE_THERM_2 m2 : 16|8@1- (1,0) [-128|127] "°C" Vector__XXX
- SG_ CAN_NODE_THERM_1 m2 : 8|8@1- (1,0) [-128|127] "°C" Vector__XXX
- SG_ CAN_NODE_PD_9 m1 : 40|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_8 m1 : 28|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_7 m1 : 16|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_6 m1 : 4|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_5 m0 : 52|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_4 m0 : 40|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_3 m0 : 28|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_2 m0 : 16|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_10 m1 : 52|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_1 m0 : 4|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_multiplexor M : 0|4@1+ (1,0) [0|15] "" Vector__XXX
-
-BO_ 1537 CAN_NODE_1: 8 CAN_NODE_1
- SG_ CAN_NODE_THERM_2 m2 : 16|8@1- (1,0) [-128|127] "°C" Vector__XXX
- SG_ CAN_NODE_THERM_1 m2 : 8|8@1- (1,0) [-128|127] "°C" Vector__XXX
- SG_ CAN_NODE_PD_9 m1 : 40|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_8 m1 : 28|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_7 m1 : 16|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_6 m1 : 4|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_5 m0 : 52|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_4 m0 : 40|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_3 m0 : 28|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_2 m0 : 16|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_10 m1 : 52|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_1 m0 : 4|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_multiplexor M : 0|4@1+ (1,0) [0|15] "" Vector__XXX
-
-BO_ 1538 CAN_NODE_2: 8 CAN_NODE_2
- SG_ CAN_NODE_THERM_2 m2 : 16|8@1- (1,0) [-128|127] "°C" Vector__XXX
- SG_ CAN_NODE_THERM_1 m2 : 8|8@1- (1,0) [-128|127] "°C" Vector__XXX
- SG_ CAN_NODE_PD_9 m1 : 40|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_8 m1 : 28|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_7 m1 : 16|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_6 m1 : 4|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_5 m0 : 52|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_4 m0 : 40|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_3 m0 : 28|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_2 m0 : 16|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_10 m1 : 52|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_1 m0 : 4|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_multiplexor M : 0|4@1+ (1,0) [0|15] "" Vector__XXX
-
-BO_ 1539 CAN_NODE_3: 8 CAN_NODE_3
- SG_ CAN_NODE_THERM_2 m2 : 16|8@1- (1,0) [-128|127] "°C" Vector__XXX
- SG_ CAN_NODE_THERM_1 m2 : 8|8@1- (1,0) [-128|127] "°C" Vector__XXX
- SG_ CAN_NODE_PD_9 m1 : 40|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_8 m1 : 28|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_7 m1 : 16|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_6 m1 : 4|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_5 m0 : 52|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_4 m0 : 40|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_3 m0 : 28|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_2 m0 : 16|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_10 m1 : 52|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_1 m0 : 4|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_multiplexor M : 0|4@1+ (1,0) [0|15] "" Vector__XXX
-
-BO_ 1540 CAN_NODE_4: 8 CAN_NODE_4
- SG_ CAN_NODE_THERM_2 m2 : 16|8@1- (1,0) [-128|127] "°C" Vector__XXX
- SG_ CAN_NODE_THERM_1 m2 : 8|8@1- (1,0) [-128|127] "°C" Vector__XXX
- SG_ CAN_NODE_PD_9 m1 : 40|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_8 m1 : 28|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_7 m1 : 16|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_6 m1 : 4|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_5 m0 : 52|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_4 m0 : 40|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_3 m0 : 28|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_2 m0 : 16|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_10 m1 : 52|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_PD_1 m0 : 4|12@1+ (0.00402832,0) [0|16.4959704] "V" Vector__XXX
- SG_ CAN_NODE_multiplexor M : 0|4@1+ (1,0) [0|15] "" Vector__XXX
 
 BO_ 261 VCU_Temps: 8 Vector__XXX
  SG_ VCU_Max_Temp : 0|8@1- (1,0) [-128|127] "Celsius" Vector__XXX
@@ -338,10 +262,10 @@ BO_ 65 VCU_Ping_Ack: 8 VCU
 BO_ 66 VCU_TS_On: 8 VCU
 
 BO_ 260 VCU_PDM: 8 VCU
- SG_ VCU_Inverter_Enable : 0|8@1+ (1,0) [0|1] "On/Off" Vector__XXX
- SG_ VCU_Brakelight_Enable : 8|8@1+ (1,0) [0|1] "On/Off" Vector__XXX
- SG_ VCU_Pump_Enable : 16|8@1+ (1,0) [0|1] "On/Off" Vector__XXX
- SG_ VCU_Fan_Enable : 24|8@1+ (1,0) [0|1] "On/Off" Vector__XXX
+ SG_ Inverter : 0|8@1+ (1,0) [0|1] "On/Off" Vector__XXX
+ SG_ Brakelight : 8|8@1+ (1,0) [0|1] "On/Off" Vector__XXX
+ SG_ Pump : 16|8@1+ (1,0) [0|1] "On/Off" Vector__XXX
+ SG_ Fan : 24|8@1+ (1,0) [0|1] "On/Off" Vector__XXX
 
 BO_ 256 VCU_Sensors: 8 VCU
  SG_ VCU_Torque_Request : 48|16@1+ (0.1,0) [0|6553.5] "Nm" Vector__XXX
@@ -427,6 +351,146 @@ BO_ 515 MSGID_0X203: 7 BMS
 
 
 
+BO_ 1648 PEDAL_BOX_ANALOG: 3 PEDAL_BOX
+ SG_ DAMPER_FL : 0|12@1+ (0.0008058608058608059,0) [0|3.3] "V" Vector__XXX
+ SG_ DAMPER_FR : 12|12@1+ (0.0008058608058608059,0) [0|3.3] "V" Vector__XXX
+
+BO_ 1653 PEDAL_BOX_DIGITAL: 1 PEDAL_BOX
+ SG_ BSPD_STATUS : 0|1@1+ (1,0) [0|1] "bool" Vector__XXX
+ SG_ GPS_PPS : 1|1@1+ (1,0) [0|1] "bool" Vector__XXX
+
+BO_ 1654 PEDAL_BOX_IMU_ACCEL: 6 PEDAL_BOX
+ SG_ PEDAL_BOX_ACCEL_X : 0|16@1- (0.000122,0) [-4|4] "g" Vector__XXX
+ SG_ PEDAL_BOX_ACCEL_Y : 16|16@1- (0.000122,0) [-4|4] "g" Vector__XXX
+ SG_ PEDAL_BOX_ACCEL_Z : 32|16@1- (0.000122,0) [-4|4] "g" Vector__XXX
+
+BO_ 1655 PEDAL_BOX_IMU_GYRO: 6 PEDAL_BOX
+ SG_ PEDAL_BOX_GYRO_X : 0|16@1- (0.0175,0) [-500|500] "dps" Vector__XXX
+ SG_ PEDAL_BOX_GYRO_Y : 16|16@1- (0.0175,0) [-500|500] "dps" Vector__XXX
+ SG_ PEDAL_BOX_GYRO_Z : 32|16@1- (0.0175,0) [-500|500] "dps" Vector__XXX
+
+BO_ 1656 PEDAL_BOX_TEMP: 4 PEDAL_BOX
+ SG_ PEDAL_BOX_IMU_TEMP : 0|16@1- (0.00390625,25) [-40|85] "degC" Vector__XXX
+ SG_ PEDAL_BOX_AMBIENT_TEMP : 16|16@1- (0.0625,0) [-55|125] "degC" Vector__XXX
+
+BO_ 1657 PEDAL_BOX_STATUS: 1 PEDAL_BOX
+ SG_ PEDAL_BOX_ISM330_OK : 0|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ PEDAL_BOX_MCP9800_OK : 1|1@1+ (1,0) [0|1] "" Vector__XXX
+
+BO_ 1664 DASH_SENSORS_ANALOG: 6 DASH_SENSORS
+ SG_ DASH_THERM_1 : 0|12@1+ (0.0008058608058608059,0) [0|3.3] "V" Vector__XXX
+ SG_ DASH_THERM_2 : 12|12@1+ (0.0008058608058608059,0) [0|3.3] "V" Vector__XXX
+ SG_ DASH_THERM_3 : 24|12@1+ (0.0008058608058608059,0) [0|3.3] "V" Vector__XXX
+ SG_ DASH_THERM_4 : 36|12@1+ (0.0008058608058608059,0) [0|3.3] "V" Vector__XXX
+
+BO_ 1669 DASH_SENSORS_DIGITAL: 2 DASH_SENSORS
+ SG_ MPDM_PERF_GOOD : 0|1@1+ (1,0) [0|1] "bool" Vector__XXX
+ SG_ HUB_DASHBOX_VS : 1|1@1+ (1,0) [0|1] "bool" Vector__XXX
+ SG_ MPDM_PERF_SCS : 2|1@1+ (1,0) [0|1] "bool" Vector__XXX
+ SG_ MPDM_8V_GOOD : 3|1@1+ (1,0) [0|1] "bool" Vector__XXX
+ SG_ TAP_BOTS : 4|1@1+ (1,0) [0|1] "bool" Vector__XXX
+ SG_ TAP_ESTOP : 5|1@1+ (1,0) [0|1] "bool" Vector__XXX
+ SG_ VCU_RTDS_STATE : 6|1@1+ (1,0) [0|1] "bool" Vector__XXX
+ SG_ TAP_SDC_INERTIA : 7|1@1+ (1,0) [0|1] "bool" Vector__XXX
+ SG_ FAN_SWITCH : 8|1@1+ (1,0) [0|1] "bool" Vector__XXX
+
+BO_ 1670 DASH_SENSORS_IMU_ACCEL: 6 DASH_SENSORS
+ SG_ DASH_SENSORS_ACCEL_X : 0|16@1- (0.000122,0) [-4|4] "g" Vector__XXX
+ SG_ DASH_SENSORS_ACCEL_Y : 16|16@1- (0.000122,0) [-4|4] "g" Vector__XXX
+ SG_ DASH_SENSORS_ACCEL_Z : 32|16@1- (0.000122,0) [-4|4] "g" Vector__XXX
+
+BO_ 1671 DASH_SENSORS_IMU_GYRO: 6 DASH_SENSORS
+ SG_ DASH_SENSORS_GYRO_X : 0|16@1- (0.0175,0) [-500|500] "dps" Vector__XXX
+ SG_ DASH_SENSORS_GYRO_Y : 16|16@1- (0.0175,0) [-500|500] "dps" Vector__XXX
+ SG_ DASH_SENSORS_GYRO_Z : 32|16@1- (0.0175,0) [-500|500] "dps" Vector__XXX
+
+BO_ 1672 DASH_SENSORS_TEMP: 4 DASH_SENSORS
+ SG_ DASH_SENSORS_IMU_TEMP : 0|16@1- (0.00390625,25) [-40|85] "degC" Vector__XXX
+ SG_ DASH_SENSORS_AMBIENT_TEMP : 16|16@1- (0.0625,0) [-55|125] "degC" Vector__XXX
+
+BO_ 1673 DASH_SENSORS_STATUS: 1 DASH_SENSORS
+ SG_ DASH_SENSORS_ISM330_OK : 0|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ DASH_SENSORS_MCP9800_OK : 1|1@1+ (1,0) [0|1] "" Vector__XXX
+
+BO_ 1680 REAR_BOX_ANALOG_1: 8 REAR_BOX
+ SG_ DAMPER_RL : 0|12@1+ (0.0008058608058608059,0) [0|3.3] "V" Vector__XXX
+ SG_ DAMPER_RR : 12|12@1+ (0.0008058608058608059,0) [0|3.3] "V" Vector__XXX
+ SG_ COOLANT_TEMP_L_IN : 24|12@1+ (0.0008058608058608059,0) [0|3.3] "V" Vector__XXX
+ SG_ COOLANT_TEMP_L_OUT : 36|12@1+ (0.0008058608058608059,0) [0|3.3] "V" Vector__XXX
+ SG_ COOLANT_TEMP_R_IN : 48|12@1+ (0.0008058608058608059,0) [0|3.3] "V" Vector__XXX
+
+BO_ 1681 REAR_BOX_ANALOG_2: 2 REAR_BOX
+ SG_ COOLANT_TEMP_R_OUT : 0|12@1+ (0.0008058608058608059,0) [0|3.3] "V" Vector__XXX
+
+BO_ 1685 REAR_BOX_DIGITAL: 1 REAR_BOX
+ SG_ FAN_L_TACH : 0|1@1+ (1,0) [0|1] "bool" Vector__XXX
+ SG_ FAN_R_TACH : 1|1@1+ (1,0) [0|1] "bool" Vector__XXX
+
+BO_ 1686 REAR_BOX_IMU_ACCEL: 6 REAR_BOX
+ SG_ REAR_BOX_ACCEL_X : 0|16@1- (0.000122,0) [-4|4] "g" Vector__XXX
+ SG_ REAR_BOX_ACCEL_Y : 16|16@1- (0.000122,0) [-4|4] "g" Vector__XXX
+ SG_ REAR_BOX_ACCEL_Z : 32|16@1- (0.000122,0) [-4|4] "g" Vector__XXX
+
+BO_ 1687 REAR_BOX_IMU_GYRO: 6 REAR_BOX
+ SG_ REAR_BOX_GYRO_X : 0|16@1- (0.0175,0) [-500|500] "dps" Vector__XXX
+ SG_ REAR_BOX_GYRO_Y : 16|16@1- (0.0175,0) [-500|500] "dps" Vector__XXX
+ SG_ REAR_BOX_GYRO_Z : 32|16@1- (0.0175,0) [-500|500] "dps" Vector__XXX
+
+BO_ 1688 REAR_BOX_TEMP: 4 REAR_BOX
+ SG_ REAR_BOX_IMU_TEMP : 0|16@1- (0.00390625,25) [-40|85] "degC" Vector__XXX
+ SG_ REAR_BOX_AMBIENT_TEMP : 16|16@1- (0.0625,0) [-55|125] "degC" Vector__XXX
+
+BO_ 1689 REAR_BOX_STATUS: 1 REAR_BOX
+ SG_ REAR_BOX_ISM330_OK : 0|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ REAR_BOX_MCP9800_OK : 1|1@1+ (1,0) [0|1] "" Vector__XXX
+
+BO_ 1696 LV_BOX_ANALOG: 3 LV_BOX
+ SG_ LVBOX_PWR : 0|12@1+ (0.0008058608058608059,0) [0|3.3] "V" Vector__XXX
+ SG_ TSAL_PWR : 12|12@1+ (0.0008058608058608059,0) [0|3.3] "V" Vector__XXX
+
+BO_ 1701 LV_BOX_DIGITAL: 1 LV_BOX
+ SG_ TAP_ESTOPS : 0|1@1+ (1,0) [0|1] "bool" Vector__XXX
+ SG_ IMD_FAULT : 1|1@1+ (1,0) [0|1] "bool" Vector__XXX
+ SG_ AMS_FAULT : 2|1@1+ (1,0) [0|1] "bool" Vector__XXX
+ SG_ TS_DETECTED : 3|1@1+ (1,0) [0|1] "bool" Vector__XXX
+ SG_ TAP_LATCHING : 4|1@1+ (1,0) [0|1] "bool" Vector__XXX
+ SG_ TAP_HVD : 5|1@1+ (1,0) [0|1] "bool" Vector__XXX
+
+BO_ 1702 LV_BOX_IMU_ACCEL: 6 LV_BOX
+ SG_ LV_BOX_ACCEL_X : 0|16@1- (0.000122,0) [-4|4] "g" Vector__XXX
+ SG_ LV_BOX_ACCEL_Y : 16|16@1- (0.000122,0) [-4|4] "g" Vector__XXX
+ SG_ LV_BOX_ACCEL_Z : 32|16@1- (0.000122,0) [-4|4] "g" Vector__XXX
+
+BO_ 1703 LV_BOX_IMU_GYRO: 6 LV_BOX
+ SG_ LV_BOX_GYRO_X : 0|16@1- (0.0175,0) [-500|500] "dps" Vector__XXX
+ SG_ LV_BOX_GYRO_Y : 16|16@1- (0.0175,0) [-500|500] "dps" Vector__XXX
+ SG_ LV_BOX_GYRO_Z : 32|16@1- (0.0175,0) [-500|500] "dps" Vector__XXX
+
+BO_ 1704 LV_BOX_TEMP: 4 LV_BOX
+ SG_ LV_BOX_IMU_TEMP : 0|16@1- (0.00390625,25) [-40|85] "degC" Vector__XXX
+ SG_ LV_BOX_AMBIENT_TEMP : 16|16@1- (0.0625,0) [-55|125] "degC" Vector__XXX
+
+BO_ 1705 LV_BOX_STATUS: 1 LV_BOX
+ SG_ LV_BOX_ISM330_OK : 0|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ LV_BOX_MCP9800_OK : 1|1@1+ (1,0) [0|1] "" Vector__XXX
+
+BO_ 384 P8A_CH1_4: 8 Vector__XXX
+ SG_ CH1 : 7|16@0+ (0.01,600) [600|1255.35] "mBar" Vector__XXX
+ SG_ CH2 : 23|16@0+ (0.01,600) [600|1255.35] "mBar" Vector__XXX
+ SG_ CH3 : 39|16@0+ (0.01,600) [600|1255.35] "mBar" Vector__XXX
+ SG_ CH4 : 55|16@0+ (0.01,600) [600|1255.35] "mBar" Vector__XXX
+
+BO_ 385 P8A_CH5_8: 8 Vector__XXX
+ SG_ CH5 : 7|16@0+ (0.01,600) [600|1255.35] "mBar" Vector__XXX
+ SG_ CH6 : 23|16@0+ (0.01,600) [600|1255.35] "mBar" Vector__XXX
+ SG_ CH7 : 39|16@0+ (0.01,600) [600|1255.35] "mBar" Vector__XXX
+ SG_ CH8 : 55|16@0+ (0.01,600) [600|1255.35] "mBar" Vector__XXX
+
+BO_ 386 P8A_SlowRow: 8 Vector__XXX
+ SG_ P8A_Temperature : 7|8@0- (1,0) [-128|127] "C" Vector__XXX
+ SG_ P8A_SensorNumber : 15|16@0+ (1,0) [0|65535] "" Vector__XXX
+ SG_ P8A_Range : 31|8@0+ (1,0) [0|255] "" Vector__XXX
+
 CM_ BU_ VCU "SUFST vehicle control unit";
 CM_ BO_ 3221225472 "This is a message for not used signals, created by Vector CANdb++ DBC OLE DB Provider.";
 CM_ BO_ 64 "Ping the VCU";
@@ -438,9 +502,9 @@ CM_ BO_ 513 "This ID Transmits at 8 ms.";
 CM_ BO_ 514 "This ID Transmits at 8 ms.";
 CM_ BO_ 515 "This ID Transmits at 8 ms.";
 BA_DEF_  "BusType" STRING ;
-BA_DEF_ BO_  "OCT_PDU_ID" INT 0 0;
-BA_DEF_ BO_  "OCT_ENABLE" ENUM  "False","True";
+BA_DEF_ SG_  "GenSigStartValue" FLOAT -3.4E+038 3.4E+038;
 BA_DEF_DEF_  "BusType" "CAN";
-BA_DEF_DEF_  "OCT_PDU_ID" 0;
-BA_DEF_DEF_  "OCT_ENABLE" "False";
+BA_DEF_DEF_  "GenSigStartValue" 0;
+
+BA_ "GenSigStartValue" SG_ 386 P8A_SensorNumber 600;
 
