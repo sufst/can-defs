@@ -298,14 +298,14 @@ BO_ 258 VCU_Error: 6 VCU
  SG_ VCU_SCS_Error : 8|8@1+ (1,0) [0|255] "" Vector__XXX
  SG_ VCU_CTRL_Error : 0|8@1+ (1,0) [0|255] "" Vector__XXX
 
-BO_ 512 MSGID_0X200: 8 BMS
+BO_ 512 BMS_Pack_Info: 8 BMS
  SG_ BMS_Max_Cell_Number : 7|16@0+ (1,0) [0|0] "Num" Vector__XXX
  SG_ BMS_Populated_Cells : 23|16@0+ (1,0) [0|0] "Num" Vector__XXX
  SG_ BMS_Rolling_Counter : 39|8@0+ (1,0) [0|0] "Num" Vector__XXX
  SG_ BMS_Pack_CCL : 47|16@0+ (1,0) [0|0] "Amps" Vector__XXX
  SG_ BMS_Pack_DCL : 63|8@0+ (1,1720) [0|0] "Amps" Vector__XXX
 
-BO_ 513 MSGID_0X201: 8 BMS
+BO_ 513 BMS_Pack_State: 8 BMS
  SG_ BMS_Pack_Current : 7|16@0+ (0.1,0) [0|0] "Amps" Vector__XXX
  SG_ BMS_Pack_Inst_Voltage : 23|16@0+ (0.1,0) [0|0] "Volts" Vector__XXX
  SG_ BMS_Pack_SOC : 39|8@0+ (0.5,0) [0|0] "Percent" Vector__XXX
@@ -313,7 +313,7 @@ BO_ 513 MSGID_0X201: 8 BMS
  SG_ BMS_Minimum_Pack_Voltage : 55|8@0+ (0.1,0) [0|0] "Volts" Vector__XXX
  SG_ BMS_Total_Pack_Cycles : 63|8@0+ (1,1721) [0|0] "Num" Vector__XXX
 
-BO_ 514 MSGID_0X202: 8 BMS
+BO_ 514 BMS_Cell_State: 8 BMS
  SG_ BMS_High_Temperature : 7|8@0+ (1,0) [0|0] "Celsius" Vector__XXX
  SG_ BMS_Low_Temperature : 15|8@0+ (1,0) [0|0] "Celsius" Vector__XXX
  SG_ BMS_Average_Temperature : 23|8@0+ (1,0) [0|0] "Celsius" Vector__XXX
@@ -323,7 +323,7 @@ BO_ 514 MSGID_0X202: 8 BMS
  SG_ BMS_Maximum_Cell_Voltage : 55|8@0+ (0.0001,0) [0|0] "Volts" Vector__XXX
  SG_ BMS_Minimum_Cell_Voltage : 63|8@0+ (0.0001,0) [0|0] "Volts" Vector__XXX
 
-BO_ 515 MSGID_0X203: 7 BMS
+BO_ 515 BMS_Status: 7 BMS
  SG_ BMS_High_Cell_Voltage_ID : 0|8@1+ (1,0) [0|0] "ID" Vector__XXX
  SG_ BMS_Low_Cell_Voltage_ID : 8|8@1+ (1,0) [0|0] "ID" Vector__XXX
  SG_ BMS_Discharge_Relay : 16|1@1+ (1,0) [0|1] "" Vector__XXX
