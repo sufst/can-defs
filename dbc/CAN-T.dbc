@@ -33,7 +33,7 @@ NS_ :
 
 BS_:
 
-BU_: INV U2C VCU BMS
+BU_: PDM INV U2C VCU BMS
 
 
 BO_ 173 PM100_Modulation_And_Flux_Info: 8 INV
@@ -201,6 +201,7 @@ BO_ 176 PM100_Fast_Info: 8 INV
 
 
 
+CM_ BU_ PDM "Motec Power Distribution Module";
 CM_ BU_ INV "The Cascadia Motion inverter";
 CM_ BU_ U2C "Delphi DC/DC Converter";
 CM_ BU_ VCU "The system vehicle control unit";
