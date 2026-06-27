@@ -33,7 +33,7 @@ NS_ :
 
 BS_:
 
-BU_: VCU DASH_SENSORS LV_BOX PEDAL_BOX REAR_BOX
+BU_: VCU DASH_SENSORS LV_BOX PEDAL_BOX REAR_BOX CAN_S_Repeater
 
 
 BO_ 3221225472 VECTOR__INDEPENDENT_SIG_MSG: 0 Vector__XXX
@@ -451,6 +451,19 @@ BO_ 386 P8A_SlowRow: 8 Vector__XXX
  SG_ P8A_SensorNumber : 15|16@0+ (1,0) [0|65535] "" Vector__XXX
  SG_ P8A_Range : 31|8@0+ (1,0) [0|255] "" Vector__XXX
 
+BO_ 2017 CAN_S_Repeater_Heartbeat: 8 CAN_S_Repeater
+ SG_ CAN_S_Rptr_CAN1_to_CAN2_QueueDepth : 0|8@1+ (1,0) [0|255] "msgs" Vector__XXX
+ SG_ CAN_S_Rptr_CAN2_to_CAN1_QueueDepth : 8|8@1+ (1,0) [0|255] "msgs" Vector__XXX
+ SG_ CAN_S_Rptr_CAN1_EWGF               : 16|1@1+ (1,0) [0|1]   ""     Vector__XXX
+ SG_ CAN_S_Rptr_CAN1_EPVF               : 17|1@1+ (1,0) [0|1]   ""     Vector__XXX
+ SG_ CAN_S_Rptr_CAN1_BOFF               : 18|1@1+ (1,0) [0|1]   ""     Vector__XXX
+ SG_ CAN_S_Rptr_CAN1_LEC                : 20|3@1+ (1,0) [0|7]   ""     Vector__XXX
+ SG_ CAN_S_Rptr_CAN2_EWGF               : 24|1@1+ (1,0) [0|1]   ""     Vector__XXX
+ SG_ CAN_S_Rptr_CAN2_EPVF               : 25|1@1+ (1,0) [0|1]   ""     Vector__XXX
+ SG_ CAN_S_Rptr_CAN2_BOFF               : 26|1@1+ (1,0) [0|1]   ""     Vector__XXX
+ SG_ CAN_S_Rptr_CAN2_LEC                : 28|3@1+ (1,0) [0|7]   ""     Vector__XXX
+ SG_ CAN_S_Rptr_Uptime                  : 39|16@0+ (1,0) [0|65535] "s"    Vector__XXX
+ SG_ CAN_S_Rptr_DroppedMessages         : 55|16@0+ (1,0) [0|65535] "msgs" Vector__XXX
 
 
 CM_ BU_ VCU "SUFST vehicle control unit";
@@ -459,10 +472,13 @@ CM_ BO_ 64 "Ping the VCU";
 CM_ BO_ 65 "Response from VCU to a ping request";
 CM_ BO_ 66 "Enable the TS with the PDU.";
 CM_ BO_ 260 "Periodic messages from VCU to PDM";
+BA_DEF_ BO_ "GenMsgCycleTime" INT 0 10000;
 BA_DEF_  "BusType" STRING ;
 BA_DEF_ SG_  "GenSigStartValue" FLOAT -3.4E+38 3.4E+38;
+BA_DEF_DEF_  "GenMsgCycleTime" 0;
 BA_DEF_DEF_  "BusType" "CAN";
 BA_DEF_DEF_  "GenSigStartValue" 0;
 BA_ "GenSigStartValue" SG_ 386 P8A_SensorNumber 600;
+BA_ "GenMsgCycleTime" BO_ 2017 1000;
 VAL_ 257 VCU_CTRL_State 0 "TS_WAIT" 1 "WAIT_NEG_AIR" 2 "PRECHARGE" 3 "R2D_WAIT" 4 "DRIVING" 5 "R2D_OFF" 6 "R2D_OFF_WAIT" 7 "TS_FAIL" 8 "RUN_FAULT" 9 "SPIN" 10 "SCS_FAULT" 11 "BPS_FAULT" ;
 

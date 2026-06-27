@@ -33,7 +33,7 @@ NS_ :
 
 BS_:
 
-BU_: PDM INV U2C VCU BMS Charger Can_Isolator
+BU_: PDM INV U2C VCU BMS Charger Can_Isolator CAN_T_Repeater
 
 
 BO_ 173 PM100_Modulation_And_Flux_Info: 8 INV
@@ -279,6 +279,33 @@ BO_ 2550589940 BMS_Cell_Charge_Command_C: 8 BMS
 
 BO_ 2566869221 Charger_Heartbeat: 8 Charger
 
+BO_ 2018 CAN_T_Repeater_Heartbeat: 8 CAN_T_Repeater
+ SG_ CAN_T_Rptr_CAN1_to_CAN2_QueueDepth : 0|8@1+ (1,0) [0|255] "msgs" Vector__XXX
+ SG_ CAN_T_Rptr_CAN2_to_CAN1_QueueDepth : 8|8@1+ (1,0) [0|255] "msgs" Vector__XXX
+ SG_ CAN_T_Rptr_CAN1_EWGF               : 16|1@1+ (1,0) [0|1]   ""     Vector__XXX
+ SG_ CAN_T_Rptr_CAN1_EPVF               : 17|1@1+ (1,0) [0|1]   ""     Vector__XXX
+ SG_ CAN_T_Rptr_CAN1_BOFF               : 18|1@1+ (1,0) [0|1]   ""     Vector__XXX
+ SG_ CAN_T_Rptr_CAN1_LEC                : 20|3@1+ (1,0) [0|7]   ""     Vector__XXX
+ SG_ CAN_T_Rptr_CAN2_EWGF               : 24|1@1+ (1,0) [0|1]   ""     Vector__XXX
+ SG_ CAN_T_Rptr_CAN2_EPVF               : 25|1@1+ (1,0) [0|1]   ""     Vector__XXX
+ SG_ CAN_T_Rptr_CAN2_BOFF               : 26|1@1+ (1,0) [0|1]   ""     Vector__XXX
+ SG_ CAN_T_Rptr_CAN2_LEC                : 28|3@1+ (1,0) [0|7]   ""     Vector__XXX
+ SG_ CAN_T_Rptr_Uptime                  : 39|16@0+ (1,0) [0|65535] "s"    Vector__XXX
+ SG_ CAN_T_Rptr_DroppedMessages         : 55|16@0+ (1,0) [0|65535] "msgs" Vector__XXX
+
+BO_ 2019 CAN_Isolator_Repeater_Heartbeat: 8 CAN_Isolator
+ SG_ CAN_Isolator_CAN1_to_CAN2_QueueDepth : 0|8@1+ (1,0) [0|255] "msgs" Vector__XXX
+ SG_ CAN_Isolator_CAN2_to_CAN1_QueueDepth : 8|8@1+ (1,0) [0|255] "msgs" Vector__XXX
+ SG_ CAN_Isolator_CAN1_EWGF               : 16|1@1+ (1,0) [0|1]   ""     Vector__XXX
+ SG_ CAN_Isolator_CAN1_EPVF               : 17|1@1+ (1,0) [0|1]   ""     Vector__XXX
+ SG_ CAN_Isolator_CAN1_BOFF               : 18|1@1+ (1,0) [0|1]   ""     Vector__XXX
+ SG_ CAN_Isolator_CAN1_LEC                : 20|3@1+ (1,0) [0|7]   ""     Vector__XXX
+ SG_ CAN_Isolator_CAN2_EWGF               : 24|1@1+ (1,0) [0|1]   ""     Vector__XXX
+ SG_ CAN_Isolator_CAN2_EPVF               : 25|1@1+ (1,0) [0|1]   ""     Vector__XXX
+ SG_ CAN_Isolator_CAN2_BOFF               : 26|1@1+ (1,0) [0|1]   ""     Vector__XXX
+ SG_ CAN_Isolator_CAN2_LEC                : 28|3@1+ (1,0) [0|7]   ""     Vector__XXX
+ SG_ CAN_Isolator_Uptime                  : 39|16@0+ (1,0) [0|65535] "s"    Vector__XXX
+ SG_ CAN_Isolator_DroppedMessages         : 55|16@0+ (1,0) [0|65535] "msgs" Vector__XXX
 
 
 CM_ BU_ PDM "Motec Power Distribution Module";
@@ -426,6 +453,8 @@ BA_ "GenMsgCycleTime" BO_ 176 3;
 BA_ "SystemSignalLongSymbol" SG_ 2550589428 DTC_P0A08_Charger_Safety_Relay_F "DTC_P0A08_Charger_Safety_Relay_Fault";
 BA_ "SystemSignalLongSymbol" SG_ 2550588916 DTC_P0A08_Charger_Safety_Re_0000 "DTC_P0A08_Charger_Safety_Relay_Fault";
 BA_ "SystemSignalLongSymbol" SG_ 2550589940 DTC_P0A08_Charger_Safety_Re_0001 "DTC_P0A08_Charger_Safety_Relay_Fault";
+BA_ "GenMsgCycleTime" BO_ 2018 1000;
+BA_ "GenMsgCycleTime" BO_ 2019 1000;
 VAL_ 192 PM100_Inverter_Enable 0 "Turn the inverter OFF" 1 "Turn the Inverter ON" ;
 VAL_ 192 PM100_Direction_Command 0 "CW" 1 "CCW" ;
 VAL_ 192 PM100_Inverter_Discharge 0 "Discharge Disable" 1 "Discharge Enable (if EEPROM parameter is set)" ;
