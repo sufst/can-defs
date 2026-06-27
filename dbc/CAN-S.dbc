@@ -33,7 +33,7 @@ NS_ :
 
 BS_:
 
-BU_: VCU BMS DASH_SENSORS LV_BOX PEDAL_BOX REAR_BOX
+BU_: VCU DASH_SENSORS LV_BOX PEDAL_BOX REAR_BOX
 
 
 BO_ 3221225472 VECTOR__INDEPENDENT_SIG_MSG: 0 Vector__XXX
@@ -311,67 +311,6 @@ BO_ 258 VCU_Error: 6 VCU
  SG_ VCU_SCS_Error : 8|8@1+ (1,0) [0|255] "" Vector__XXX
  SG_ VCU_CTRL_Error : 0|8@1+ (1,0) [0|255] "" Vector__XXX
 
-BO_ 512 BMS_Pack_Info: 8 BMS
- SG_ BMS_Max_Cell_Number : 7|16@0+ (1,0) [0|0] "Num" Vector__XXX
- SG_ BMS_Populated_Cells : 23|16@0+ (1,0) [0|0] "Num" Vector__XXX
- SG_ BMS_Rolling_Counter : 39|8@0+ (1,0) [0|0] "Num" Vector__XXX
- SG_ BMS_Pack_CCL : 47|16@0+ (1,0) [0|0] "Amps" Vector__XXX
- SG_ BMS_Pack_DCL : 63|8@0+ (1,1720) [0|0] "Amps" Vector__XXX
-
-BO_ 513 BMS_Pack_State: 8 BMS
- SG_ BMS_Pack_Current : 7|16@0+ (0.1,0) [0|0] "Amps" Vector__XXX
- SG_ BMS_Pack_Inst_Voltage : 23|16@0+ (0.1,0) [0|0] "Volts" Vector__XXX
- SG_ BMS_Pack_SOC : 39|8@0+ (0.5,0) [0|0] "Percent" Vector__XXX
- SG_ BMS_Maximum_Pack_Voltage : 47|8@0+ (0.1,0) [0|0] "Volts" Vector__XXX
- SG_ BMS_Minimum_Pack_Voltage : 55|8@0+ (0.1,0) [0|0] "Volts" Vector__XXX
- SG_ BMS_Total_Pack_Cycles : 63|8@0+ (1,1721) [0|0] "Num" Vector__XXX
-
-BO_ 514 BMS_Cell_State: 8 BMS
- SG_ BMS_High_Temperature : 7|8@0+ (1,0) [0|0] "Celsius" Vector__XXX
- SG_ BMS_Low_Temperature : 15|8@0+ (1,0) [0|0] "Celsius" Vector__XXX
- SG_ BMS_Average_Temperature : 23|8@0+ (1,0) [0|0] "Celsius" Vector__XXX
- SG_ BMS_Internal_Temperature : 31|8@0+ (1,0) [0|0] "Celsius" Vector__XXX
- SG_ BMS_High_Thermistor_ID : 39|8@0+ (1,0) [0|0] "ID" Vector__XXX
- SG_ BMS_Low_Thermistor_ID : 47|8@0+ (1,0) [0|0] "ID" Vector__XXX
- SG_ BMS_Maximum_Cell_Voltage : 55|8@0+ (0.0001,0) [0|0] "Volts" Vector__XXX
- SG_ BMS_Minimum_Cell_Voltage : 63|8@0+ (0.0001,0) [0|0] "Volts" Vector__XXX
-
-BO_ 515 BMS_Status: 7 BMS
- SG_ BMS_High_Cell_Voltage_ID : 0|8@1+ (1,0) [0|0] "ID" Vector__XXX
- SG_ BMS_Low_Cell_Voltage_ID : 8|8@1+ (1,0) [0|0] "ID" Vector__XXX
- SG_ BMS_Discharge_Relay : 16|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ BMS_Charge_Relay : 17|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ BMS_Charger_Safety : 18|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ BMS_Charge_Interlock : 19|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ BMS_Balancing_Active : 20|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ BMS_FAULT_Int_Cell_Comms : 24|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ BMS_FAULT_Cell_Bal_Stuck_Off : 25|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ BMS_FAULT_Weak_Cell : 26|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ BMS_FAULT_Low_Cell_Voltage : 27|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ BMS_FAULT_Cell_Open_Wiring : 28|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ BMS_FAULT_Current_Sensor : 29|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ BMS_FAULT_Cell_Voltage_Over_5V : 30|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ BMS_FAULT_Cell_Bank : 31|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ BMS_FAULT_Weak_Pack : 32|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ BMS_FAULT_Fan_Monitor : 33|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ BMS_FAULT_Thermistor : 34|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ BMS_FAULT_CAN_Communication : 35|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ BMS_FAULT_Redundant_Power_Supply : 36|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ BMS_FAULT_High_Voltage_Isolation : 37|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ BMS_FAULT_Invld_Input_Sply_Volt : 38|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ BMS_FAULT_ChargeEnable_Relay : 39|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ BMS_FAULT_DischargeEnable_Relay : 40|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ BMS_FAULT_Charger_Safety_Relay : 41|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ BMS_FAULT_Internal_Hardware : 42|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ BMS_FAULT_Internal_Temp : 43|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ BMS_FAULT_Internal_Logic : 44|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ BMS_FAULT_Hi_Cell_Voltage_High : 45|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ BMS_FAULT_Lo_Cell_Voltage_Low : 46|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ BMS_FAULT_Pack_Too_Hot : 47|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ BMS_FAULT_Hi_Volt_Intlck_Signal : 48|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ BMS_FAULT_Prchrg_Malfunction : 49|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ BMS_FAULT_Abnormal_SoC_Behavior : 50|1@1+ (1,0) [0|1] "" Vector__XXX
-
 BO_ 1648 PEDAL_BOX_ANALOG: 3 PEDAL_BOX
  SG_ DAMPER_FL : 0|12@1+ (0.000805860805860806,0) [0|3.3] "V" Vector__XXX
  SG_ DAMPER_FR : 12|12@1+ (0.000805860805860806,0) [0|3.3] "V" Vector__XXX
@@ -520,10 +459,6 @@ CM_ BO_ 64 "Ping the VCU";
 CM_ BO_ 65 "Response from VCU to a ping request";
 CM_ BO_ 66 "Enable the TS with the PDU.";
 CM_ BO_ 260 "Periodic messages from VCU to PDM";
-CM_ BO_ 512 "This ID Transmits at 8 ms.";
-CM_ BO_ 513 "This ID Transmits at 8 ms.";
-CM_ BO_ 514 "This ID Transmits at 8 ms.";
-CM_ BO_ 515 "This ID Transmits at 8 ms.";
 BA_DEF_  "BusType" STRING ;
 BA_DEF_ SG_  "GenSigStartValue" FLOAT -3.4E+38 3.4E+38;
 BA_DEF_DEF_  "BusType" "CAN";
