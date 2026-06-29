@@ -104,6 +104,11 @@ BO_ 258 VCU_Error: 6 VCU
  SG_ VCU_SCS_Error : 8|8@1+ (1,0) [0|255] "" Vector__XXX
  SG_ VCU_CTRL_Error : 0|8@1+ (1,0) [0|255] "" Vector__XXX
 
+BO_ 259 VCU_Sensors_Raw: 6 VCU
+ SG_ VCU_APPS1_Raw :  0|16@1+ (1,0) [0|4095] "ADC" Vector__XXX
+ SG_ VCU_APPS2_Raw : 16|16@1+ (1,0) [0|4095] "ADC" Vector__XXX
+ SG_ VCU_BPS_Raw   : 32|16@1+ (1,0) [0|4095] "ADC" Vector__XXX
+
 BO_ 1648 PEDAL_BOX_ANALOG: 3 PEDAL_BOX
  SG_ DAMPER_FL : 0|12@1+ (0.000805860805860806,0) [0|3.3] "V" Vector__XXX
  SG_ DAMPER_FR : 12|12@1+ (0.000805860805860806,0) [0|3.3] "V" Vector__XXX
