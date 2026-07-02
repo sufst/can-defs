@@ -56,16 +56,13 @@ BO_ 592 Wheel_RPM: 8 VCU
  SG_ WHEEL_RL_RPM : 0|16@1- (0.25,0) [-8192|8191.75] "rpm" Vector__XXX
 
 BO_ 262 VCU_Simulation: 8 Vector__XXX
- SG_ Sim_Torque_Request m0 : 40|16@1+ (0.1,0) [0|6553.5] "Nm" Vector__XXX
- SG_ Sim_Power m1 : 8|16@1+ (0.2,0) [0|13107] "W" Vector__XXX
- SG_ Simulation_MUX M : 0|8@1+ (1,0) [0|255] "" Vector__XXX
- SG_ Sim_BPS m0 : 24|16@1+ (0.1,0) [0|100] "%" Vector__XXX
- SG_ Sim_APPS m0 : 8|16@1+ (0.1,0) [0|100] "%" Vector__XXX
- SG_ Sim_TS_ON m0 : 57|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ Sim_R2D m0 : 56|1@1+ (1,0) [0|1] "" Vector__XXX
-
-BO_ 261 VCU_Temps: 8 VCU
- SG_ VCU_Max_Temp : 0|8@1- (1,0) [-128|127] "Celsius" Vector__XXX
+ SG_ Sim_Torque_Request m0 : 40|16@1+ (0.1,0) [0|6553.5] "Nm" VCU
+ SG_ Sim_Power m1 : 8|16@1+ (0.2,0) [0|13107] "W" VCU
+ SG_ Simulation_MUX M : 0|8@1+ (1,0) [0|255] "" VCU
+ SG_ Sim_BPS m0 : 24|16@1+ (0.1,0) [0|100] "%" VCU
+ SG_ Sim_APPS m0 : 8|16@1+ (0.1,0) [0|100] "%" VCU
+ SG_ Sim_TS_ON m0 : 57|1@1+ (1,0) [0|1] "" VCU
+ SG_ Sim_R2D m0 : 56|1@1+ (1,0) [0|1] "" VCU
 
 BO_ 64 VCU_Ping: 8 VCU
 
@@ -75,39 +72,6 @@ BO_ 65 VCU_Ping_Ack: 8 VCU
  SG_ VER_PATCH : 16|8@1+ (1,0) [0|0] "" Vector__XXX
 
 BO_ 66 VCU_TS_On: 8 VCU
-
-BO_ 260 VCU_PDM: 8 VCU
- SG_ Inverter : 0|8@1+ (1,0) [0|1] "On/Off" Vector__XXX
- SG_ Brakelight : 8|8@1+ (1,0) [0|1] "On/Off" Vector__XXX
- SG_ Pump : 16|8@1+ (1,0) [0|1] "On/Off" Vector__XXX
- SG_ Fan : 24|8@1+ (1,0) [0|1] "On/Off" Vector__XXX
-
-BO_ 256 VCU_Sensors: 8 VCU
- SG_ VCU_Torque_Request : 48|16@1+ (0.1,0) [0|6553.5] "Nm" Vector__XXX
- SG_ VCU_SAGL : 32|16@1+ (0.1,0) [0|100] "deg" Vector__XXX
- SG_ VCU_BPS : 16|16@1+ (0.1,0) [0|100] "%" Vector__XXX
- SG_ VCU_APPS : 0|16@1+ (0.1,0) [0|100] "%" Vector__XXX
-
-BO_ 257 VCU_State: 4 VCU
- SG_ VCU_Power_Saving : 27|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ VCU_Rolling_Counter : 0|16@1+ (1,0) [0|65535] "" Vector__XXX
- SG_ VCU_DRS_Allowed : 26|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ VCU_DRS_Active : 25|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ VCU_R2D : 24|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ VCU_CTRL_State : 16|8@1+ (1,0) [0|255] "" Vector__XXX
-
-BO_ 258 VCU_Error: 6 VCU
- SG_ VCU_CANBC_Error : 40|8@1+ (1,0) [0|255] "" Vector__XXX
- SG_ VCU_RTCAN2_Error : 32|8@1+ (1,0) [0|255] "" Vector__XXX
- SG_ VCU_RTCAN1_Error : 24|8@1+ (1,0) [0|255] "" Vector__XXX
- SG_ VCU_PM100_Error : 16|8@1+ (1,0) [0|255] "" Vector__XXX
- SG_ VCU_SCS_Error : 8|8@1+ (1,0) [0|255] "" Vector__XXX
- SG_ VCU_CTRL_Error : 0|8@1+ (1,0) [0|255] "" Vector__XXX
-
-BO_ 259 VCU_Sensors_Raw: 6 VCU
- SG_ VCU_APPS1_Raw :  0|16@1+ (1,0) [0|4095] "ADC" Vector__XXX
- SG_ VCU_APPS2_Raw : 16|16@1+ (1,0) [0|4095] "ADC" Vector__XXX
- SG_ VCU_BPS_Raw   : 32|16@1+ (1,0) [0|4095] "ADC" Vector__XXX
 
 BO_ 1648 Pedal_Box_Analog: 3 Pedal_Box
  SG_ DAMPER_FL : 0|12@1+ (0.000805860805860806,0) [0|3.3] "V" Vector__XXX
@@ -270,7 +234,6 @@ CM_ BO_ 3221225472 "This is a message for not used signals, created by Vector CA
 CM_ BO_ 64 "Ping the VCU";
 CM_ BO_ 65 "Response from VCU to a ping request";
 CM_ BO_ 66 "Enable the TS with the PDU.";
-CM_ BO_ 260 "Periodic messages from VCU to PDM";
 BA_DEF_ BO_  "GenMsgCycleTime" INT 0 10000;
 BA_DEF_  "BusType" STRING ;
 BA_DEF_ SG_  "GenSigStartValue" FLOAT -3.4E+38 3.4E+38;
