@@ -247,7 +247,9 @@ BO_ 259 VCU_Sensors_Raw: 6 VCU
 BO_ 261 VCU_Temps: 8 VCU
  SG_ VCU_Max_Temp : 0|8@1- (1,0) [-128|127] "Celsius" Vector__XXX
 
-
+BO_ 2020 VCU_BLT_Trigger: 8 Vector__XXX
+BO_ 2021 VCU_BLT_CMD: 8 Vector__XXX
+BO_ 2022 VCU_BLT_Resp: 8 VCU
 
 CM_ BU_ VCU "SUFST vehicle control unit";
 CM_ BO_ 3221225472 "This is a message for not used signals, created by Vector CANdb++ DBC OLE DB Provider.";
