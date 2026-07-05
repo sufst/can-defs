@@ -56,13 +56,13 @@ BO_ 592 Wheel_RPM: 8 VCU
  SG_ WHEEL_RL_RPM : 0|16@1- (0.25,0) [-8192|8191.75] "rpm" Vector__XXX
 
 BO_ 262 VCU_Simulation: 8 Vector__XXX
- SG_ Sim_Torque_Request m0 : 40|16@1+ (0.1,0) [0|6553.5] "Nm" VCU
- SG_ Sim_Power m1 : 8|16@1+ (0.2,0) [0|13107] "W" VCU
- SG_ Simulation_MUX M : 0|8@1+ (1,0) [0|255] "" VCU
- SG_ Sim_BPS m0 : 24|16@1+ (0.1,0) [0|100] "%" VCU
- SG_ Sim_APPS m0 : 8|16@1+ (0.1,0) [0|100] "%" VCU
- SG_ Sim_TS_ON m0 : 57|1@1+ (1,0) [0|1] "" VCU
- SG_ Sim_R2D m0 : 56|1@1+ (1,0) [0|1] "" VCU
+ SG_ Sim_Torque_Request m0 : 40|16@1+ (0.1,0) [0|6553.5] "Nm"  VCU
+ SG_ Sim_Power m1 : 8|16@1+ (0.2,0) [0|13107] "W"  VCU
+ SG_ Simulation_MUX M : 0|8@1+ (1,0) [0|255] ""  VCU
+ SG_ Sim_BPS m0 : 24|16@1+ (0.1,0) [0|100] "%"  VCU
+ SG_ Sim_APPS m0 : 8|16@1+ (0.1,0) [0|100] "%"  VCU
+ SG_ Sim_TS_ON m0 : 57|1@1+ (1,0) [0|1] ""  VCU
+ SG_ Sim_R2D m0 : 56|1@1+ (1,0) [0|1] ""  VCU
 
 BO_ 64 VCU_Ping: 8 VCU
 
@@ -115,7 +115,7 @@ BO_ 1669 Dash_Sensors_Digital: 2 Dash_Sensors
  SG_ VCU_RTDS_STATE : 6|1@1+ (1,0) [0|1] "bool" Vector__XXX
  SG_ TAP_SDC_INERTIA : 7|1@1+ (1,0) [0|1] "bool" Vector__XXX
  SG_ FAN_SWITCH : 8|1@1+ (1,0) [0|1] "bool" Vector__XXX
- 
+
 BO_ 1668 Dash_Sensors_Temperature: 8 Dash_Sensors
  SG_ DASH_THERM_1 : 0|16@1- (0.1,0) [-40|125] "degC" Vector__XXX
  SG_ DASH_THERM_2 : 16|16@1- (0.1,0) [-40|125] "degC" Vector__XXX
@@ -233,6 +233,20 @@ BO_ 2017 CAN_S_Repeater_Heartbeat: 8 CAN_S_Repeater
  SG_ CAN_S_Rptr_Uptime : 39|16@0+ (1,0) [0|65535] "s" Vector__XXX
  SG_ CAN_S_Rptr_DroppedMessages : 55|16@0+ (1,0) [0|65535] "msgs" Vector__XXX
 
+BO_ 256 VCU_Sensors: 8 VCU
+ SG_ VCU_Torque_Request : 48|16@1+ (0.1,0) [0|6553.5] "Nm" Vector__XXX
+ SG_ VCU_SAGL : 32|12@1+ (0.025,0) [0|102.375] "%" Vector__XXX
+ SG_ VCU_BPS : 16|16@1+ (0.1,0) [0|100] "%" Vector__XXX
+ SG_ VCU_APPS : 0|16@1+ (0.1,0) [0|100] "%" Vector__XXX
+
+BO_ 259 VCU_Sensors_Raw: 6 VCU
+ SG_ VCU_APPS1_Raw : 0|16@1+ (1,0) [0|4095] "ADC" Vector__XXX
+ SG_ VCU_APPS2_Raw : 16|16@1+ (1,0) [0|4095] "ADC" Vector__XXX
+ SG_ VCU_BPS_Raw : 32|16@1+ (1,0) [0|4095] "ADC" Vector__XXX
+
+BO_ 261 VCU_Temps: 8 VCU
+ SG_ VCU_Max_Temp : 0|8@1- (1,0) [-128|127] "Celsius" Vector__XXX
+
 
 
 CM_ BU_ VCU "SUFST vehicle control unit";
@@ -252,3 +266,4 @@ BA_ "GenMsgCycleTime" BO_ 2017 1000;
 BA_ "GenSigStartValue" SG_ 386 P8A_Pressure_SensorNumber 600;
 BA_ "SystemSignalLongSymbol" SG_ 2017 CAN_S_Rptr_CAN1_to_CAN2_QueueDep "CAN_S_Rptr_CAN1_to_CAN2_QueueDepth";
 BA_ "SystemSignalLongSymbol" SG_ 2017 CAN_S_Rptr_CAN2_to_CAN1_QueueDep "CAN_S_Rptr_CAN2_to_CAN1_QueueDepth";
+

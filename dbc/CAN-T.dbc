@@ -520,12 +520,6 @@ BO_ 260 VCU_PDM: 8 VCU
  SG_ Pump : 16|8@1+ (1,0) [0|1] "On/Off" Vector__XXX
  SG_ Fan : 24|8@1+ (1,0) [0|1] "On/Off" Vector__XXX
 
-BO_ 256 VCU_Sensors: 8 VCU
- SG_ VCU_Torque_Request : 48|16@1+ (0.1,0) [0|6553.5] "Nm" Vector__XXX
- SG_ VCU_SAGL : 32|12@1+ (0.025,0) [0|102.375] "%" Vector__XXX
- SG_ VCU_BPS : 16|16@1+ (0.1,0) [0|100] "%" Vector__XXX
- SG_ VCU_APPS : 0|16@1+ (0.1,0) [0|100] "%" Vector__XXX
-
 BO_ 257 VCU_State: 4 VCU
  SG_ VCU_Power_Saving : 27|1@1+ (1,0) [0|1] "" Vector__XXX
  SG_ VCU_Rolling_Counter : 0|16@1+ (1,0) [0|65535] "" Vector__XXX
@@ -541,15 +535,6 @@ BO_ 258 VCU_Error: 6 VCU
  SG_ VCU_PM100_Error : 16|8@1+ (1,0) [0|255] "" Vector__XXX
  SG_ VCU_SCS_Error : 8|8@1+ (1,0) [0|255] "" Vector__XXX
  SG_ VCU_CTRL_Error : 0|8@1+ (1,0) [0|255] "" Vector__XXX
-
-BO_ 259 VCU_Sensors_Raw: 6 VCU
- SG_ VCU_APPS1_Raw : 0|16@1+ (1,0) [0|4095] "ADC" Vector__XXX
- SG_ VCU_APPS2_Raw : 16|16@1+ (1,0) [0|4095] "ADC" Vector__XXX
- SG_ VCU_BPS_Raw : 32|16@1+ (1,0) [0|4095] "ADC" Vector__XXX
-
-BO_ 261 VCU_Temps: 8 VCU
- SG_ VCU_Max_Temp : 0|8@1- (1,0) [-128|127] "Celsius" Vector__XXX
-
 
 
 CM_ BU_ PDM "Motec Power Distribution Module";
