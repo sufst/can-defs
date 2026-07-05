@@ -220,8 +220,8 @@ BO_ 386 P8A_Pressure_SlowRow: 8 Vector__XXX
  SG_ P8A_Pressure_Range : 31|8@0+ (1,0) [0|255] "" Vector__XXX
 
 BO_ 2017 CAN_S_Repeater_Heartbeat: 8 CAN_S_Repeater
- SG_ CAN_S_Rptr_CAN1_to_CAN2_QueueDep : 0|8@1+ (1,0) [0|255] "msgs" Vector__XXX
- SG_ CAN_S_Rptr_CAN2_to_CAN1_QueueDep : 8|8@1+ (1,0) [0|255] "msgs" Vector__XXX
+ SG_ CAN_S_Rptr_CAN1_2_QueueDep : 0|8@1+ (1,0) [0|255] "msgs" Vector__XXX
+ SG_ CAN_S_Rptr_CAN2_1_QueueDep : 8|8@1+ (1,0) [0|255] "msgs" Vector__XXX
  SG_ CAN_S_Rptr_CAN1_EWGF : 16|1@1+ (1,0) [0|1] "" Vector__XXX
  SG_ CAN_S_Rptr_CAN1_EPVF : 17|1@1+ (1,0) [0|1] "" Vector__XXX
  SG_ CAN_S_Rptr_CAN1_BOFF : 18|1@1+ (1,0) [0|1] "" Vector__XXX
@@ -266,6 +266,3 @@ BA_DEF_DEF_  "GenSigStartValue" 0;
 BA_DEF_DEF_  "SystemSignalLongSymbol" "";
 BA_ "GenMsgCycleTime" BO_ 2017 1000;
 BA_ "GenSigStartValue" SG_ 386 P8A_Pressure_SensorNumber 600;
-BA_ "SystemSignalLongSymbol" SG_ 2017 CAN_S_Rptr_CAN1_to_CAN2_QueueDep "CAN_S_Rptr_CAN1_to_CAN2_QueueDepth";
-BA_ "SystemSignalLongSymbol" SG_ 2017 CAN_S_Rptr_CAN2_to_CAN1_QueueDep "CAN_S_Rptr_CAN2_to_CAN1_QueueDepth";
-
