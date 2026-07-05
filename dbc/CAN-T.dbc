@@ -43,7 +43,7 @@ BO_ 173 PM100_Modulation_And_Flux_Info: 8 INV
  SG_ PM100_Modulation_Index : 0|16@1- (0.0001,0) [-3.2768|3.2767] "" Vector__XXX
 
 BO_ 172 PM100_Torque_And_Timer_Info: 8 INV
- SG_ PM100_Power_On_Timer : 32|32@1+ (0.003,0) [0|12884800] "Sec" Vector__XXX
+ SG_ PM100_Power_On_Timer : 32|32@1+ (0.003,0) [0|12884800] "s" Vector__XXX
  SG_ PM100_Torque_Feedback : 16|16@1- (0.1,0) [-3276.8|3276.7] "Nm" Vector__XXX
  SG_ PM100_Commanded_Torque : 0|16@1- (0.1,0) [-3276.8|3276.7] "Nm" Vector__XXX
 
@@ -515,10 +515,10 @@ BO_ 1280 PDM_State: 8 Vector__XXX
  SG_ PDM_Input_1_State m0 : 0|1@1- (1,0) [0|1] "Off/On" Vector__XXX
 
 BO_ 260 VCU_PDM: 8 VCU
- SG_ Inverter : 0|8@1+ (1,0) [0|1] "On/Off" Vector__XXX
- SG_ Brakelight : 8|8@1+ (1,0) [0|1] "On/Off" Vector__XXX
- SG_ Pump : 16|8@1+ (1,0) [0|1] "On/Off" Vector__XXX
- SG_ Fan : 24|8@1+ (1,0) [0|1] "On/Off" Vector__XXX
+ SG_ Inverter : 0|8@1+ (1,0) [0|1] "Off/On" Vector__XXX
+ SG_ Brakelight : 8|8@1+ (1,0) [0|1] "Off/On" Vector__XXX
+ SG_ Pump : 16|8@1+ (1,0) [0|1] "Off/On" Vector__XXX
+ SG_ Fan : 24|8@1+ (1,0) [0|1] "Off/On" Vector__XXX
 
 BO_ 257 VCU_State: 4 VCU
  SG_ VCU_Power_Saving : 27|1@1+ (1,0) [0|1] "" Vector__XXX
