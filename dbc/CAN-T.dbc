@@ -189,10 +189,6 @@ BO_ 469 U2C_Message_Rxd: 8 U2C
  SG_ INV_U2C_14V_Conditional : 39|1@1+ (1,0) [0|1] "" Vector__XXX
  SG_ INV_U2C_14V_Current_Monitor : 48|7@1+ (1,0) [0|127] "" Vector__XXX
 
-BO_ 514 BMS_Current_Limit: 8 BMS
- SG_ INV_BMS_Max_Discharge_Current : 0|16@1+ (1,0) [0|1000] "A" Vector__XXX
- SG_ INV_BMS_Max_Charge_Current : 16|16@1+ (1,0) [0|1000] "A" Vector__XXX
-
 BO_ 176 PM100_Fast_Info: 8 INV
  SG_ PM100_Fast_Torque_Command : 0|16@1- (0.1,0) [-3276.8|3276.7] "Nm" Vector__XXX
  SG_ PM100_Fast_Torque_Feedback : 16|16@1- (0.1,0) [-3276.8|3276.7] "Nm" Vector__XXX
@@ -214,7 +210,7 @@ BO_ 513 BMS_Pack_State: 8 BMS
  SG_ BMS_Minimum_Pack_Voltage : 55|8@0+ (0.1,0) [0|0] "Volts" Vector__XXX
  SG_ BMS_Total_Pack_Cycles : 63|8@0+ (1,1721) [0|0] "Num" Vector__XXX
 
-BO_ 516 BMS_Cell_State: 8 BMS
+BO_ 514 BMS_Cell_State: 8 BMS
  SG_ BMS_High_Temperature : 7|8@0+ (1,0) [0|0] "Celsius" Vector__XXX
  SG_ BMS_Low_Temperature : 15|8@0+ (1,0) [0|0] "Celsius" Vector__XXX
  SG_ BMS_Average_Temperature : 23|8@0+ (1,0) [0|0] "Celsius" Vector__XXX
@@ -536,6 +532,178 @@ BO_ 258 VCU_Error: 6 VCU
  SG_ VCU_SCS_Error : 8|8@1+ (1,0) [0|255] "" Vector__XXX
  SG_ VCU_CTRL_Error : 0|8@1+ (1,0) [0|255] "" Vector__XXX
 
+BO_ 2553934721 TEM_1_BMS_BROADCAST: 8 Vector__XXX
+ SG_ TEM_1_therm_m_num : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_1_lowst_temp : 8|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_1_highest_temp : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_1_avg_temp : 24|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_1_therm_count : 32|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_1_highest_therm_ID : 40|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_1_lowest_therm_ID : 48|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_1_checksum : 56|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 2553869185 TEM_1_GENERAL_BROADCAST: 8 Vector__XXX
+ SG_ TEM_1_relative_therm_ID : 15|8@0+ (1,0) [0|65535] "" Vector__XXX
+ SG_ TEM_1_therm_value : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_1_therm_count : 24|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_1_lowest_temp : 32|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_1_Highest_temp : 40|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_1_highest_therm_ID : 48|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_1_Lowest_therm_ID : 56|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 2553934722 TEM_2_BMS_BROADCAST: 8 Vector__XXX
+ SG_ TEM_2_therm_m_num : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_2_lowst_temp : 8|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_2_highest_temp : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_2_avg_temp : 24|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_2_therm_count : 32|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_2_highest_therm_ID : 40|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_2_lowest_therm_ID : 48|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_2_checksum : 56|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 2553869186 TEM_2_GENERAL_BROADCAST: 8 Vector__XXX
+ SG_ TEM_2_relative_therm_ID : 15|8@0+ (1,0) [0|65535] "" Vector__XXX
+ SG_ TEM_2_therm_value : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_2_therm_count : 24|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_2_lowest_temp : 32|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_2_Highest_temp : 40|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_2_highest_therm_ID : 48|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_2_Lowest_therm_ID : 56|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 2553934723 TEM_3_BMS_BROADCAST: 8 Vector__XXX
+ SG_ TEM_3_therm_m_num : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_3_lowst_temp : 8|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_3_highest_temp : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_3_avg_temp : 24|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_3_therm_count : 32|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_3_highest_therm_ID : 40|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_3_lowest_therm_ID : 48|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_3_checksum : 56|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 2553869187 TEM_3_GENERAL_BROADCAST: 8 Vector__XXX
+ SG_ TEM_3_relative_therm_ID : 15|8@0+ (1,0) [0|65535] "" Vector__XXX
+ SG_ TEM_3_therm_value : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_3_therm_count : 24|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_3_lowest_temp : 32|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_3_Highest_temp : 40|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_3_highest_therm_ID : 48|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_3_Lowest_therm_ID : 56|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 2553934724 TEM_4_BMS_BROADCAST: 8 Vector__XXX
+ SG_ TEM_4_therm_m_num : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_4_lowst_temp : 8|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_4_highest_temp : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_4_avg_temp : 24|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_4_therm_count : 32|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_4_highest_therm_ID : 40|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_4_lowest_therm_ID : 48|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_4_checksum : 56|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 2553869188 TEM_4_GENERAL_BROADCAST: 8 Vector__XXX
+ SG_ TEM_4_relative_therm_ID : 15|8@0+ (1,0) [0|65535] "" Vector__XXX
+ SG_ TEM_4_therm_value : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_4_therm_count : 24|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_4_lowest_temp : 32|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_4_Highest_temp : 40|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_4_highest_therm_ID : 48|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_4_Lowest_therm_ID : 56|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 2553934725 TEM_5_BMS_BROADCAST: 8 Vector__XXX
+ SG_ TEM_5_therm_m_num : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_5_lowst_temp : 8|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_5_highest_temp : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_5_avg_temp : 24|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_5_therm_count : 32|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_5_highest_therm_ID : 40|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_5_lowest_therm_ID : 48|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_5_checksum : 56|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 2553869189 TEM_5_GENERAL_BROADCAST: 8 Vector__XXX
+ SG_ TEM_5_relative_therm_ID : 15|8@0+ (1,0) [0|65535] "" Vector__XXX
+ SG_ TEM_5_therm_value : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_5_therm_count : 24|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_5_lowest_temp : 32|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_5_Highest_temp : 40|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_5_highest_therm_ID : 48|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_5_Lowest_therm_ID : 56|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 2553934726 TEM_6_BMS_BROADCAST: 8 Vector__XXX
+ SG_ TEM_6_therm_m_num : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_6_lowst_temp : 8|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_6_highest_temp : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_6_avg_temp : 24|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_6_therm_count : 32|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_6_highest_therm_ID : 40|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_6_lowest_therm_ID : 48|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_6_checksum : 56|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 2553869190 TEM_6_GENERAL_BROADCAST: 8 Vector__XXX
+ SG_ TEM_6_relative_therm_ID : 15|8@0+ (1,0) [0|65535] "" Vector__XXX
+ SG_ TEM_6_therm_value : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_6_therm_count : 24|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_6_lowest_temp : 32|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_6_Highest_temp : 40|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_6_highest_therm_ID : 48|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_6_Lowest_therm_ID : 56|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 2553934727 TEM_7_BMS_BROADCAST: 8 Vector__XXX
+ SG_ TEM_7_therm_m_num : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_7_lowst_temp : 8|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_7_highest_temp : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_7_avg_temp : 24|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_7_therm_count : 32|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_7_highest_therm_ID : 40|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_7_lowest_therm_ID : 48|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_7_checksum : 56|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 2553869191 TEM_7_GENERAL_BROADCAST: 8 Vector__XXX
+ SG_ TEM_7_relative_therm_ID : 15|8@0+ (1,0) [0|65535] "" Vector__XXX
+ SG_ TEM_7_therm_value : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_7_therm_count : 24|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_7_lowest_temp : 32|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_7_Highest_temp : 40|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_7_highest_therm_ID : 48|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_7_Lowest_therm_ID : 56|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 2553934728 TEM_8_BMS_BROADCAST: 8 Vector__XXX
+ SG_ TEM_8_therm_m_num : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_8_lowst_temp : 8|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_8_highest_temp : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_8_avg_temp : 24|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_8_therm_count : 32|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_8_highest_therm_ID : 40|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_8_lowest_therm_ID : 48|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_8_checksum : 56|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 2553869192 TEM_8_GENERAL_BROADCAST: 8 Vector__XXX
+ SG_ TEM_8_relative_therm_ID : 15|8@0+ (1,0) [0|65535] "" Vector__XXX
+ SG_ TEM_8_therm_value : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_8_therm_count : 24|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_8_lowest_temp : 32|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_8_Highest_temp : 40|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_8_highest_therm_ID : 48|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_8_Lowest_therm_ID : 56|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 2553934729 TEM_9_BMS_BROADCAST: 8 Vector__XXX
+ SG_ TEM_9_therm_m_num : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_9_lowst_temp : 8|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_9_highest_temp : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_9_avg_temp : 24|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_9_therm_count : 32|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_9_highest_therm_ID : 40|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_9_lowest_therm_ID : 48|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_9_checksum : 56|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 2553869193 TEM_9_GENERAL_BROADCAST: 8 Vector__XXX
+ SG_ TEM_9_relative_therm_ID : 15|8@0+ (1,0) [0|65535] "" Vector__XXX
+ SG_ TEM_9_therm_value : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_9_therm_count : 24|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_9_lowest_temp : 32|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_9_Highest_temp : 40|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_9_highest_therm_ID : 48|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_9_Lowest_therm_ID : 56|8@1+ (1,0) [0|255] "" Vector__XXX
+
+
 
 CM_ BU_ PDM "Motec Power Distribution Module";
 CM_ BU_ INV "The Cascadia Motion inverter";
@@ -642,9 +810,6 @@ CM_ SG_ 160 PM100_Module_B "IGBT Module B Temperature";
 CM_ SG_ 160 PM100_Module_A "IGBT Module A Temperature";
 CM_ BO_ 471 "Enable message sent to Delphi DC/DC converter.";
 CM_ BO_ 469 "Response from Delphi DC/DC converter.";
-CM_ BO_ 514 "This ID Transmits at 8 ms.Message sent by BMS for inverter DC current limiting.";
-CM_ SG_ 514 INV_BMS_Max_Discharge_Current "Maximum discharge current from BMS";
-CM_ SG_ 514 INV_BMS_Max_Charge_Current "Maximum charge current from BMS";
 CM_ BO_ 176 "To enable fast message set CAN ACTIVE MSGS HI WORD to 0xFFFE.  Setting to default value of 0xFFFF will disable the fast message.";
 CM_ SG_ 176 PM100_Fast_Torque_Command "The commanded torque";
 CM_ SG_ 176 PM100_Fast_Torque_Feedback "The estimated torque";
@@ -652,6 +817,7 @@ CM_ SG_ 176 PM100_Fast_Motor_Speed "Motor speed";
 CM_ SG_ 176 PM100_Fast_DC_Bus_Voltage "DC Bus Voltage";
 CM_ BO_ 512 "This ID Transmits at 8 ms.";
 CM_ BO_ 513 "This ID Transmits at 8 ms.";
+CM_ BO_ 514 "This ID Transmits at 8 ms.Message sent by BMS for inverter DC current limiting.";
 CM_ BO_ 515 "This ID Transmits at 8 ms.";
 CM_ BO_ 2550589428 "This ID Transmits at 808 ms.";
 CM_ BO_ 2550588916 "This ID Transmits at 808 ms.";
