@@ -173,8 +173,8 @@ BO_ 1689 Rear_Box_Status: 1 Rear_Box
  SG_ Rear_Box_MCP9800_OK : 1|1@1+ (1,0) [0|1] "" Vector__XXX
 
 BO_ 1696 LV_Box_Analog: 3 LV_Box
- SG_ LVBOX_PWR : 0|12@1+ (0.000805860805860806,0) [0|3.3] "V" Vector__XXX
- SG_ TSAL_PWR : 12|12@1+ (0.000805860805860806,0) [0|3.3] "V" Vector__XXX
+ SG_ LVBOX_PWR : 0|12@1+ (0.0034652014652014652,0) [0|14.2] "V" Vector__XXX
+ SG_ TSAL_PWR : 12|12@1+ (0.0034652014652014652,0) [0|14.2] "V" Vector__XXX
 
 BO_ 1701 LV_Box_Digital: 1 LV_Box
  SG_ TAP_ESTOPS : 0|1@1+ (1,0) [0|1] "bool" Vector__XXX
