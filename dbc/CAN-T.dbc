@@ -516,7 +516,9 @@ BO_ 260 VCU_PDM: 8 VCU
  SG_ Pump : 16|8@1+ (1,0) [0|1] "Off/On" Vector__XXX
  SG_ Fan : 24|8@1+ (1,0) [0|1] "Off/On" Vector__XXX
 
-BO_ 257 VCU_State: 4 VCU
+BO_ 257 VCU_State: 5 VCU
+ SG_ VCU_Requested_Mode : 32|4@1+ (1,1) [1|12] "" Vector__XXX
+ SG_ VCU_Current_Mode : 28|4@1+ (1,1) [1|12] "" Vector__XXX
  SG_ VCU_Power_Saving : 27|1@1+ (1,0) [0|1] "" Vector__XXX
  SG_ VCU_Rolling_Counter : 0|16@1+ (1,0) [0|65535] "" Vector__XXX
  SG_ VCU_DRS_Allowed : 26|1@1+ (1,0) [0|1] "" Vector__XXX
@@ -860,4 +862,6 @@ VAL_ 192 PM100_Inverter_Discharge 0 "Discharge Disable" 1 "Discharge Enable (if 
 VAL_ 170 PM100_Inverter_State 0 "Power up" 1 "Stop" 2 "Open Loop" 3 "Closed Loop" 4 "Internal State" 5 "Internal State" 6 "Internal State" 7 "Internal State" 8 "Idle Run" 9 "Idle Stop" 10 "Internal State" 11 "Intern State" 12 "Internal State" ;
 VAL_ 170 PM100_VSM_State 0 "VSM Start State" 1 "Pre-Charge Init state" 2 "pre-charge active state" 3 "pre-charge complete state" 4 "VSM wait state" 5 "VSM ready state" 6 "Motor Running State" 7 "blink fault code state" 14 "Shutdown state for Key Switch Mode 1" 15 "Reset the inverter" ;
 VAL_ 257 VCU_CTRL_State 0 "TS Button Wait" 1 "Wait Neg AIR" 2 "Precharge Wait" 3 "R2D Wait" 4 "TS On" 5 "R2D Off" 6 "R2D Off Wait" 7 "TS Activation Failure" 8 "TS Run Fault" 9 "Spin" 10 "APPS SCS Fault" 11 "APPS BPS Fault" 12 "Sim Wait TS Off" 13 "Sim Wait TS On" 14 "Sim Wait R2D Off" 15 "Sim Wait R2D On" ;
+VAL_ 257 VCU_Current_Mode 0 "Endurance" 1 "Max" 2 "Torque_Ctrl" 3 "Undefined" 4 "Undefined" 5 "Undefined" 6 "Undefined" 7 "Undefined" 8 "Crawl" 9 "Reverse" 10 "Undefined" 11 "Inverter_Prog";
+VAL_ 257 VCU_Requested_Mode 0 "Endurance" 1 "Max" 2 "Torque_Ctrl" 3 "Undefined" 4 "Undefined" 5 "Undefined" 6 "Undefined" 7 "Undefined" 8 "Crawl" 9 "Reverse" 10 "Undefined" 11 "Inverter_Prog";
 
