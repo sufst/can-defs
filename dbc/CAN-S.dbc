@@ -56,13 +56,9 @@ BO_ 592 Wheel_RPM: 8 VCU
  SG_ WHEEL_RL_RPM : 0|16@1- (0.25,0) [-8192|8191.75] "rpm" Vector__XXX
 
 BO_ 262 VCU_Simulation: 8 Vector__XXX
- SG_ Sim_Torque_Request m0 : 40|16@1+ (0.1,0) [0|6553.5] "Nm"  VCU
- SG_ Sim_Power m1 : 8|16@1+ (0.2,0) [0|13107] "W"  VCU
- SG_ Simulation_MUX M : 0|8@1+ (1,0) [0|255] ""  VCU
- SG_ Sim_BPS m0 : 24|16@1+ (0.1,0) [0|100] "%"  VCU
- SG_ Sim_APPS m0 : 8|16@1+ (0.1,0) [0|100] "%"  VCU
- SG_ Sim_TS_ON m0 : 57|1@1+ (1,0) [0|1] ""  VCU
- SG_ Sim_R2D m0 : 56|1@1+ (1,0) [0|1] ""  VCU
+ SG_ Sim_Torque_Request : 40|16@1+ (0.1,0) [0|6553.5] "Nm"  VCU
+ SG_ Sim_TS_ON : 57|1@1+ (1,0) [0|1] ""  VCU
+ SG_ Sim_R2D : 56|1@1+ (1,0) [0|1] ""  VCU
 
 BO_ 64 VCU_Ping: 8 VCU
 
