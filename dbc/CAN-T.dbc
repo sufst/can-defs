@@ -274,9 +274,23 @@ BO_ 2550589940 BMS_Cell_Charge_Command_C: 8 BMS
  SG_ DTC_P0A08_Charger_Safety_Re_0001 : 39|1@1+ (1,0) [0|1] ""  Charger
 
 BO_ 118 BMS_Fast_Thermistor_Broadcast: 4 BMS
- SG_ Thermistor_ID M : 0|8@1+ (1,0) [0|255] "ID" Vector__XXX
- SG_ Instant_Temp : 8|8@1- (1,0) [-128|127] "C" Vector__XXX
- SG_ Fault_Present : 16|8@1+ (1,0) [0|1] "Bool" Vector__XXX
+ SG_ BMS_Fast_Thermistor_ID M : 0|8@1+ (1,0) [0|255] "ID" Vector__XXX
+ SG_ BMS_Fast_Temp_0 m0 : 8|8@1- (1,0) [-128|127] "C" Vector__XXX
+ SG_ BMS_Fast_Fault_0 m0 : 16|8@1+ (1,0) [0|1] "Bool" Vector__XXX
+ SG_ BMS_Fast_Temp_1 m1 : 8|8@1- (1,0) [-128|127] "C" Vector__XXX
+ SG_ BMS_Fast_Fault_1 m1 : 16|8@1+ (1,0) [0|1] "Bool" Vector__XXX
+ SG_ BMS_Fast_Temp_2 m2 : 8|8@1- (1,0) [-128|127] "C" Vector__XXX
+ SG_ BMS_Fast_Fault_2 m2 : 16|8@1+ (1,0) [0|1] "Bool" Vector__XXX
+ SG_ BMS_Fast_Temp_3 m3 : 8|8@1- (1,0) [-128|127] "C" Vector__XXX
+ SG_ BMS_Fast_Fault_3 m3 : 16|8@1+ (1,0) [0|1] "Bool" Vector__XXX
+ SG_ BMS_Fast_Temp_4 m4 : 8|8@1- (1,0) [-128|127] "C" Vector__XXX
+ SG_ BMS_Fast_Fault_4 m4 : 16|8@1+ (1,0) [0|1] "Bool" Vector__XXX
+ SG_ BMS_Fast_Temp_5 m5 : 8|8@1- (1,0) [-128|127] "C" Vector__XXX
+ SG_ BMS_Fast_Fault_5 m5 : 16|8@1+ (1,0) [0|1] "Bool" Vector__XXX
+ SG_ BMS_Fast_Temp_6 m6 : 8|8@1- (1,0) [-128|127] "C" Vector__XXX
+ SG_ BMS_Fast_Fault_6 m6 : 16|8@1+ (1,0) [0|1] "Bool" Vector__XXX
+ SG_ BMS_Fast_Temp_7 m7 : 8|8@1- (1,0) [-128|127] "C" Vector__XXX
+ SG_ BMS_Fast_Fault_7 m7 : 16|8@1+ (1,0) [0|1] "Bool" Vector__XXX
 
 BO_ 2566869221 Charger_Heartbeat: 8 Charger
 
