@@ -273,6 +273,11 @@ BO_ 2550589940 BMS_Cell_Charge_Command_C: 8 BMS
  SG_ Pack_CCL : 23|16@0+ (0.1,0) [0|0] "Amps"  Charger
  SG_ DTC_P0A08_Charger_Safety_Re_0001 : 39|1@1+ (1,0) [0|1] ""  Charger
 
+BO_ 118 BMS_Fast_Thermistor_Broadcast: 4 BMS
+ SG_ Thermistor_ID M : 0|8@1+ (1,0) [0|255] "ID" Vector__XXX
+ SG_ Instant_Temp : 8|8@1- (1,0) [-128|127] "C" Vector__XXX
+ SG_ Fault_Present : 16|8@1+ (1,0) [0|1] "Bool" Vector__XXX
+
 BO_ 2566869221 Charger_Heartbeat: 8 Charger
 
 BO_ 2018 CAN_T_Repeater_Heartbeat: 8 CAN_T_Repeater
