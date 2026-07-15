@@ -203,7 +203,7 @@ BO_ 512 BMS_Pack_Info: 8 BMS
  SG_ BMS_Pack_DCL : 63|8@0+ (1,1720) [0|0] "Amps" Vector__XXX
 
 BO_ 513 BMS_Pack_State: 8 BMS
- SG_ BMS_Pack_Current : 7|16@0+ (0.1,0) [0|0] "Amps" Vector__XXX
+ SG_ BMS_Pack_Current : 7|16@0- (0.1,0) [0|0] "Amps" Vector__XXX
  SG_ BMS_Pack_Inst_Voltage : 23|16@0+ (0.1,0) [0|0] "Volts" Vector__XXX
  SG_ BMS_Pack_SOC : 39|8@0+ (0.5,0) [0|0] "Percent" Vector__XXX
  SG_ BMS_Maximum_Pack_Voltage : 47|8@0+ (0.1,0) [0|0] "Volts" Vector__XXX
@@ -866,7 +866,7 @@ VAL_ 192 PM100_Direction_Command 0 "CW" 1 "CCW" ;
 VAL_ 192 PM100_Inverter_Discharge 0 "Discharge Disable" 1 "Discharge Enable (if EEPROM parameter is set)" ;
 VAL_ 170 PM100_Inverter_State 0 "Power up" 1 "Stop" 2 "Open Loop" 3 "Closed Loop" 4 "Internal State" 5 "Internal State" 6 "Internal State" 7 "Internal State" 8 "Idle Run" 9 "Idle Stop" 10 "Internal State" 11 "Intern State" 12 "Internal State" ;
 VAL_ 170 PM100_VSM_State 0 "VSM Start State" 1 "Pre-Charge Init state" 2 "pre-charge active state" 3 "pre-charge complete state" 4 "VSM wait state" 5 "VSM ready state" 6 "Motor Running State" 7 "blink fault code state" 14 "Shutdown state for Key Switch Mode 1" 15 "Reset the inverter" ;
+VAL_ 257 VCU_Requested_Mode 1 "Endurance" 2 "Max" 3 "Torque_Ctrl" 4 "Crawl" 5 "Reverse" 6 "Remote_Ctrl" 7 "Undefined" 8 "Undefined" 9 "Undefined" 10 "Inverter_Prog" ;
+VAL_ 257 VCU_Current_Mode 1 "Endurance" 2 "Max" 3 "Torque_Ctrl" 4 "Crawl" 5 "Reverse" 6 "Remote_Ctrl" 7 "Undefined" 8 "Undefined" 9 "Undefined" 10 "Inverter_Prog" ;
 VAL_ 257 VCU_CTRL_State 0 "TS Button Wait" 1 "Wait Neg AIR" 2 "Precharge Wait" 3 "R2D Wait" 4 "TS On" 5 "R2D Off" 6 "R2D Off Wait" 7 "TS Activation Failure" 8 "TS Run Fault" 9 "Spin" 10 "APPS SCS Fault" 11 "APPS BPS Fault" 12 "Sim Wait TS Off" 13 "Sim Wait TS On" 14 "Sim Wait R2D Off" 15 "Sim Wait R2D On" ;
-VAL_ 257 VCU_Current_Mode 1 "Endurance" 2 "Max" 3 "Torque_Ctrl" 4 "Crawl" 5 "Reverse" 6 "Remote_Ctrl" 7 "Undefined" 8 "Undefined" 9 "Undefined" 10 "Inverter_Prog";
-VAL_ 257 VCU_Requested_Mode 1 "Endurance" 2 "Max" 3 "Torque_Ctrl" 4 "Crawl" 5 "Reverse" 6 "Remote_Ctrl" 7 "Undefined" 8 "Undefined" 9 "Undefined" 10 "Inverter_Prog";
 
