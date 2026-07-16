@@ -564,8 +564,31 @@ BO_ 2553934721 TEM_1_BMS_BROADCAST: 8 Vector__XXX
  SG_ TEM_1_checksum : 56|8@1+ (1,0) [0|255] "" Vector__XXX
 
 BO_ 2553869185 TEM_1_GENERAL_BROADCAST: 8 Vector__XXX
- SG_ TEM_1_relative_therm_ID : 15|8@0+ (1,0) [0|65535] "" Vector__XXX
- SG_ TEM_1_therm_value : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_1_relative_therm_ID M : 15|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_1_therm_080_value m80 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_1_therm_081_value m81 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_1_therm_082_value m82 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_1_therm_083_value m83 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_1_therm_084_value m84 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_1_therm_085_value m85 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_1_therm_086_value m86 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_1_therm_087_value m87 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_1_therm_088_value m88 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_1_therm_089_value m89 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_1_therm_090_value m90 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_1_therm_091_value m91 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_1_therm_092_value m92 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_1_therm_093_value m93 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_1_therm_094_value m94 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_1_therm_095_value m95 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_1_therm_096_value m96 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_1_therm_097_value m97 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_1_therm_098_value m98 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_1_therm_099_value m99 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_1_therm_100_value m100 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_1_therm_101_value m101 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_1_therm_102_value m102 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_1_therm_103_value m103 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
  SG_ TEM_1_therm_count : 24|8@1+ (1,0) [0|255] "" Vector__XXX
  SG_ TEM_1_lowest_temp : 32|8@1- (1,0) [-128|127] "'C" Vector__XXX
  SG_ TEM_1_Highest_temp : 40|8@1- (1,0) [-128|127] "'C" Vector__XXX
@@ -583,8 +606,31 @@ BO_ 2553934722 TEM_2_BMS_BROADCAST: 8 Vector__XXX
  SG_ TEM_2_checksum : 56|8@1+ (1,0) [0|255] "" Vector__XXX
 
 BO_ 2553869186 TEM_2_GENERAL_BROADCAST: 8 Vector__XXX
- SG_ TEM_2_relative_therm_ID : 15|8@0+ (1,0) [0|65535] "" Vector__XXX
- SG_ TEM_2_therm_value : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_2_relative_therm_ID M : 15|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_2_therm_160_value m160 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_2_therm_161_value m161 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_2_therm_162_value m162 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_2_therm_163_value m163 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_2_therm_164_value m164 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_2_therm_165_value m165 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_2_therm_166_value m166 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_2_therm_167_value m167 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_2_therm_168_value m168 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_2_therm_169_value m169 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_2_therm_170_value m170 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_2_therm_171_value m171 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_2_therm_172_value m172 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_2_therm_173_value m173 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_2_therm_174_value m174 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_2_therm_175_value m175 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_2_therm_176_value m176 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_2_therm_177_value m177 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_2_therm_178_value m178 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_2_therm_179_value m179 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_2_therm_180_value m180 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_2_therm_181_value m181 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_2_therm_182_value m182 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_2_therm_183_value m183 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
  SG_ TEM_2_therm_count : 24|8@1+ (1,0) [0|255] "" Vector__XXX
  SG_ TEM_2_lowest_temp : 32|8@1- (1,0) [-128|127] "'C" Vector__XXX
  SG_ TEM_2_Highest_temp : 40|8@1- (1,0) [-128|127] "'C" Vector__XXX
@@ -602,8 +648,31 @@ BO_ 2553934723 TEM_3_BMS_BROADCAST: 8 Vector__XXX
  SG_ TEM_3_checksum : 56|8@1+ (1,0) [0|255] "" Vector__XXX
 
 BO_ 2553869187 TEM_3_GENERAL_BROADCAST: 8 Vector__XXX
- SG_ TEM_3_relative_therm_ID : 15|8@0+ (1,0) [0|65535] "" Vector__XXX
- SG_ TEM_3_therm_value : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_3_relative_therm_ID M : 15|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_3_therm_000_value m0 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_3_therm_001_value m1 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_3_therm_002_value m2 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_3_therm_003_value m3 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_3_therm_004_value m4 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_3_therm_005_value m5 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_3_therm_006_value m6 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_3_therm_007_value m7 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_3_therm_240_value m240 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_3_therm_241_value m241 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_3_therm_242_value m242 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_3_therm_243_value m243 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_3_therm_244_value m244 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_3_therm_245_value m245 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_3_therm_246_value m246 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_3_therm_247_value m247 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_3_therm_248_value m248 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_3_therm_249_value m249 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_3_therm_250_value m250 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_3_therm_251_value m251 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_3_therm_252_value m252 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_3_therm_253_value m253 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_3_therm_254_value m254 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_3_therm_255_value m255 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
  SG_ TEM_3_therm_count : 24|8@1+ (1,0) [0|255] "" Vector__XXX
  SG_ TEM_3_lowest_temp : 32|8@1- (1,0) [-128|127] "'C" Vector__XXX
  SG_ TEM_3_Highest_temp : 40|8@1- (1,0) [-128|127] "'C" Vector__XXX
@@ -621,8 +690,31 @@ BO_ 2553934724 TEM_4_BMS_BROADCAST: 8 Vector__XXX
  SG_ TEM_4_checksum : 56|8@1+ (1,0) [0|255] "" Vector__XXX
 
 BO_ 2553869188 TEM_4_GENERAL_BROADCAST: 8 Vector__XXX
- SG_ TEM_4_relative_therm_ID : 15|8@0+ (1,0) [0|65535] "" Vector__XXX
- SG_ TEM_4_therm_value : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_4_relative_therm_ID M : 15|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_4_therm_064_value m64 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_4_therm_065_value m65 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_4_therm_066_value m66 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_4_therm_067_value m67 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_4_therm_068_value m68 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_4_therm_069_value m69 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_4_therm_070_value m70 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_4_therm_071_value m71 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_4_therm_072_value m72 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_4_therm_073_value m73 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_4_therm_074_value m74 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_4_therm_075_value m75 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_4_therm_076_value m76 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_4_therm_077_value m77 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_4_therm_078_value m78 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_4_therm_079_value m79 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_4_therm_080_value m80 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_4_therm_081_value m81 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_4_therm_082_value m82 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_4_therm_083_value m83 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_4_therm_084_value m84 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_4_therm_085_value m85 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_4_therm_086_value m86 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_4_therm_087_value m87 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
  SG_ TEM_4_therm_count : 24|8@1+ (1,0) [0|255] "" Vector__XXX
  SG_ TEM_4_lowest_temp : 32|8@1- (1,0) [-128|127] "'C" Vector__XXX
  SG_ TEM_4_Highest_temp : 40|8@1- (1,0) [-128|127] "'C" Vector__XXX
@@ -640,8 +732,31 @@ BO_ 2553934725 TEM_5_BMS_BROADCAST: 8 Vector__XXX
  SG_ TEM_5_checksum : 56|8@1+ (1,0) [0|255] "" Vector__XXX
 
 BO_ 2553869189 TEM_5_GENERAL_BROADCAST: 8 Vector__XXX
- SG_ TEM_5_relative_therm_ID : 15|8@0+ (1,0) [0|65535] "" Vector__XXX
- SG_ TEM_5_therm_value : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_5_relative_therm_ID M : 15|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_5_therm_144_value m144 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_5_therm_145_value m145 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_5_therm_146_value m146 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_5_therm_147_value m147 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_5_therm_148_value m148 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_5_therm_149_value m149 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_5_therm_150_value m150 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_5_therm_151_value m151 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_5_therm_152_value m152 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_5_therm_153_value m153 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_5_therm_154_value m154 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_5_therm_155_value m155 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_5_therm_156_value m156 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_5_therm_157_value m157 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_5_therm_158_value m158 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_5_therm_159_value m159 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_5_therm_160_value m160 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_5_therm_161_value m161 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_5_therm_162_value m162 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_5_therm_163_value m163 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_5_therm_164_value m164 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_5_therm_165_value m165 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_5_therm_166_value m166 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_5_therm_167_value m167 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
  SG_ TEM_5_therm_count : 24|8@1+ (1,0) [0|255] "" Vector__XXX
  SG_ TEM_5_lowest_temp : 32|8@1- (1,0) [-128|127] "'C" Vector__XXX
  SG_ TEM_5_Highest_temp : 40|8@1- (1,0) [-128|127] "'C" Vector__XXX
@@ -659,8 +774,31 @@ BO_ 2553934726 TEM_6_BMS_BROADCAST: 8 Vector__XXX
  SG_ TEM_6_checksum : 56|8@1+ (1,0) [0|255] "" Vector__XXX
 
 BO_ 2553869190 TEM_6_GENERAL_BROADCAST: 8 Vector__XXX
- SG_ TEM_6_relative_therm_ID : 15|8@0+ (1,0) [0|65535] "" Vector__XXX
- SG_ TEM_6_therm_value : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_6_relative_therm_ID M : 15|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_6_therm_224_value m224 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_6_therm_225_value m225 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_6_therm_226_value m226 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_6_therm_227_value m227 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_6_therm_228_value m228 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_6_therm_229_value m229 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_6_therm_230_value m230 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_6_therm_231_value m231 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_6_therm_232_value m232 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_6_therm_233_value m233 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_6_therm_234_value m234 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_6_therm_235_value m235 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_6_therm_236_value m236 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_6_therm_237_value m237 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_6_therm_238_value m238 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_6_therm_239_value m239 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_6_therm_240_value m240 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_6_therm_241_value m241 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_6_therm_242_value m242 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_6_therm_243_value m243 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_6_therm_244_value m244 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_6_therm_245_value m245 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_6_therm_246_value m246 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_6_therm_247_value m247 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
  SG_ TEM_6_therm_count : 24|8@1+ (1,0) [0|255] "" Vector__XXX
  SG_ TEM_6_lowest_temp : 32|8@1- (1,0) [-128|127] "'C" Vector__XXX
  SG_ TEM_6_Highest_temp : 40|8@1- (1,0) [-128|127] "'C" Vector__XXX
@@ -678,8 +816,31 @@ BO_ 2553934727 TEM_7_BMS_BROADCAST: 8 Vector__XXX
  SG_ TEM_7_checksum : 56|8@1+ (1,0) [0|255] "" Vector__XXX
 
 BO_ 2553869191 TEM_7_GENERAL_BROADCAST: 8 Vector__XXX
- SG_ TEM_7_relative_therm_ID : 15|8@0+ (1,0) [0|65535] "" Vector__XXX
- SG_ TEM_7_therm_value : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_7_relative_therm_ID M : 15|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_7_therm_048_value m48 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_7_therm_049_value m49 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_7_therm_050_value m50 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_7_therm_051_value m51 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_7_therm_052_value m52 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_7_therm_053_value m53 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_7_therm_054_value m54 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_7_therm_055_value m55 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_7_therm_056_value m56 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_7_therm_057_value m57 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_7_therm_058_value m58 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_7_therm_059_value m59 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_7_therm_060_value m60 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_7_therm_061_value m61 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_7_therm_062_value m62 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_7_therm_063_value m63 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_7_therm_064_value m64 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_7_therm_065_value m65 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_7_therm_066_value m66 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_7_therm_067_value m67 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_7_therm_068_value m68 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_7_therm_069_value m69 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_7_therm_070_value m70 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_7_therm_071_value m71 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
  SG_ TEM_7_therm_count : 24|8@1+ (1,0) [0|255] "" Vector__XXX
  SG_ TEM_7_lowest_temp : 32|8@1- (1,0) [-128|127] "'C" Vector__XXX
  SG_ TEM_7_Highest_temp : 40|8@1- (1,0) [-128|127] "'C" Vector__XXX
@@ -697,8 +858,31 @@ BO_ 2553934728 TEM_8_BMS_BROADCAST: 8 Vector__XXX
  SG_ TEM_8_checksum : 56|8@1+ (1,0) [0|255] "" Vector__XXX
 
 BO_ 2553869192 TEM_8_GENERAL_BROADCAST: 8 Vector__XXX
- SG_ TEM_8_relative_therm_ID : 15|8@0+ (1,0) [0|65535] "" Vector__XXX
- SG_ TEM_8_therm_value : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_8_relative_therm_ID M : 15|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_8_therm_128_value m128 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_8_therm_129_value m129 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_8_therm_130_value m130 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_8_therm_131_value m131 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_8_therm_132_value m132 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_8_therm_133_value m133 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_8_therm_134_value m134 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_8_therm_135_value m135 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_8_therm_136_value m136 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_8_therm_137_value m137 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_8_therm_138_value m138 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_8_therm_139_value m139 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_8_therm_140_value m140 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_8_therm_141_value m141 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_8_therm_142_value m142 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_8_therm_143_value m143 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_8_therm_144_value m144 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_8_therm_145_value m145 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_8_therm_146_value m146 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_8_therm_147_value m147 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_8_therm_148_value m148 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_8_therm_149_value m149 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_8_therm_150_value m150 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_8_therm_151_value m151 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
  SG_ TEM_8_therm_count : 24|8@1+ (1,0) [0|255] "" Vector__XXX
  SG_ TEM_8_lowest_temp : 32|8@1- (1,0) [-128|127] "'C" Vector__XXX
  SG_ TEM_8_Highest_temp : 40|8@1- (1,0) [-128|127] "'C" Vector__XXX
@@ -716,8 +900,31 @@ BO_ 2553934729 TEM_9_BMS_BROADCAST: 8 Vector__XXX
  SG_ TEM_9_checksum : 56|8@1+ (1,0) [0|255] "" Vector__XXX
 
 BO_ 2553869193 TEM_9_GENERAL_BROADCAST: 8 Vector__XXX
- SG_ TEM_9_relative_therm_ID : 15|8@0+ (1,0) [0|65535] "" Vector__XXX
- SG_ TEM_9_therm_value : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_9_relative_therm_ID M : 15|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ TEM_9_therm_208_value m208 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_9_therm_209_value m209 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_9_therm_210_value m210 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_9_therm_211_value m211 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_9_therm_212_value m212 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_9_therm_213_value m213 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_9_therm_214_value m214 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_9_therm_215_value m215 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_9_therm_216_value m216 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_9_therm_217_value m217 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_9_therm_218_value m218 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_9_therm_219_value m219 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_9_therm_220_value m220 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_9_therm_221_value m221 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_9_therm_222_value m222 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_9_therm_223_value m223 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_9_therm_224_value m224 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_9_therm_225_value m225 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_9_therm_226_value m226 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_9_therm_227_value m227 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_9_therm_228_value m228 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_9_therm_229_value m229 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_9_therm_230_value m230 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
+ SG_ TEM_9_therm_231_value m231 : 16|8@1- (1,0) [-128|127] "'C" Vector__XXX
  SG_ TEM_9_therm_count : 24|8@1+ (1,0) [0|255] "" Vector__XXX
  SG_ TEM_9_lowest_temp : 32|8@1- (1,0) [-128|127] "'C" Vector__XXX
  SG_ TEM_9_Highest_temp : 40|8@1- (1,0) [-128|127] "'C" Vector__XXX
