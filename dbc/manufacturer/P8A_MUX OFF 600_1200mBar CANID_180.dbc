@@ -1,0 +1,34 @@
+VERSION ""
+
+NS_ :
+BS_:
+BU_: Vector__XXX
+BO_ 384 CH1_4: 8 Vector__XXX
+SG_ CH1 : 7|16@0+ (0.01,600) [600|1255.35] "mBar" Vector__XXX
+SG_ CH3 : 39|16@0+ (0.01,600) [600|1255.35] "mBar" Vector__XXX
+SG_ CH2 : 23|16@0+ (0.01,600) [600|1255.35] "mBar" Vector__XXX
+SG_ CH4 : 55|16@0+ (0.01,600) [600|1255.35] "mBar" Vector__XXX
+
+BO_ 385 CH5_8: 8 Vector__XXX
+SG_ CH5 : 7|16@0+ (0.01,600) [600|1255.35] "mBar" Vector__XXX
+SG_ CH7 : 39|16@0+ (0.01,600) [600|1255.35] "mBar" Vector__XXX
+SG_ CH6 : 23|16@0+ (0.01,600) [600|1255.35] "mBar" Vector__XXX
+SG_ CH8 : 55|16@0+ (0.01,600) [600|1255.35] "mBar" Vector__XXX
+
+BO_ 386 SlowRow: 8 Vector__XXX
+SG_ SensorNumber : 15|16@0+ (1,0) [0|65535] "" Vector__XXX
+SG_ Temperature : 7|8@0- (1,0) [-128|127] "C" Vector__XXX
+SG_ Range : 31|8@0+ (1,0) [0|255] "" Vector__XXX
+
+
+BA_DEF_  "BusType" STRING ;
+BA_DEF_ SG_  "GenSigStartValue" FLOAT -3.4E+038 3.4E+038;
+
+BA_DEF_DEF_  "BusType" "CAN";
+BA_DEF_DEF_  "GenSigStartValue" 0;
+
+BA_ "BusType" "CAN";
+
+BA_ "GenSigStartValue" SG_ 386 SensorNumber 600;
+
+
