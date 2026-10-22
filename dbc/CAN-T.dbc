@@ -881,6 +881,13 @@ BO_ 258 VCU_Error: 6 VCU
  SG_ VCU_SCS_Error : 8|8@1+ (1,0) [0|255] "" Vector__XXX
  SG_ VCU_CTRL_Error : 0|8@1+ (1,0) [0|255] "" Vector__XXX
 
+BO_ 263 VCU_Launch_Ctrl: 2 VCU
+ SG_ VCU_LC_Arm_Progress : 8|7@1+ (1,0) [0|100] "%" Vector__XXX
+ SG_ VCU_LC_Stationary : 7|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ VCU_LC_Shadow_Mode : 6|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ VCU_LC_Fault : 3|3@1+ (1,0) [0|7] "" Vector__XXX
+ SG_ VCU_LC_State : 0|3@1+ (1,0) [0|7] "" Vector__XXX
+
 BO_ 2553934721 TEM_1_BMS_BROADCAST: 8 Vector__XXX
  SG_ TEM_1_therm_m_num : 0|8@1+ (1,0) [0|255] "" Vector__XXX
  SG_ TEM_1_lowst_temp : 8|8@1- (1,0) [-128|127] "'C" Vector__XXX
@@ -1422,4 +1429,6 @@ VAL_ 170 PM100_VSM_State 0 "VSM Start State" 1 "Pre-Charge Init state" 2 "pre-ch
 VAL_ 257 VCU_Requested_Mode 1 "Endurance" 2 "Max" 3 "Launch_Ctrl" 4 "Crawl" 5 "Reverse" 6 "Remote_Ctrl" 7 "Undefined" 8 "Undefined" 9 "Undefined" 10 "Inverter_Prog" ;
 VAL_ 257 VCU_Current_Mode 1 "Endurance" 2 "Max" 3 "Launch_Ctrl" 4 "Crawl" 5 "Reverse" 6 "Remote_Ctrl" 7 "Undefined" 8 "Undefined" 9 "Undefined" 10 "Inverter_Prog" ;
 VAL_ 257 VCU_CTRL_State 0 "TS Button Wait" 1 "Wait Neg AIR" 2 "Precharge Wait" 3 "R2D Wait" 4 "TS On" 5 "R2D Off" 6 "R2D Off Wait" 7 "TS Activation Failure" 8 "TS Run Fault" 9 "Spin" 10 "APPS SCS Fault" 11 "APPS BPS Fault" 12 "Sim Wait TS Off" 13 "Sim Wait TS On" 14 "Sim Wait R2D Off" 15 "Sim Wait R2D On" ;
+VAL_ 263 VCU_LC_State 0 "Off" 1 "Armed" 2 "Active" 3 "Done" 4 "Fault" ;
+VAL_ 263 VCU_LC_Fault 0 "None" 1 "Front_Stale" 2 "Front_Disagree" 3 "Motor_Reverse" 4 "Front_Ahead" 5 "Bad_Dt" ;
 

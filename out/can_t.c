@@ -19722,3 +19722,116 @@ bool can_t_tem_9_general_broadcast_tem_9_lowest_therm_id_is_in_range(uint8_t val
 
     return (true);
 }
+
+int can_t_vcu_launch_ctrl_pack(
+    uint8_t *dst_p,
+    const struct can_t_vcu_launch_ctrl_t *src_p,
+    size_t size)
+{
+    if (size < 2u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 2);
+
+    dst_p[0] |= pack_left_shift_u8(src_p->vcu_lc_state, 0u, 0x07u);
+    dst_p[0] |= pack_left_shift_u8(src_p->vcu_lc_fault, 3u, 0x38u);
+    dst_p[0] |= pack_left_shift_u8(src_p->vcu_lc_shadow_mode, 6u, 0x40u);
+    dst_p[0] |= pack_left_shift_u8(src_p->vcu_lc_stationary, 7u, 0x80u);
+    dst_p[1] |= pack_left_shift_u8(src_p->vcu_lc_arm_progress, 0u, 0x7fu);
+
+    return (2);
+}
+
+int can_t_vcu_launch_ctrl_unpack(
+    struct can_t_vcu_launch_ctrl_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 2u) {
+        return (-EINVAL);
+    }
+
+    dst_p->vcu_lc_state = unpack_right_shift_u8(src_p[0], 0u, 0x07u);
+    dst_p->vcu_lc_fault = unpack_right_shift_u8(src_p[0], 3u, 0x38u);
+    dst_p->vcu_lc_shadow_mode = unpack_right_shift_u8(src_p[0], 6u, 0x40u);
+    dst_p->vcu_lc_stationary = unpack_right_shift_u8(src_p[0], 7u, 0x80u);
+    dst_p->vcu_lc_arm_progress = unpack_right_shift_u8(src_p[1], 0u, 0x7fu);
+
+    return (0);
+}
+
+uint8_t can_t_vcu_launch_ctrl_vcu_lc_state_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double can_t_vcu_launch_ctrl_vcu_lc_state_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool can_t_vcu_launch_ctrl_vcu_lc_state_is_in_range(uint8_t value)
+{
+    return (value <= 7u);
+}
+
+uint8_t can_t_vcu_launch_ctrl_vcu_lc_fault_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double can_t_vcu_launch_ctrl_vcu_lc_fault_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool can_t_vcu_launch_ctrl_vcu_lc_fault_is_in_range(uint8_t value)
+{
+    return (value <= 7u);
+}
+
+uint8_t can_t_vcu_launch_ctrl_vcu_lc_shadow_mode_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double can_t_vcu_launch_ctrl_vcu_lc_shadow_mode_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool can_t_vcu_launch_ctrl_vcu_lc_shadow_mode_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t can_t_vcu_launch_ctrl_vcu_lc_stationary_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double can_t_vcu_launch_ctrl_vcu_lc_stationary_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool can_t_vcu_launch_ctrl_vcu_lc_stationary_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
+
+uint8_t can_t_vcu_launch_ctrl_vcu_lc_arm_progress_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double can_t_vcu_launch_ctrl_vcu_lc_arm_progress_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool can_t_vcu_launch_ctrl_vcu_lc_arm_progress_is_in_range(uint8_t value)
+{
+    return (value <= 100u);
+}
