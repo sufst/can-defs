@@ -86,6 +86,7 @@ extern "C" {
 #define CAN_T_VCU_PDM_FRAME_ID (0x104u)
 #define CAN_T_VCU_STATE_FRAME_ID (0x101u)
 #define CAN_T_VCU_ERROR_FRAME_ID (0x102u)
+#define CAN_T_VCU_LAUNCH_CTRL_FRAME_ID (0x107u)
 #define CAN_T_TEM_1_BMS_BROADCAST_FRAME_ID (0x1839f381u)
 #define CAN_T_TEM_1_GENERAL_BROADCAST_FRAME_ID (0x1838f381u)
 #define CAN_T_TEM_2_BMS_BROADCAST_FRAME_ID (0x1839f382u)
@@ -148,6 +149,7 @@ extern "C" {
 #define CAN_T_VCU_PDM_LENGTH (8u)
 #define CAN_T_VCU_STATE_LENGTH (5u)
 #define CAN_T_VCU_ERROR_LENGTH (6u)
+#define CAN_T_VCU_LAUNCH_CTRL_LENGTH (2u)
 #define CAN_T_TEM_1_BMS_BROADCAST_LENGTH (8u)
 #define CAN_T_TEM_1_GENERAL_BROADCAST_LENGTH (8u)
 #define CAN_T_TEM_2_BMS_BROADCAST_LENGTH (8u)
@@ -210,6 +212,7 @@ extern "C" {
 #define CAN_T_VCU_PDM_IS_EXTENDED (0)
 #define CAN_T_VCU_STATE_IS_EXTENDED (0)
 #define CAN_T_VCU_ERROR_IS_EXTENDED (0)
+#define CAN_T_VCU_LAUNCH_CTRL_IS_EXTENDED (0)
 #define CAN_T_TEM_1_BMS_BROADCAST_IS_EXTENDED (1)
 #define CAN_T_TEM_1_GENERAL_BROADCAST_IS_EXTENDED (1)
 #define CAN_T_TEM_2_BMS_BROADCAST_IS_EXTENDED (1)
@@ -302,7 +305,7 @@ extern "C" {
 
 #define CAN_T_VCU_STATE_VCU_CURRENT_MODE_ENDURANCE_CHOICE (1u)
 #define CAN_T_VCU_STATE_VCU_CURRENT_MODE_MAX_CHOICE (2u)
-#define CAN_T_VCU_STATE_VCU_CURRENT_MODE_TORQUE_CTRL_CHOICE (3u)
+#define CAN_T_VCU_STATE_VCU_CURRENT_MODE_LAUNCH_CTRL_CHOICE (3u)
 #define CAN_T_VCU_STATE_VCU_CURRENT_MODE_CRAWL_CHOICE (4u)
 #define CAN_T_VCU_STATE_VCU_CURRENT_MODE_REVERSE_CHOICE (5u)
 #define CAN_T_VCU_STATE_VCU_CURRENT_MODE_REMOTE_CTRL_CHOICE (6u)
@@ -313,7 +316,7 @@ extern "C" {
 
 #define CAN_T_VCU_STATE_VCU_REQUESTED_MODE_ENDURANCE_CHOICE (1u)
 #define CAN_T_VCU_STATE_VCU_REQUESTED_MODE_MAX_CHOICE (2u)
-#define CAN_T_VCU_STATE_VCU_REQUESTED_MODE_TORQUE_CTRL_CHOICE (3u)
+#define CAN_T_VCU_STATE_VCU_REQUESTED_MODE_LAUNCH_CTRL_CHOICE (3u)
 #define CAN_T_VCU_STATE_VCU_REQUESTED_MODE_CRAWL_CHOICE (4u)
 #define CAN_T_VCU_STATE_VCU_REQUESTED_MODE_REVERSE_CHOICE (5u)
 #define CAN_T_VCU_STATE_VCU_REQUESTED_MODE_REMOTE_CTRL_CHOICE (6u)
@@ -321,6 +324,19 @@ extern "C" {
 #define CAN_T_VCU_STATE_VCU_REQUESTED_MODE_UNDEFINED_8_CHOICE (8u)
 #define CAN_T_VCU_STATE_VCU_REQUESTED_MODE_UNDEFINED_9_CHOICE (9u)
 #define CAN_T_VCU_STATE_VCU_REQUESTED_MODE_INVERTER_PROG_CHOICE (10u)
+
+#define CAN_T_VCU_LAUNCH_CTRL_VCU_LC_STATE_OFF_CHOICE (0u)
+#define CAN_T_VCU_LAUNCH_CTRL_VCU_LC_STATE_ARMED_CHOICE (1u)
+#define CAN_T_VCU_LAUNCH_CTRL_VCU_LC_STATE_ACTIVE_CHOICE (2u)
+#define CAN_T_VCU_LAUNCH_CTRL_VCU_LC_STATE_DONE_CHOICE (3u)
+#define CAN_T_VCU_LAUNCH_CTRL_VCU_LC_STATE_FAULT_CHOICE (4u)
+
+#define CAN_T_VCU_LAUNCH_CTRL_VCU_LC_FAULT_NONE_CHOICE (0u)
+#define CAN_T_VCU_LAUNCH_CTRL_VCU_LC_FAULT_FRONT_STALE_CHOICE (1u)
+#define CAN_T_VCU_LAUNCH_CTRL_VCU_LC_FAULT_FRONT_DISAGREE_CHOICE (2u)
+#define CAN_T_VCU_LAUNCH_CTRL_VCU_LC_FAULT_MOTOR_REVERSE_CHOICE (3u)
+#define CAN_T_VCU_LAUNCH_CTRL_VCU_LC_FAULT_FRONT_AHEAD_CHOICE (4u)
+#define CAN_T_VCU_LAUNCH_CTRL_VCU_LC_FAULT_BAD_DT_CHOICE (5u)
 
 /**
  * Signals in message PM100_Modulation_And_Flux_Info.
@@ -21319,6 +21335,211 @@ double can_t_tem_9_general_broadcast_tem_9_lowest_therm_id_decode(uint8_t value)
  */
 bool can_t_tem_9_general_broadcast_tem_9_lowest_therm_id_is_in_range(uint8_t value);
 
+
+/**
+ * Signals in message VCU_Launch_Ctrl.
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct can_t_vcu_launch_ctrl_t {
+    /**
+     * Range: 0..7 (0..7 -)
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t vcu_lc_state;
+
+    /**
+     * Range: 0..7 (0..7 -)
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t vcu_lc_fault;
+
+    /**
+     * Range: 0..1 (0..1 -)
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t vcu_lc_shadow_mode;
+
+    /**
+     * Range: 0..1 (0..1 -)
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t vcu_lc_stationary;
+
+    /**
+     * Range: 0..100 (0..100 %)
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t vcu_lc_arm_progress;
+};
+
+/**
+ * Pack message VCU_Launch_Ctrl.
+ *
+ * @param[out] dst_p Buffer to pack the message into.
+ * @param[in] src_p Data to pack.
+ * @param[in] size Size of dst_p.
+ *
+ * @return Size of packed data, or negative error code.
+ */
+int can_t_vcu_launch_ctrl_pack(
+    uint8_t *dst_p,
+    const struct can_t_vcu_launch_ctrl_t *src_p,
+    size_t size);
+
+/**
+ * Unpack message VCU_Launch_Ctrl.
+ *
+ * @param[out] dst_p Object to unpack the message into.
+ * @param[in] src_p Message to unpack.
+ * @param[in] size Size of src_p.
+ *
+ * @return zero(0) or negative error code.
+ */
+int can_t_vcu_launch_ctrl_unpack(
+    struct can_t_vcu_launch_ctrl_t *dst_p,
+    const uint8_t *src_p,
+    size_t size);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t can_t_vcu_launch_ctrl_vcu_lc_state_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double can_t_vcu_launch_ctrl_vcu_lc_state_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool can_t_vcu_launch_ctrl_vcu_lc_state_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t can_t_vcu_launch_ctrl_vcu_lc_fault_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double can_t_vcu_launch_ctrl_vcu_lc_fault_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool can_t_vcu_launch_ctrl_vcu_lc_fault_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t can_t_vcu_launch_ctrl_vcu_lc_shadow_mode_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double can_t_vcu_launch_ctrl_vcu_lc_shadow_mode_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool can_t_vcu_launch_ctrl_vcu_lc_shadow_mode_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t can_t_vcu_launch_ctrl_vcu_lc_stationary_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double can_t_vcu_launch_ctrl_vcu_lc_stationary_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool can_t_vcu_launch_ctrl_vcu_lc_stationary_is_in_range(uint8_t value);
+
+/**
+ * Encode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to encode.
+ *
+ * @return Encoded signal.
+ */
+uint8_t can_t_vcu_launch_ctrl_vcu_lc_arm_progress_encode(double value);
+
+/**
+ * Decode given signal by applying scaling and offset.
+ *
+ * @param[in] value Signal to decode.
+ *
+ * @return Decoded signal.
+ */
+double can_t_vcu_launch_ctrl_vcu_lc_arm_progress_decode(uint8_t value);
+
+/**
+ * Check that given signal is in allowed range.
+ *
+ * @param[in] value Signal to check.
+ *
+ * @return true if in range, false otherwise.
+ */
+bool can_t_vcu_launch_ctrl_vcu_lc_arm_progress_is_in_range(uint8_t value);
 
 #ifdef __cplusplus
 }
