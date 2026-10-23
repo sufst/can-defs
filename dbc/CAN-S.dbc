@@ -214,6 +214,8 @@ BO_ 386 RW_Pressure_Status: 8 Vector__XXX
  SG_ Temperature : 7|8@0- (1,0) [-128|127] "C" Vector__XXX
  SG_ SensorNumber : 15|16@0+ (1,0) [0|65535] "" Vector__XXX
  SG_ Range : 31|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ Version : 39|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ Period : 47|8@0+ (1,0) [0|255] "ms" Vector__XXX
 
 BO_ 387 FW_Pressure_CH1_4: 8 Vector__XXX
  SG_ CH1 : 7|16@0+ (0.01,600) [600|1255.35] "mBar" Vector__XXX
@@ -231,7 +233,9 @@ BO_ 389 FW_Pressure_Status: 8 Vector__XXX
  SG_ Temperature : 7|8@0- (1,0) [-128|127] "C" Vector__XXX
  SG_ SensorNumber : 15|16@0+ (1,0) [0|65535] "" Vector__XXX
  SG_ Range : 31|8@0+ (1,0) [0|255] "" Vector__XXX
-
+ SG_ Version : 39|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ Period : 47|8@0+ (1,0) [0|255] "ms" Vector__XXX
+  
 BO_ 400 PITOT_Pressure_CH1_4: 8 Vector__XXX
  SG_ CH1 : 7|16@0+ (0.01,600) [600|1255.35] "mBar" Vector__XXX
  SG_ CH2 : 23|16@0+ (0.01,600) [600|1255.35] "mBar" Vector__XXX
@@ -239,9 +243,10 @@ BO_ 400 PITOT_Pressure_CH1_4: 8 Vector__XXX
  SG_ CH4 : 55|16@0+ (0.01,600) [600|1255.35] "mBar" Vector__XXX
 
 BO_ 401 PITOT_Pressure_Status: 8 Vector__XXX
- SG_ Temperature : 7|8@0- (1,0) [-128|127] "C" Vector__XXX
- SG_ SensorNumber : 15|16@0+ (1,0) [0|65535] "" Vector__XXX
- SG_ Range : 31|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ Temperature : 7|16@0- (0.01,0) [-327.68|327.68] "C" Vector__XXX
+ SG_ SensorNumber : 23|16@0+ (1,0) [0|65535] "" Vector__XXX
+ SG_ Range : 39|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ FirmwareRevision : 47|8@0+ (1,0) [0|255] "" Vector__XXX
 
 BO_ 2017 CAN_S_Repeater_Heartbeat: 8 CAN_S_Repeater
  SG_ CAN_S_Rptr_CAN1_2_QueueDep : 0|8@1+ (1,0) [0|255] "msgs" Vector__XXX
@@ -292,5 +297,7 @@ BA_DEF_DEF_  "GenMsgCycleTime" 0;
 BA_DEF_DEF_  "BusType" "CAN";
 BA_DEF_DEF_  "GenSigStartValue" 0;
 BA_ "GenMsgCycleTime" BO_ 2017 1000;
-BA_ "GenSigStartValue" SG_ 386 P8A_Pressure_SensorNumber 600;
+BA_ "GenSigStartValue" SG_ 386 SensorNumber 600;
+BA_ "GenSigStartValue" SG_ 389 SensorNumber 600;
+BA_ "GenSigStartValue" SG_ 401 SensorNumber 600;
 
