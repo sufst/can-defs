@@ -44,16 +44,16 @@ BO_ 3221225472 VECTOR__INDEPENDENT_SIG_MSG: 0 Vector__XXX
  SG_ OCT_GPS_Latitude : 0|31@1- (0.0001,0) [0|909999999] "" Vector__XXX
 
 BO_ 593 Wheel_Speeds: 8 VCU
- SG_ WHEEL_FR_SPEED : 48|16@1- (0.01,0) [-327.68|327.67] "m/s" Vector__XXX
- SG_ WHEEL_FL_SPEED : 32|16@1- (0.01,0) [-327.68|327.67] "m/s" Vector__XXX
- SG_ WHEEL_RR_SPEED : 16|16@1- (0.01,0) [-327.68|327.67] "m/s" Vector__XXX
- SG_ WHEEL_RL_SPEED : 0|16@1- (0.01,0) [-327.68|327.67] "m/s" Vector__XXX
+ SG_ WHEEL_FR_SPEED : 48|16@1+ (0.01,0) [0|655.35] "m/s" Vector__XXX
+ SG_ WHEEL_FL_SPEED : 32|16@1+ (0.01,0) [0|655.35] "m/s" Vector__XXX
+ SG_ WHEEL_RR_SPEED : 16|16@1+ (0.01,0) [0|655.35] "m/s" Vector__XXX
+ SG_ WHEEL_RL_SPEED : 0|16@1+ (0.01,0) [0|655.35] "m/s" Vector__XXX
 
 BO_ 592 Wheel_RPM: 8 VCU
- SG_ WHEEL_FR_RPM : 48|16@1- (0.25,0) [-8192|8191.75] "rpm" Vector__XXX
- SG_ WHEEL_FL_RPM : 32|16@1- (0.25,0) [-8192|8191.75] "rpm" Vector__XXX
- SG_ WHEEL_RR_RPM : 16|16@1- (0.25,0) [-8192|8191.75] "rpm" Vector__XXX
- SG_ WHEEL_RL_RPM : 0|16@1- (0.25,0) [-8192|8191.75] "rpm" Vector__XXX
+ SG_ WHEEL_FR_RPM : 48|16@1+ (0.25,0) [0|16383.75] "rpm" Vector__XXX
+ SG_ WHEEL_FL_RPM : 32|16@1+ (0.25,0) [0|16383.75] "rpm" Vector__XXX
+ SG_ WHEEL_RR_RPM : 16|16@1+ (0.25,0) [0|16383.75] "rpm" Vector__XXX
+ SG_ WHEEL_RL_RPM : 0|16@1+ (0.25,0) [0|16383.75] "rpm" Vector__XXX
 
 BO_ 262 VCU_Simulation: 8 Vector__XXX
  SG_ Sim_Torque_Request : 40|16@1+ (0.1,0) [0|6553.5] "Nm"  VCU
